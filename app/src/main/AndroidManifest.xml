@@ -24,6 +24,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/Start"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
