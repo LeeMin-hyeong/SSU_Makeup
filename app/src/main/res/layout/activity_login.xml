@@ -9,8 +9,7 @@
     sothree:umanoPanelHeight="0dp"
     sothree:umanoShadowHeight="0dp"
     sothree:umanoFadeColor="@android:color/transparent"
-    sothree:umanoOverlay="true"
-    android:clickable="false">
+    sothree:umanoOverlay="true">
 
     <LinearLayout
         android:id="@+id/main_view"

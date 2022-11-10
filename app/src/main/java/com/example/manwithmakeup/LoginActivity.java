@@ -3,6 +3,7 @@ package com.example.manwithmakeup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +25,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     LinearLayout registerSection;
     LinearLayout loginSection;
     SlidingUpPanelLayout slide;
-    EditText checkPassword;
+    EditText checkPasswordInput;
+    EditText emailInput;
+    EditText passwordInput;
+
+    long initTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerTransition = findViewById(R.id.register_transition_button);
         registerSection = findViewById(R.id.register_section);
         loginSection = findViewById(R.id.login_section);
-        checkPassword = findViewById(R.id.check_password_input);
+        emailInput = findViewById(R.id.email_input);
+        passwordInput = findViewById(R.id.password_input);
+        checkPasswordInput = findViewById(R.id.check_password_input);
 
         kakao.setOnClickListener(this);
         email.setOnClickListener(this);
@@ -48,6 +55,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginTransition.setOnClickListener(this);
         registerButton.setOnClickListener(this);
         registerTransition.setOnClickListener(this);
+
+        slide.setTouchEnabled(false);
+    }
+
+    void setToLogin(){
+        registerSection.setVisibility(View.VISIBLE);
+        loginButton.setVisibility(View.VISIBLE);
+        checkPasswordInput.setVisibility(View.GONE);
+        registerButton.setVisibility(View.GONE);
+        loginSection.setVisibility(View.GONE);
+
+        clearText();
+    }
+    void setToRegister(){
+        registerSection.setVisibility(View.GONE);
+        loginButton.setVisibility(View.GONE);
+        checkPasswordInput.setVisibility(View.VISIBLE);
+        registerButton.setVisibility(View.VISIBLE);
+        loginSection.setVisibility(View.VISIBLE);
+
+        clearText();
+    }
+    void clearText(){
+        emailInput.getText().clear();
+        passwordInput.getText().clear();
+        checkPasswordInput.getText().clear();
     }
 
     @Override
@@ -62,20 +95,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //email 로그인 구현부
         }
         else if(view == registerTransition){
-            registerSection.setVisibility(View.GONE);
-            loginButton.setVisibility(View.GONE);
-
-            checkPassword.setVisibility(View.VISIBLE);
-            registerButton.setVisibility(View.VISIBLE);
-            loginSection.setVisibility(View.VISIBLE);
+            setToRegister();
         }
         else if(view == loginTransition){
-            registerSection.setVisibility(View.VISIBLE);
-            loginButton.setVisibility(View.VISIBLE);
-
-            checkPassword.setVisibility(View.GONE);
-            registerButton.setVisibility(View.GONE);
-            loginSection.setVisibility(View.GONE);
+            setToLogin();
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if(slide.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED){
+                slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                setToLogin();
+                return true;
+            }
+            else{
+                if (System.currentTimeMillis() - initTime > 3000) {
+                    Toast.makeText(this,"종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
+                    initTime = System.currentTimeMillis();
+                }
+                else{
+                    finish();
+                }
+            }
+        }
+
+        return false;
     }
 }
