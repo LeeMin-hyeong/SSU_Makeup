@@ -14,9 +14,12 @@
         android:theme="@style/Theme.SSU_MakeUp"
         tools:targetApi="31">
         <activity
-            android:name="com.example.ssu_makeup.LoginActivity"
-            android:theme="@style/Start"
-            android:exported="true">
+            android:name=".SurveyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Start">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
