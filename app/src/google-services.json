@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "303149438065",
+    "project_id": "ssumakeupapp22",
+    "storage_bucket": "ssumakeupapp22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303149438065:android:38849dab9e8a23846cf7d0",
+        "android_client_info": {
+          "package_name": "com.example.manwithmakeup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303149438065-su35omcno1t52da3akltev7hk5c0210e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.manwithmakeup",
+            "certificate_hash": "83032ed3db23fc1275fb736ff7efa385ade3b6a8"
+          }
+        },
+        {
+          "client_id": "303149438065-a51r8ths6ft5pro4k14bdkupra1kt27k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-ianL_oiDvrDoyNxbnWHnsOshhiEH4wM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303149438065-a51r8ths6ft5pro4k14bdkupra1kt27k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
