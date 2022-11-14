@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.manwithmakeup">
+    package="com.example.ssu_makeup">
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ManWithMakeup"
+        android:theme="@style/Theme.SSU_MakeUp"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.ssu_makeup.LoginActivity"
             android:theme="@style/Start"
             android:exported="true">
             <intent-filter>
