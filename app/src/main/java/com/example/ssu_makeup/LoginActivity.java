@@ -1,8 +1,10 @@
 package com.example.ssu_makeup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 
@@ -29,6 +36,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText passwordInput;
 
     long initTime;
+
+    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerTransition.setOnClickListener(this);
 
         slide.setTouchEnabled(false);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //회원가입 처리 시작
+                String strEmail = emailInput.getText().toString();
+                String strPwd = passwordInput.getText().toString();
+                String strCheckPwd = checkPasswordInput.getText().toString();
+                if (strPwd.equals(strCheckPwd)) {
+                    //Firebase Auth 진행
+                    mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                                Log.d("EmailPassWord", "signInWithEmail:success");
+                                Toast.makeText(LoginActivity.this, "인증에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                            } else {
+                                Log.w("EmailPassWord", "signInWithEmail:failure", task.getException());
+                                Toast.makeText(LoginActivity.this, "인증에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                } else {
+                    Toast.makeText(LoginActivity.this, "비밀번호가 서로 같지 않습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });//Firebase Authentication Users로 넘어오는거까진 구현
+
     }
 
     void setToLogin(){
