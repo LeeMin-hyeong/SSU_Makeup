@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView loginTransition;
     LinearLayout registerSection;
     LinearLayout loginSection;
+    LinearLayout nameSection;
     SlidingUpPanelLayout slide;
     EditText checkPasswordInput;
     EditText emailInput;
@@ -53,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerTransition = findViewById(R.id.register_transition_button);
         registerSection = findViewById(R.id.register_section);
         loginSection = findViewById(R.id.login_section);
+        nameSection =findViewById(R.id.name_section);
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
         checkPasswordInput = findViewById(R.id.check_password_input);
@@ -104,6 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         checkPasswordInput.setVisibility(View.GONE);
         registerButton.setVisibility(View.GONE);
         loginSection.setVisibility(View.GONE);
+        nameSection.setVisibility(View.GONE);
 
         clearText();
     }
@@ -113,6 +116,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         checkPasswordInput.setVisibility(View.VISIBLE);
         registerButton.setVisibility(View.VISIBLE);
         loginSection.setVisibility(View.VISIBLE);
+        nameSection.setVisibility(View.VISIBLE);
 
         clearText();
     }

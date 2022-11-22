@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1975" />
+        <entry key="app/src/main/res/drawable/button_round_coners.xml" value="0.227" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/slidinguppanel_round_coners.xml" value="0.1975" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.32205128205128203" />
