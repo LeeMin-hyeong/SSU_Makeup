@@ -10,7 +10,7 @@
     sothree:umanoShadowHeight="0dp"
     sothree:umanoFadeColor="@android:color/transparent"
     sothree:umanoOverlay="true">
-
+    <!-- main view -->
     <LinearLayout
         android:id="@+id/main_view"
         android:layout_width="match_parent"
@@ -60,9 +60,8 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/email_login" />
         </LinearLayout>
-
     </LinearLayout>
-
+    <!-- slide up view -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -91,6 +90,24 @@
             android:inputType="textPassword"
             android:hint="check password"
             android:visibility="gone"/>
+        <LinearLayout
+            android:id="@+id/name_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Last Name"
+                android:inputType="textPersonName"/>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="First Name"
+                android:inputType="textPersonName"/>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/register_section"
             android:layout_width="match_parent"
