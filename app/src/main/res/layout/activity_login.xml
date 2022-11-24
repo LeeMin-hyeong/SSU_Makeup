@@ -90,24 +90,20 @@
             android:inputType="textPassword"
             android:hint="check password"
             android:visibility="gone"/>
-        <LinearLayout
-            android:id="@+id/name_section"
+        <EditText
+            android:id="@+id/last_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone">
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Last Name"
-                android:inputType="textPersonName"/>
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="First Name"
-                android:inputType="textPersonName"/>
-        </LinearLayout>
+            android:hint="Last Name"
+            android:inputType="textPersonName"
+            android:visibility="gone"/>
+        <EditText
+            android:id="@+id/first_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            android:visibility="gone"/>
         <LinearLayout
             android:id="@+id/register_section"
             android:layout_width="match_parent"
