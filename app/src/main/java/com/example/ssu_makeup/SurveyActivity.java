@@ -1,4 +1,4 @@
-package com.example.manwithmakeup;
+package com.example.ssu_makeup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
