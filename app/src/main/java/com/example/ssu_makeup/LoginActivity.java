@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 
@@ -31,15 +34,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView loginTransition;
     LinearLayout registerSection;
     LinearLayout loginSection;
-    LinearLayout nameSection;
     SlidingUpPanelLayout slide;
     EditText checkPasswordInput;
     EditText emailInput;
     EditText passwordInput;
+    EditText lastNameInput;
+    EditText firstNameInput;
 
     long initTime;
 
     private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +60,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerTransition = findViewById(R.id.register_transition_button);
         registerSection = findViewById(R.id.register_section);
         loginSection = findViewById(R.id.login_section);
-        nameSection =findViewById(R.id.name_section);
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
         checkPasswordInput = findViewById(R.id.check_password_input);
+        lastNameInput = findViewById(R.id.last_name_input);
+        firstNameInput = findViewById(R.id.first_name_input);
 
         kakao.setOnClickListener(this);
         email.setOnClickListener(this);
@@ -78,6 +84,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String strEmail = emailInput.getText().toString();
                 String strPwd = passwordInput.getText().toString();
                 String strCheckPwd = checkPasswordInput.getText().toString();
+                String strLastName = lastNameInput.getText().toString();
+                String strFirstName = firstNameInput.getText().toString();
+
                 if (strPwd.equals(strCheckPwd)) {
                     //Firebase Auth 진행
                     mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -85,16 +94,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
                                 Log.d("EmailPassWord", "signInWithEmail:success");
-                                Toast.makeText(LoginActivity.this, "인증에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                                 FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                                //닉네임, 아이디, 비밀번호 파이어베이스 db 저장
+                                String email = firebaseUser.getEmail();
+                                String uid = firebaseUser.getUid();
+                                Info userInfo = new Info(strFirstName, strLastName, email);
+                                mFirebaseDatabase.child(uid).setValue(userInfo);
+                                clearText();
+                                slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                             } else {
                                 Log.w("EmailPassWord", "signInWithEmail:failure", task.getException());
                                 Toast.makeText(LoginActivity.this, "인증에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                clearText();
+                                slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                             }
                         }
                     });
                 } else {
                     Toast.makeText(LoginActivity.this, "비밀번호가 서로 같지 않습니다.", Toast.LENGTH_SHORT).show();
+                    slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 }
             }
         });//Firebase Authentication 회원가입
@@ -108,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
                             startActivity(intent);
                         }else {
@@ -117,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
             }
-        });
+        });//firebase 로그인
 
     }
 
@@ -125,9 +144,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerSection.setVisibility(View.VISIBLE);
         loginButton.setVisibility(View.VISIBLE);
         checkPasswordInput.setVisibility(View.GONE);
+        lastNameInput.setVisibility(View.GONE);
+        firstNameInput.setVisibility(View.GONE);
         registerButton.setVisibility(View.GONE);
         loginSection.setVisibility(View.GONE);
-        nameSection.setVisibility(View.GONE);
 
         clearText();
     }
@@ -135,9 +155,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerSection.setVisibility(View.GONE);
         loginButton.setVisibility(View.GONE);
         checkPasswordInput.setVisibility(View.VISIBLE);
+        lastNameInput.setVisibility(View.VISIBLE);
+        firstNameInput.setVisibility(View.VISIBLE);
         registerButton.setVisibility(View.VISIBLE);
         loginSection.setVisibility(View.VISIBLE);
-        nameSection.setVisibility(View.VISIBLE);
 
         clearText();
     }
@@ -145,6 +166,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         emailInput.getText().clear();
         passwordInput.getText().clear();
         checkPasswordInput.getText().clear();
+        lastNameInput.getText().clear();
+        firstNameInput.getText().clear();
     }
 
     @Override
@@ -168,23 +191,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            if(slide.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED){
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            if (slide.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
                 slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 setToLogin();
                 return true;
-            }
-            else{
+            } else {
                 if (System.currentTimeMillis() - initTime > 3000) {
-                    Toast.makeText(this,"종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
                     initTime = System.currentTimeMillis();
-                }
-                else{
+                } else {
                     finish();
                 }
             }
         }
-
         return false;
+    }
+
+    @IgnoreExtraProperties //db 저장 회원정보 객체
+    public class Info {
+        public String firstName; public String lastName; public String userId;
+        public Info() {}
+        public Info(String firstName, String lastName, String userId) {
+            this.firstName = firstName; this.lastName = lastName; this.userId = userId;
+        }
+
     }
 }
