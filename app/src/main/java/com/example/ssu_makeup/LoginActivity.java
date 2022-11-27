@@ -177,9 +177,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         else if(view == email){
             slide.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-        }
-        else if(view == loginButton){
-            //email 로그인 구현부
+            setToLogin();
         }
         else if(view == registerTransition){
             setToRegister();
