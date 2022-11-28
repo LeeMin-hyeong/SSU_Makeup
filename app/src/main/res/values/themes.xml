@@ -3,7 +3,7 @@
     <style name="Theme.SSU_MakeUp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">#F4C076</item>
+        <item name="colorPrimary">#EFA05B</item>
         <item name="colorPrimaryVariant">#F4C076</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -19,7 +19,7 @@
     <style name="Start" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">#F4C076</item>
+        <item name="colorPrimary">#EFA05B</item>
         <item name="colorPrimaryVariant">#F4C076</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -33,7 +33,7 @@
         <item name="android:windowContentOverlay">@null</item>
 
         <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
-        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonStyle</item>
         <item name="android:editTextStyle">@style/customEditTextStyle</item>
     </style>
 </resources>

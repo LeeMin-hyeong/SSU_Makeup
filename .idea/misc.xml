@@ -5,12 +5,37 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/button_round_coners.xml" value="0.227" />
+        <entry key="app/src/main/res/drawable/button_round_corners.xml" value="0.227" />
+        <entry key="app/src/main/res/drawable/button_round_corners_orange.xml" value="0.227" />
+        <entry key="app/src/main/res/drawable/button_round_corners_selected.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/edit_text_style.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/slidinguppanel_round_coners.xml" value="0.1975" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.32205128205128203" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3253012048192771" />
-        <entry key="app/src/main/res/layout/activity_survey.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/activity_survey.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_survey.xml" value="0.3260416666666667" />
+        <entry key="app/src/main/res/layout/fragment_survey__q1.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_1.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_10.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_11.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_2.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_3.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_4.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_5.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_6.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_7.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_8.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q1_9.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_1.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_2.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_3.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_4.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_5.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_6.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_q2_7.xml" value="0.32708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_survey_skip.xml" value="0.1712962962962963" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1975" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1975" />
       </map>

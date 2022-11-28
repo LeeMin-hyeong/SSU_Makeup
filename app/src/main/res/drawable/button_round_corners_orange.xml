@@ -1,0 +1,8 @@
+<!--주황색 배경 버튼-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="0dp"
+    android:shape="rectangle" >
+    <solid android:color="#EFA05B" />
+    <corners
+        android:radius="20dp" />
+</shape>
