@@ -86,7 +86,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String strCheckPwd = checkPasswordInput.getText().toString();
                 String strLastName = lastNameInput.getText().toString();
                 String strFirstName = firstNameInput.getText().toString();
-
+                strEmail = strEmail.trim();
+                strPwd = strPwd.trim();
+                strCheckPwd = strCheckPwd.trim();
+                if(strEmail.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(strPwd.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"패스워드를 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(strCheckPwd.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"패스워드 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(strLastName.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(strFirstName.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"성을 입력하세요.",Toast.LENGTH_SHORT).show();
+                else
                 if (strPwd.equals(strCheckPwd)) {
                     //Firebase Auth 진행
                     mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -123,18 +136,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 String loginEmail = emailInput.getText().toString();
                 String loginPassword = passwordInput.getText().toString();
-                mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                           Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                            startActivity(intent);
-                        }else {
-                            Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                loginEmail = loginEmail.trim();
+                loginPassword = loginPassword.trim();
+                if(loginEmail.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"아이디(이메일)를 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(loginPassword.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
+                else
+                    mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                               Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
             }
         });//firebase 로그인
 
