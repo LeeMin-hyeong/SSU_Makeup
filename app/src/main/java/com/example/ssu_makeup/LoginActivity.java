@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton kakao;
     ImageButton email;
@@ -44,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     long initTime;
 
     private FirebaseAuth mFirebaseAuth;
-    private DatabaseReference mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Users");
+    private final DatabaseReference mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         kakao.setOnClickListener(this);
         email.setOnClickListener(this);
-        loginButton.setOnClickListener(this);
         loginTransition.setOnClickListener(this);
-        registerButton.setOnClickListener(this);
         registerTransition.setOnClickListener(this);
 
         slide.setTouchEnabled(false);
@@ -114,8 +111,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String uid = firebaseUser.getUid();
                                 Info userInfo = new Info(strFirstName, strLastName, email);
                                 mFirebaseDatabase.child(uid).setValue(userInfo);
-                                clearText();
-                                slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                                setToLogin();
                             } else {
                                 Log.w("EmailPassWord", "signInWithEmail:failure", task.getException());
                                 Toast.makeText(LoginActivity.this, "인증에 실패하였습니다.", Toast.LENGTH_SHORT).show();
@@ -126,7 +122,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
                 } else {
                     Toast.makeText(LoginActivity.this, "비밀번호가 서로 같지 않습니다.", Toast.LENGTH_SHORT).show();
-                    slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                    checkPasswordInput.getText().clear();
                 }
             }
         });//Firebase Authentication 회원가입
@@ -160,7 +156,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    void setToLogin(){
+    void setToLogin() {
         registerSection.setVisibility(View.VISIBLE);
         loginButton.setVisibility(View.VISIBLE);
         checkPasswordInput.setVisibility(View.GONE);
@@ -171,7 +167,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         clearText();
     }
-    void setToRegister(){
+    void setToRegister() {
         registerSection.setVisibility(View.GONE);
         loginButton.setVisibility(View.GONE);
         checkPasswordInput.setVisibility(View.VISIBLE);
@@ -182,7 +178,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         clearText();
     }
-    void clearText(){
+    void clearText() {
         emailInput.getText().clear();
         passwordInput.getText().clear();
         checkPasswordInput.getText().clear();
@@ -233,6 +229,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public Info(String firstName, String lastName, String userId) {
             this.firstName = firstName; this.lastName = lastName; this.userId = userId;
         }
-
     }
 }
