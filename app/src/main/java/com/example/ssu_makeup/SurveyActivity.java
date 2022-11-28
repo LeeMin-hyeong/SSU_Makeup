@@ -18,7 +18,9 @@ public class SurveyActivity extends FragmentActivity {
         setContentView(R.layout.activity_survey);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.container, SurveyFragment.newInstance()).commit();
+        fragmentTransaction.add(R.id.container, SurveyFragment.newInstance());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     //fragment 전환 시 fragment에서 호출되는 함수
@@ -28,7 +30,14 @@ public class SurveyActivity extends FragmentActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
         fragmentTransaction.replace(R.id.container, fragment);
-        fragmentTransaction.addToBackStack(null); //뒤로가기 시 전 fragment 호출, 데이터 유지 안됨, 주석 처리 시 프로그램 종료됨
+        fragmentTransaction.commit();
+    }
+    public void startReplaceFragment(@NonNull Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }

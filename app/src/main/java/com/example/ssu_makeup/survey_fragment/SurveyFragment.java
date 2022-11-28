@@ -35,13 +35,13 @@ public class SurveyFragment extends Fragment {
         surveyYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((SurveyActivity)getActivity()).replaceFragment(SurveyQ1_1Fragment.newInstance());
+                ((SurveyActivity)getActivity()).startReplaceFragment(SurveyQ1_1Fragment.newInstance());
             }
         });
         surveyNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((SurveyActivity)getActivity()).replaceFragment(SelectSkinTypeFragment.newInstance());
+                ((SurveyActivity)getActivity()).startReplaceFragment(SelectSkinTypeFragment.newInstance());
             }
         });
 
