@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--질문 1-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4C076"
     android:orientation="vertical">
     <TextView
+        android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:gravity="center"
-        android:text="@string/q2_7"
         android:textSize="25sp"
         android:paddingHorizontal="30dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="3"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
         android:paddingVertical="10dp"
-        android:layout_weight="3"
         android:gravity="center">
         <Button
             android:id="@+id/answer1"
@@ -28,8 +27,7 @@
             android:background="@drawable/button_round_corners"
             android:layout_marginBottom="5dp"
             android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/a2_7_1"/>
+            android:gravity="center"/>
         <Button
             android:id="@+id/answer2"
             android:layout_width="match_parent"
@@ -37,8 +35,7 @@
             android:background="@drawable/button_round_corners"
             android:layout_marginBottom="5dp"
             android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/a2_7_2"/>
+            android:gravity="center"/>
         <Button
             android:id="@+id/answer3"
             android:layout_width="match_parent"
@@ -46,8 +43,7 @@
             android:background="@drawable/button_round_corners"
             android:layout_marginBottom="5dp"
             android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/a2_7_3"/>
+            android:gravity="center"/>
         <Button
             android:id="@+id/answer4"
             android:layout_width="match_parent"
@@ -55,8 +51,7 @@
             android:background="@drawable/button_round_corners"
             android:layout_marginBottom="5dp"
             android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/a2_7_4"/>
+            android:gravity="center"/>
         <Button
             android:id="@+id/answer5"
             android:layout_width="match_parent"
@@ -64,7 +59,6 @@
             android:background="@drawable/button_round_corners"
             android:layout_marginBottom="5dp"
             android:textSize="16sp"
-            android:gravity="center"
-            android:text="@string/a2_7_5"/>
+            android:gravity="center"/>
     </LinearLayout>
 </LinearLayout>

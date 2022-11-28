@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -12,6 +13,7 @@ import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
 
 public class SurveyQ2_1Fragment extends Fragment implements View.OnClickListener{
+    TextView question;
     Button answer1;
     Button answer2;
     Button answer3;
@@ -23,12 +25,20 @@ public class SurveyQ2_1Fragment extends Fragment implements View.OnClickListener
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_survey_q2_1, container, false);
+        View root = inflater.inflate(R.layout.fragment_survey_4_answers, container, false);
+        question = root.findViewById(R.id.question);
         answer1 = root.findViewById(R.id.answer1);
         answer2 = root.findViewById(R.id.answer2);
         answer3 = root.findViewById(R.id.answer3);
         answer4 = root.findViewById(R.id.answer4);
 //        answer5 = root.findViewById(R.id.answer5);
+
+        question.setText(R.string.q2_1);
+        answer1.setText(R.string.a2_1_1);
+        answer2.setText(R.string.a2_1_2);
+        answer3.setText(R.string.a2_1_3);
+        answer4.setText(R.string.a2_1_4);
+//        answer5.setText(R.string.a2_1_5);
 
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);

@@ -27,7 +27,7 @@ public class SurveyActivity extends FragmentActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-        fragmentTransaction.add(R.id.container, fragment);
+        fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.addToBackStack(null); //뒤로가기 시 전 fragment 호출, 데이터 유지 안됨, 주석 처리 시 프로그램 종료됨
         fragmentTransaction.commit();
     }

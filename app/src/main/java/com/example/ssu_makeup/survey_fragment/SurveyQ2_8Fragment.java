@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
 
-public class SurveyQ1_4Fragment extends Fragment implements View.OnClickListener{
+public class SurveyQ2_8Fragment extends Fragment implements View.OnClickListener{
     TextView question;
     Button answer1;
     Button answer2;
@@ -20,8 +20,8 @@ public class SurveyQ1_4Fragment extends Fragment implements View.OnClickListener
     Button answer4;
     Button answer5;
 
-    public static SurveyQ1_4Fragment newInstance() {
-        return new SurveyQ1_4Fragment();
+    public static SurveyQ2_8Fragment newInstance() {
+        return new SurveyQ2_8Fragment();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,12 +33,12 @@ public class SurveyQ1_4Fragment extends Fragment implements View.OnClickListener
         answer4 = root.findViewById(R.id.answer4);
         answer5 = root.findViewById(R.id.answer5);
 
-        question.setText(R.string.q1_4);
-        answer1.setText(R.string.a1_4_1);
-        answer2.setText(R.string.a1_4_2);
-        answer3.setText(R.string.a1_4_3);
-        answer4.setText(R.string.a1_4_4);
-        answer5.setText(R.string.a1_4_5);
+        question.setText(R.string.q2_8);
+        answer1.setText(R.string.a2_8_1);
+        answer2.setText(R.string.a2_8_2);
+        answer3.setText(R.string.a2_8_3);
+        answer4.setText(R.string.a2_8_4);
+        answer5.setText(R.string.a2_8_5);
 
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
@@ -53,7 +53,7 @@ public class SurveyQ1_4Fragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.button_round_corners_selected);
-        ((SurveyActivity)getActivity()).replaceFragment(SurveyQ1_5Fragment.newInstance());
+        ((SurveyActivity)getActivity()).replaceFragment(SurveyQ2_9Fragment.newInstance());
     }
 
     public void setButtons(){
