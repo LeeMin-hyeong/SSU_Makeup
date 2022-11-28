@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SelectSkinTypeFragment;
 import com.example.ssu_makeup.SurveyActivity;
+import com.example.ssu_makeup.survey_fragment.survey_q1.SurveyQ1_1Fragment;
 
 //SurveyActivity 초기 화면 Fragment
 public class SurveyFragment extends Fragment {
