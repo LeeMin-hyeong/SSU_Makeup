@@ -15,7 +15,7 @@
         android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F4C076"
+        android:background="#EBE6E4"
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/logo_layout"
@@ -27,7 +27,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/main_icon"
+                android:src="@drawable/ssu_makeup_logo"
                 android:layout_margin="15dp"/>
 
         </LinearLayout>
@@ -78,18 +78,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:privateImeOptions="defaultInputmode=english"
             android:hint="e-mail"/>
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:privateImeOptions="defaultInputmode=english"
             android:hint="password"/>
         <EditText
             android:id="@+id/check_password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:privateImeOptions="defaultInputmode=english"
             android:hint="check password"
             android:visibility="gone"/>
         <EditText
@@ -98,14 +101,16 @@
             android:layout_height="wrap_content"
             android:hint="Last Name"
             android:inputType="textPersonName"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:privateImeOptions="defaultInputmode=korean"/>
         <EditText
             android:id="@+id/first_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
             android:inputType="textPersonName"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:privateImeOptions="defaultInputmode=korean"/>
         <LinearLayout
             android:id="@+id/register_section"
             android:layout_width="match_parent"
@@ -123,7 +128,6 @@
                 android:textStyle="bold"
                 android:clickable="true"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/login_section"
             android:layout_width="match_parent"
@@ -141,7 +145,6 @@
                 android:textStyle="bold"
                 android:clickable="true"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -158,7 +161,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="visible" />
-
             <TextView
                 android:id="@+id/register_button"
                 android:layout_width="wrap_content"

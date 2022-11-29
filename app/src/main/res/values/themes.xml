@@ -3,8 +3,8 @@
     <style name="Theme.SSU_MakeUp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">#EFA05B</item>
-        <item name="colorPrimaryVariant">#F4C076</item>
+        <item name="colorPrimary">#847366</item>
+        <item name="colorPrimaryVariant">#EBE6E4</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
