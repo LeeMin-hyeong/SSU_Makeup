@@ -72,4 +72,8 @@ public class SurveyActivity extends FragmentActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+    public void moveToMain(){
+        Intent intent = new Intent(SurveyActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

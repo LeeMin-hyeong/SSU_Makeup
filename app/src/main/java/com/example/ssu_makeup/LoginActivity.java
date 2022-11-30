@@ -76,9 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //로그인 기록이 있으면 바로 survey로
-        //Todo : 메인화면 구현 후 메인화면으로 수정
         if (mFirebaseAuth.getCurrentUser() != null) {
-            Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             //intent.putExtra("uid", mFirebaseAuth.getCurrentUser().getUid());
             startActivity(intent);
             finish();
@@ -153,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                               Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
                                 startActivity(intent);
                             }else {
