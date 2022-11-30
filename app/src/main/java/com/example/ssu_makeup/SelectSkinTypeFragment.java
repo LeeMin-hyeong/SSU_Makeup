@@ -1,8 +1,10 @@
 package com.example.ssu_makeup;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.BundleCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -11,6 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 //바우만 스킨 테스트를 하지 않는 경우, 스킨타입 변경하기
 public class SelectSkinTypeFragment extends Fragment implements View.OnClickListener {
@@ -29,6 +38,9 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
         View root = inflater.inflate(R.layout.fragment_select_skin_type, container, false);
         announcement = root.findViewById(R.id.announcement);
         //TODO: 현재 사용자 이름(First Name) 가져와서 출력하기 "name" SharedPreference?
+        /*
+        Bundle bundle = getArguments();
+        bundle.getString("name");*/
         String name = "name";
         announcement.setText(getString(R.string.select_skin_type, name));
 
@@ -66,6 +78,8 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
         ospw.setOnClickListener(this);
         osnw.setOnClickListener(this);
         moveToMain.setOnClickListener(this);
+
+
 
         return root;
     }
