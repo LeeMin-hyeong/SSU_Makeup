@@ -43,7 +43,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     long initTime;
 
     private FirebaseAuth mFirebaseAuth;
-    private final DatabaseReference mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Users");
+    private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference mRef = mFirebaseDatabase.getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         slide.setTouchEnabled(false);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+        //로그인 기록이 있으면 바로 survey로
+        //Todo : 메인화면 구현 후 메인화면으로 수정
+        if (mFirebaseAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+            //intent.putExtra("uid", mFirebaseAuth.getCurrentUser().getUid());
+            startActivity(intent);
+            finish();
+        }
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String email = firebaseUser.getEmail();
                                 String uid = firebaseUser.getUid();
                                 Info userInfo = new Info(strFirstName, strLastName, email);
-                                mFirebaseDatabase.child(uid).setValue(userInfo);
+                                mRef.child(uid).setValue(userInfo);
                                 setToLogin();
                             } else {
                                 Log.w("EmailPassWord", "signInWithEmail:failure", task.getException());
@@ -229,5 +239,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public Info(String firstName, String lastName, String userId) {
             this.firstName = firstName; this.lastName = lastName; this.userId = userId;
         }
+
+        public String getFirstName() {return firstName;}
     }
 }
