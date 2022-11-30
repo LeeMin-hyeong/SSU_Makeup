@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -91,8 +92,13 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
             view.setBackgroundResource(R.drawable.button_round_corners_selected);
             selectedSkinType = ((TextView)view).getText().toString();
         } else {
-            Log.d("Test", "onClick: "+selectedSkinType);
-            //TODO: selectedSkinType 회원 정보에 등록 후 MainActivity 이동
+            if(selectedSkinType != null){
+                Log.d("Test", "onClick: "+selectedSkinType);
+                ((SurveyActivity)getActivity()).moveToMain();
+            }
+            else {
+                Toast.makeText(getActivity(), "피부 타입을 선택해 주세요", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
