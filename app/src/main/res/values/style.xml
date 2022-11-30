@@ -13,4 +13,8 @@
         <item name="android:fontFamily">@font/godo_font</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    
+    <style name="Splash" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
 </resources>
