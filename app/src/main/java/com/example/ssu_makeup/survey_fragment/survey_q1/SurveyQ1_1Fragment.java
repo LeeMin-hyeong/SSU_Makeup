@@ -48,30 +48,6 @@ public class SurveyQ1_1Fragment extends Fragment implements View.OnClickListener
         answer4.setOnClickListener(this);
 //        answer5.setOnClickListener(this);
 
-        answer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                answer=1;
-            }
-        });
-        answer2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                answer=2;
-            }
-        });
-        answer3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                answer=3;
-            }
-        });
-        answer4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                answer=4;
-            }
-        });
         return root;
     }
 
@@ -79,6 +55,7 @@ public class SurveyQ1_1Fragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.button_round_corners_selected);
+        Score.addScore_4(view,1,1);
         ((SurveyActivity)getActivity()).replaceFragment(SurveyQ1_2Fragment.newInstance());
     }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
+import com.example.ssu_makeup.Score;
 import com.example.ssu_makeup.SurveyActivity;
 import com.example.ssu_makeup.survey_fragment.survey_q2.SurveyQ2_1Fragment;
 
@@ -54,6 +55,7 @@ public class SurveyQ1_11Fragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.button_round_corners_selected);
+        Score.addScore_4(view,1,11);
         ((SurveyActivity)getActivity()).replaceFragment(SurveyQ2_1Fragment.newInstance());
     }
 
