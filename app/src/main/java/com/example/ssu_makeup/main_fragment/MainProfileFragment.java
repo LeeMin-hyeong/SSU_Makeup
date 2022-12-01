@@ -21,6 +21,7 @@ import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainProfileFragment extends Fragment {
     TextView userName;
@@ -40,7 +41,7 @@ public class MainProfileFragment extends Fragment {
         newSurvey = root.findViewById(R.id.new_survey_button);
         logout = root.findViewById(R.id.logout_button);
         userInfoFrame = root.findViewById(R.id.user_info_frame);
-        userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp_dynamic_color);
+        userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp);
 
         //TODO: 유저 이름 정보와 피부 유형 정보 불러오기
         String name = "김숭실";
