@@ -29,28 +29,28 @@
                 android:id="@+id/drpt"
                 android:text="DRPT"
                 android:layout_margin="3dp"
-                android:background="@drawable/round_corners_dynamic_color"/>
+                android:background="@drawable/round_corners"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/drnt"
                 android:text="DRNT"
                 android:layout_margin="3dp"
-                android:background="@drawable/round_corners_dynamic_color" />
+                android:background="@drawable/round_corners" />
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/dspt"
                 android:text="DSPT"
                 android:layout_margin="3dp"
-                android:background="@drawable/round_corners_dynamic_color" />
+                android:background="@drawable/round_corners" />
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/dsnt"
                 android:text="DSNT"
                 android:layout_margin="3dp"
-                android:background="@drawable/round_corners_dynamic_color" />
+                android:background="@drawable/round_corners" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,28 +61,28 @@
                 android:layout_width="wrap_content"
                 android:id="@+id/drpw"
                 android:text="DRPW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/drnw"
                 android:text="DRNW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/dspw"
                 android:text="DSPW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/dsnw"
                 android:text="DSNW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
         </LinearLayout>
         <LinearLayout
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/orpt"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:text="ORPT"
                 android:layout_margin="3dp"/>
             <Button
@@ -101,21 +101,21 @@
                 android:layout_width="wrap_content"
                 android:id="@+id/ornt"
                 android:text="ORNT"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/ospt"
                 android:text="OSPT"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/osnt"
                 android:text="OSNT"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
         </LinearLayout>
         <LinearLayout
@@ -127,28 +127,28 @@
                 android:layout_width="wrap_content"
                 android:id="@+id/orpw"
                 android:text="ORPW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/ornw"
                 android:text="ORNW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/ospw"
                 android:text="OSPW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/osnw"
                 android:text="OSNW"
-                android:background="@drawable/round_corners_dynamic_color"
+                android:background="@drawable/round_corners"
                 android:layout_margin="3dp"/>
         </LinearLayout>
         <Button
