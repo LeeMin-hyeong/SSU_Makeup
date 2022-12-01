@@ -15,7 +15,7 @@
         android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EBE6E4"
+        android:background="@color/app_primary_variant"
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/logo_layout"
@@ -48,7 +48,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/kakao_login_large_wide"/>
             <ImageButton
@@ -58,7 +58,7 @@
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/email_login" />
         </LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#F4C076">
+    android:background="@color/app_primary_variant">
     <TextView
         android:id="@+id/announcement"
         android:layout_width="match_parent"
