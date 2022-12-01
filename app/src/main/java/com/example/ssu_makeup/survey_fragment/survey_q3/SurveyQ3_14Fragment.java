@@ -53,13 +53,13 @@ public class SurveyQ3_14Fragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         setButtons();
-        view.setBackgroundResource(R.drawable.button_round_corners_selected);
+        view.setBackgroundResource(R.drawable.round_corners_selected);
         ((SurveyActivity)getActivity()).replaceFragment(SurveyQ4_1Fragment.newInstance());
     }
 
     public void setButtons(){
-        answer1.setBackgroundResource(R.drawable.button_round_corners);
-        answer2.setBackgroundResource(R.drawable.button_round_corners);
+        answer1.setBackgroundResource(R.drawable.round_corners_dynamic_color);
+        answer2.setBackgroundResource(R.drawable.round_corners_dynamic_color);
 //        answer3.setBackgroundResource(R.drawable.button_round_corners);
 //        answer4.setBackgroundResource(R.drawable.button_round_corners);
 //        answer5.setBackgroundResource(R.drawable.button_round_corners);

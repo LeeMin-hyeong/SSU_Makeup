@@ -5,17 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.SelectSkinTypeFragment;
 import com.example.ssu_makeup.SurveyActivity;
-import com.example.ssu_makeup.survey_fragment.survey_q1.SurveyQ1_1Fragment;
 
 //SurveyActivity 결과 화면 Fragment
 public class SurveyResultFragment extends Fragment {
+    Button moveToMain;
     public static SurveyResultFragment newInstance() {
         return new SurveyResultFragment();
     }
@@ -23,7 +21,13 @@ public class SurveyResultFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_survey_result, container, false);
-
+        moveToMain = root.findViewById(R.id.move_to_main);
+        moveToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((SurveyActivity)getActivity()).moveToMain();
+            }
+        });
         return root;
     }
 }

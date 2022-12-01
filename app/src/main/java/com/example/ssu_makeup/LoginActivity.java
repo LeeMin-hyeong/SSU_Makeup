@@ -76,9 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //로그인 기록이 있으면 바로 survey로
-        //Todo : 메인화면 구현 후 메인화면으로 수정
         if (mFirebaseAuth.getCurrentUser() != null) {
-            Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             //intent.putExtra("uid", mFirebaseAuth.getCurrentUser().getUid());
             startActivity(intent);
             finish();
@@ -103,9 +102,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 else if(strCheckPwd.getBytes().length<=0)
                     Toast.makeText(getApplicationContext(),"패스워드 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
                 else if(strLastName.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(strFirstName.getBytes().length<=0)
                     Toast.makeText(getApplicationContext(),"성을 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(strFirstName.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
                 else
                 if (strPwd.equals(strCheckPwd)) {
                     //Firebase Auth 진행
@@ -145,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginEmail = loginEmail.trim();
                 loginPassword = loginPassword.trim();
                 if(loginEmail.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"아이디(이메일)를 입력하세요.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
                 else if(loginPassword.getBytes().length<=0)
                     Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
                 else
@@ -153,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                               Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
                                 startActivity(intent);
                             }else {

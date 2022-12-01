@@ -1,10 +1,11 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.survey_fragment;
 
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.BundleCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -13,13 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.ssu_makeup.Baumann;
+import com.example.ssu_makeup.R;
+import com.example.ssu_makeup.SurveyActivity;
 
 //바우만 스킨 테스트를 하지 않는 경우, 스킨타입 변경하기
 public class SelectSkinTypeFragment extends Fragment implements View.OnClickListener {
@@ -28,7 +27,7 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
     Button drpt, drnt, dspt, dsnt, drpw, drnw, dspw, dsnw, orpt, ornt, ospt, osnt, orpw, ornw, ospw, osnw;
     Button moveToMain;
     String selectedSkinType;
-
+    GradientDrawable buttonBackground;
     public static Fragment newInstance() {
         return new SelectSkinTypeFragment();
     }
@@ -37,6 +36,7 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_select_skin_type, container, false);
         announcement = root.findViewById(R.id.announcement);
+        buttonBackground = (GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_dynamic_color);
         //TODO: 현재 사용자 이름(First Name) 가져와서 출력하기 "name" SharedPreference?
         /*
         Bundle bundle = getArguments();
@@ -88,30 +88,53 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
     public void onClick(View view) {
         if(view != moveToMain) {
             setButtons();
-            view.setBackgroundResource(R.drawable.button_round_corners_selected);
             selectedSkinType = ((TextView)view).getText().toString();
+            buttonBackground.setColor(Baumann.getColorByString(requireActivity(), selectedSkinType));
+            view.setBackground(buttonBackground);
+            ((TextView) view).setTextColor(getResources().getColor(R.color.white));
         } else {
-            Log.d("Test", "onClick: "+selectedSkinType);
-            //TODO: selectedSkinType 회원 정보에 등록 후 MainActivity 이동
+            if(selectedSkinType != null){
+                Log.d("Test", "onClick: "+selectedSkinType);
+                ((SurveyActivity)getActivity()).moveToMain();
+            }
+            else {
+                Toast.makeText(getActivity(), "피부 타입을 선택해 주세요", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
     public void setButtons(){
-        drpt.setBackgroundResource(R.drawable.button_round_corners);
-        drnt.setBackgroundResource(R.drawable.button_round_corners);
-        dspt.setBackgroundResource(R.drawable.button_round_corners);
-        dsnt.setBackgroundResource(R.drawable.button_round_corners);
-        drpw.setBackgroundResource(R.drawable.button_round_corners);
-        drnw.setBackgroundResource(R.drawable.button_round_corners);
-        dspw.setBackgroundResource(R.drawable.button_round_corners);
-        dsnw.setBackgroundResource(R.drawable.button_round_corners);
-        orpt.setBackgroundResource(R.drawable.button_round_corners);
-        ornt.setBackgroundResource(R.drawable.button_round_corners);
-        ospt.setBackgroundResource(R.drawable.button_round_corners);
-        osnt.setBackgroundResource(R.drawable.button_round_corners);
-        orpw.setBackgroundResource(R.drawable.button_round_corners);
-        ornw.setBackgroundResource(R.drawable.button_round_corners);
-        ospw.setBackgroundResource(R.drawable.button_round_corners);
-        osnw.setBackgroundResource(R.drawable.button_round_corners);
+        drpt.setBackgroundResource(R.drawable.round_corners);
+        drnt.setBackgroundResource(R.drawable.round_corners);
+        dspt.setBackgroundResource(R.drawable.round_corners);
+        dsnt.setBackgroundResource(R.drawable.round_corners);
+        drpw.setBackgroundResource(R.drawable.round_corners);
+        drnw.setBackgroundResource(R.drawable.round_corners);
+        dspw.setBackgroundResource(R.drawable.round_corners);
+        dsnw.setBackgroundResource(R.drawable.round_corners);
+        orpt.setBackgroundResource(R.drawable.round_corners);
+        ornt.setBackgroundResource(R.drawable.round_corners);
+        ospt.setBackgroundResource(R.drawable.round_corners);
+        osnt.setBackgroundResource(R.drawable.round_corners);
+        orpw.setBackgroundResource(R.drawable.round_corners);
+        ornw.setBackgroundResource(R.drawable.round_corners);
+        ospw.setBackgroundResource(R.drawable.round_corners);
+        osnw.setBackgroundResource(R.drawable.round_corners);
+        drpt.setTextColor(Color.BLACK);
+        drnt.setTextColor(Color.BLACK);
+        dspt.setTextColor(Color.BLACK);
+        dsnt.setTextColor(Color.BLACK);
+        drpw.setTextColor(Color.BLACK);
+        drnw.setTextColor(Color.BLACK);
+        dspw.setTextColor(Color.BLACK);
+        dsnw.setTextColor(Color.BLACK);
+        orpt.setTextColor(Color.BLACK);
+        ornt.setTextColor(Color.BLACK);
+        ospt.setTextColor(Color.BLACK);
+        osnt.setTextColor(Color.BLACK);
+        orpw.setTextColor(Color.BLACK);
+        ornw.setTextColor(Color.BLACK);
+        ospw.setTextColor(Color.BLACK);
+        osnw.setTextColor(Color.BLACK);
     }
 }

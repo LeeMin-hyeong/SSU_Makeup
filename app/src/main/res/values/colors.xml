@@ -7,5 +7,25 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="transparent"></color>
+
+    <color name="ssu_makeup_icon_background">#EBE6E4</color>
+    <color name="app_primary_variant">#EBE6E4</color>
+    <color name="app_primary">#847366</color>
+
+    <color name="DSPT">#AF6996</color>
+    <color name="DSNT">#E194B1</color>
+    <color name="DSPW">#D66C7C</color>
+    <color name="DSNW">#E6AB9B</color>
+    <color name="OSPT">#E18D68</color>
+    <color name="OSNT">#F2CAAB</color>
+    <color name="OSPW">#EAAA61</color>
+    <color name="OSNW">#F9DA9A</color>
+    <color name="ORPT">#AABF43</color>
+    <color name="ORNT">#C5D393</color>
+    <color name="ORPW">#82AC5B</color>
+    <color name="ORNW">#9AC6AC</color>
+    <color name="DRPT">#5596AF</color>
+    <color name="DRNT">#99B5D9</color>
+    <color name="DRPW">#5374A4</color>
+    <color name="DRNW">#A89EC2</color>
 </resources>
