@@ -20,6 +20,9 @@ import com.example.ssu_makeup.LoginActivity;
 import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainProfileFragment extends Fragment {
     TextView userName;
     TextView userSkinType;
@@ -69,7 +72,8 @@ public class MainProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: 로그아웃 작업, 자동 로그인 해제
+
+                FirebaseAuth.getInstance().signOut();
 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);

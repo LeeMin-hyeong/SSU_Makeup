@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:background="@drawable/edit_text_round_corners"
+            android:imeOptions="actionSearch"
             android:drawableStart="@drawable/ic_search_input"/>
     </LinearLayout>
     <FrameLayout
