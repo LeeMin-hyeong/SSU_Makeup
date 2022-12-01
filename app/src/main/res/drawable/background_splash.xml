@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/app_primary_variant"/>
     <item>
-        <bitmap android:src="@drawable/ssu_makeup_logo"/>
+        <bitmap android:src="@drawable/logo_ssu_makeup"/>
     </item>
 </layer-list>
