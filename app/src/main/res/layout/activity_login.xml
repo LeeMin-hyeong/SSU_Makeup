@@ -27,7 +27,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ssu_makeup_logo"
+                android:src="@drawable/logo_ssu_makeup"
                 android:layout_margin="15dp"/>
 
         </LinearLayout>
@@ -50,7 +50,7 @@
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/kakao_login_large_wide"/>
+                android:src="@drawable/button_kakao_login"/>
             <ImageButton
                 android:id="@+id/email_login"
                 android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/email_login" />
+                android:src="@drawable/button_email_login" />
         </LinearLayout>
     </LinearLayout>
     <!-- slide up view -->

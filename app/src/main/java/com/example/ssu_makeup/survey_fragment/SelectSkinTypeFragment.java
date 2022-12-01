@@ -36,7 +36,7 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_select_skin_type, container, false);
         announcement = root.findViewById(R.id.announcement);
-        buttonBackground = (GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners);
+        buttonBackground = (GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_dynamic_color);
         //TODO: 현재 사용자 이름(First Name) 가져와서 출력하기 "name" SharedPreference?
         /*
         Bundle bundle = getArguments();
@@ -104,22 +104,22 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
 
     }
     public void setButtons(){
-        drpt.setBackgroundResource(R.drawable.round_corners_white);
-        drnt.setBackgroundResource(R.drawable.round_corners_white);
-        dspt.setBackgroundResource(R.drawable.round_corners_white);
-        dsnt.setBackgroundResource(R.drawable.round_corners_white);
-        drpw.setBackgroundResource(R.drawable.round_corners_white);
-        drnw.setBackgroundResource(R.drawable.round_corners_white);
-        dspw.setBackgroundResource(R.drawable.round_corners_white);
-        dsnw.setBackgroundResource(R.drawable.round_corners_white);
-        orpt.setBackgroundResource(R.drawable.round_corners_white);
-        ornt.setBackgroundResource(R.drawable.round_corners_white);
-        ospt.setBackgroundResource(R.drawable.round_corners_white);
-        osnt.setBackgroundResource(R.drawable.round_corners_white);
-        orpw.setBackgroundResource(R.drawable.round_corners_white);
-        ornw.setBackgroundResource(R.drawable.round_corners_white);
-        ospw.setBackgroundResource(R.drawable.round_corners_white);
-        osnw.setBackgroundResource(R.drawable.round_corners_white);
+        drpt.setBackgroundResource(R.drawable.round_corners);
+        drnt.setBackgroundResource(R.drawable.round_corners);
+        dspt.setBackgroundResource(R.drawable.round_corners);
+        dsnt.setBackgroundResource(R.drawable.round_corners);
+        drpw.setBackgroundResource(R.drawable.round_corners);
+        drnw.setBackgroundResource(R.drawable.round_corners);
+        dspw.setBackgroundResource(R.drawable.round_corners);
+        dsnw.setBackgroundResource(R.drawable.round_corners);
+        orpt.setBackgroundResource(R.drawable.round_corners);
+        ornt.setBackgroundResource(R.drawable.round_corners);
+        ospt.setBackgroundResource(R.drawable.round_corners);
+        osnt.setBackgroundResource(R.drawable.round_corners);
+        orpw.setBackgroundResource(R.drawable.round_corners);
+        ornw.setBackgroundResource(R.drawable.round_corners);
+        ospw.setBackgroundResource(R.drawable.round_corners);
+        osnw.setBackgroundResource(R.drawable.round_corners);
         drpt.setTextColor(Color.BLACK);
         drnt.setTextColor(Color.BLACK);
         dspt.setTextColor(Color.BLACK);

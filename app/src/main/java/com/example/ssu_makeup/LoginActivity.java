@@ -102,9 +102,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 else if(strCheckPwd.getBytes().length<=0)
                     Toast.makeText(getApplicationContext(),"패스워드 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
                 else if(strLastName.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(strFirstName.getBytes().length<=0)
                     Toast.makeText(getApplicationContext(),"성을 입력하세요.",Toast.LENGTH_SHORT).show();
+                else if(strFirstName.getBytes().length<=0)
+                    Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
                 else
                 if (strPwd.equals(strCheckPwd)) {
                     //Firebase Auth 진행
@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginEmail = loginEmail.trim();
                 loginPassword = loginPassword.trim();
                 if(loginEmail.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"아이디(이메일)를 입력하세요.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
                 else if(loginPassword.getBytes().length<=0)
                     Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
                 else
