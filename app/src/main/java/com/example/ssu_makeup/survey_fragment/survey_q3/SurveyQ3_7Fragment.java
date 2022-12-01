@@ -57,10 +57,10 @@ public class SurveyQ3_7Fragment extends Fragment implements View.OnClickListener
     }
 
     public void setButtons(){
-        answer1.setBackgroundResource(R.drawable.button_round_corners);
-        answer2.setBackgroundResource(R.drawable.button_round_corners);
-        answer3.setBackgroundResource(R.drawable.button_round_corners);
-        answer4.setBackgroundResource(R.drawable.button_round_corners);
+        answer1.setBackgroundResource(R.drawable.round_corners);
+        answer2.setBackgroundResource(R.drawable.round_corners);
+        answer3.setBackgroundResource(R.drawable.round_corners);
+        answer4.setBackgroundResource(R.drawable.round_corners);
 //        answer5.setBackgroundResource(R.drawable.button_round_corners);
     }
 }

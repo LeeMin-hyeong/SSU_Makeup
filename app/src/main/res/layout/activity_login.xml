@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:background="@drawable/slidinguppanel_round_coners"
+        android:background="@drawable/round_corners_top"
         android:outlineProvider="none"
         android:padding="30dp"
         android:orientation="vertical">

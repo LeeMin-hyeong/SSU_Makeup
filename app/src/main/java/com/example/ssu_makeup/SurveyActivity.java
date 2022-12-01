@@ -30,7 +30,6 @@ public class SurveyActivity extends FragmentActivity {
         setContentView(R.layout.activity_survey);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.container, SurveyFragment.newInstance());
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         /*
