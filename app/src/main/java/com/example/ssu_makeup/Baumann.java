@@ -47,4 +47,42 @@ public class Baumann {
                 return ContextCompat.getColor(context, R.color.black);
         }
     }
+//    public static int getDescriptionByString(Context context, @NonNull final String skinType){
+//        switch (skinType){
+//            case "DSPT":
+//                return ContextCompat.getColor(context, R.string.DSPT);
+//            case "DSNT":
+//                return ContextCompat.getColor(context, R.string.DSNT);
+//            case "DSPW":
+//                return ContextCompat.getColor(context, R.string.DSPW);
+//            case "DSNW":
+//                return ContextCompat.getColor(context, R.string.DSNW);
+//            case "OSPT":
+//                return ContextCompat.getColor(context, R.string.OSPT);
+//            case "OSNT":
+//                return ContextCompat.getColor(context, R.string.OSNT);
+//            case "OSPW":
+//                return ContextCompat.getColor(context, R.string.OSPW);
+//            case "OSNW":
+//                return ContextCompat.getColor(context, R.string.OSNW);
+//            case "ORPT":
+//                return ContextCompat.getColor(context, R.string.ORPT);
+//            case "ORNT":
+//                return ContextCompat.getColor(context, R.string.ORNT);
+//            case "ORPW":
+//                return ContextCompat.getColor(context, R.string.ORPW);
+//            case "ORNW":
+//                return ContextCompat.getColor(context, R.string.ORNW);
+//            case "DRPT":
+//                return ContextCompat.getColor(context, R.string.DRPT);
+//            case "DRNT":
+//                return ContextCompat.getColor(context, R.string.DRNT);
+//            case "DRPW":
+//                return ContextCompat.getColor(context, R.string.DRPW);
+//            case "DRNW":
+//                return ContextCompat.getColor(context, R.string.DRNW);
+//            default:
+//                return -1;
+//        }
+//    }
 }

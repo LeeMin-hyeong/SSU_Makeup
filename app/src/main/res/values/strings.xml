@@ -6,7 +6,7 @@
     <string name="survey_no">저는 제 피부 타입을 알고 있어요</string>
     <string name="select_skin_type">%s님의 피부 타입을\n선택해 주세요</string>
     <string name="survey_to_main">내 피부 타입에 맞는 제품 확인하러 가기</string>
-    <string name="survey_result">%s님의 피부 타입은\n%s에요</string>
+    <string name="survey_result">%s님의 피부 타입은</string>
 
     <!--설문지 질문(바우만 스킨 타입 테스트)-->
     <string name="q1_1">세안 후 제품을 바르지 않은 상태에서 피부는 어떤가요?</string>
