@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
-import com.example.ssu_makeup.survey_fragment.survey_q3.SurveyQ3_10Fragment;
 
 public class SurveyQ4_1Fragment extends Fragment implements View.OnClickListener{
     TextView question;
@@ -58,10 +57,10 @@ public class SurveyQ4_1Fragment extends Fragment implements View.OnClickListener
     }
 
     public void setButtons(){
-        answer1.setBackgroundResource(R.drawable.button_round_corners);
-        answer2.setBackgroundResource(R.drawable.button_round_corners);
-        answer3.setBackgroundResource(R.drawable.button_round_corners);
-        answer4.setBackgroundResource(R.drawable.button_round_corners);
+        answer1.setBackgroundResource(R.drawable.round_corners);
+        answer2.setBackgroundResource(R.drawable.round_corners);
+        answer3.setBackgroundResource(R.drawable.round_corners);
+        answer4.setBackgroundResource(R.drawable.round_corners);
 //        answer5.setBackgroundResource(R.drawable.button_round_corners);
     }
 }

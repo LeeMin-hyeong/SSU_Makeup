@@ -2,7 +2,7 @@
     <string name="app_name" translatable="false">SSU_MakeUp</string>
 
     <string name="greeting_message">안녕하세요 %s님!\n%s님의 피부 타입을\n알아볼까요?</string>
-    <string name="survey_yes">네 좋아요!</string>
+    <string name="survey_yes">좋아요!</string>
     <string name="survey_no">저는 제 피부 타입을 알고 있어요</string>
     <string name="select_skin_type">%s님의 피부 타입을\n선택해 주세요</string>
     <string name="survey_to_main">내 피부 타입에 맞는 제품 확인하러 가기</string>
@@ -406,4 +406,6 @@
     <string name="q4_21">당신은 65세 이상인가요?</string>
     <string name="a4_21_1">미만이에요</string>
     <string name="a4_21_2">이상이에요</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
