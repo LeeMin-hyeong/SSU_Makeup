@@ -19,6 +19,11 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_search_input.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/round_coners_bottom.xml" value="0.138" />
+        <entry key="app/src/main/res/drawable/round_corners_100dp_blue.xml" value="0.2235" />
+        <entry key="app/src/main/res/drawable/round_corners_100dp_green.xml" value="0.2235" />
+        <entry key="app/src/main/res/drawable/round_corners_100dp_grey.xml" value="0.2235" />
+        <entry key="app/src/main/res/drawable/round_corners_100dp_red.xml" value="0.2235" />
+        <entry key="app/src/main/res/drawable/round_corners_100dp_yellow.xml" value="0.2235" />
         <entry key="app/src/main/res/drawable/round_corners_background_white.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/round_corners_big.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/round_corners_white.xml" value="0.138" />

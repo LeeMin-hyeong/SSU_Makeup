@@ -21,7 +21,7 @@ public class SurveyActivity extends FragmentActivity {
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference mRef = mFirebaseDatabase.getReference("Users");
+    private final DatabaseReference mRef = mFirebaseDatabase.getReference("Users");
     private String name;
 
     @Override
