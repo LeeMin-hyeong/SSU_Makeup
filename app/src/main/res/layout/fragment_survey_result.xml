@@ -1,32 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@color/app_primary_variant"
     android:orientation="vertical">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_corners_30dp"
-        android:layout_marginHorizontal="13dp"
-        android:layout_marginVertical="30dp"
-        android:paddingVertical="10dp"
-        android:gravity="center">
-        <TextView
-            android:id="@+id/survey_result_message"
-            android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="aasdf"
-            android:textSize="35sp"/>
-        <TextView
-            android:id="@+id/survey_result_skin_type"
-            android:layout_width="wrap_content"
+            android:background="@drawable/round_corners_30dp"
+            android:layout_marginHorizontal="13dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="30dp"
+            android:paddingVertical="20dp"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/survey_result_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asdf"
+                android:textSize="25sp" />
+            <TextView
+                android:id="@+id/survey_result_skin_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="asdf"
+                android:textSize="35sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="aasdf"
-            android:textSize="35sp"
-            android:layout_below="@id/survey_result_message"/>
+            android:layout_marginHorizontal="13dp"
+            android:background="@drawable/round_corners_30dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="13dp"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dry"
+                    android:textSize="17sp"
+                    android:layout_alignParentStart="true"/>
+                <TextView
+                    android:id="@+id/q1_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="50"
+                    android:textSize="15sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oily"
+                    android:textSize="17sp"
+                    android:layout_alignParentEnd="true"/>
+                <LinearLayout
+                    android:id="@+id/q1_percent_bar_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:weightSum="100"
+                    android:layout_below="@id/q1_percent"
+                    android:background="@drawable/round_corners_100dp_grey"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="13dp"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resistant"
+                    android:textSize="17sp"
+                    android:layout_alignParentStart="true"/>
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/q2_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="50"
+                    android:textSize="15sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensitive"
+                    android:textSize="17sp"
+                    android:layout_alignParentEnd="true"/>
+                <LinearLayout
+                    android:id="@+id/q2_percent_bar_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:weightSum="100"
+                    android:layout_below="@id/q2_percent"
+                    android:background="@drawable/round_corners_100dp_grey"
+                    android:orientation="horizontal"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="13dp"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="non-Pigmented"
+                    android:textSize="17sp"
+                    android:layout_alignParentStart="true"/>
+                <TextView
+                    android:id="@+id/q3_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="50"
+                    android:textSize="15sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pigmented"
+                    android:textSize="17sp"
+                    android:layout_alignParentEnd="true"/>
+                <LinearLayout
+                    android:id="@+id/q3_percent_bar_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:weightSum="100"
+                    android:layout_below="@id/q3_percent"
+                    android:background="@drawable/round_corners_100dp_grey"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="13dp"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tight"
+                    android:textSize="17sp"
+                    android:layout_alignParentStart="true"/>
+                <TextView
+                    android:id="@+id/q4_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="50"
+                    android:textSize="15sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wrinkle-prone"
+                    android:textSize="17sp"
+                    android:layout_alignParentEnd="true"/>
+                <LinearLayout
+                    android:id="@+id/q4_percent_bar_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:weightSum="100"
+                    android:layout_below="@id/q4_percent"
+                    android:background="@drawable/round_corners_100dp_grey"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/move_to_main"
@@ -35,8 +209,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="13dp"
         android:layout_marginBottom="35dp"
-        android:layout_gravity="bottom"
         android:background="@drawable/round_corners_brown"
         android:text="@string/survey_to_main"
         android:textColor="@color/white"/>
-</FrameLayout>
+</LinearLayout>

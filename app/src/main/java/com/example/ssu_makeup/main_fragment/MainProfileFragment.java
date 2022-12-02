@@ -53,30 +53,21 @@ public class MainProfileFragment extends Fragment {
         userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), testResult));
         userInfoFrame.setBackground(userInfoBackground);
 
-        editUserInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO: 회원정보 수정 fragment 구현 및 연결
-            }
+        editUserInfo.setOnClickListener(view -> {
+            //TODO: 회원정보 수정 fragment 구현 및 연결
         });
         //피부 타입 변경하기 선택 시 SurveyActivity 호출 후 다시 피부 타입 설문 진행
-        newSurvey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SurveyActivity.class);
-                startActivity(intent);
-            }
+        newSurvey.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), SurveyActivity.class);
+            startActivity(intent);
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        logout.setOnClickListener(view -> {
 
-                FirebaseAuth.getInstance().signOut();
+            FirebaseAuth.getInstance().signOut();
 
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
         });
 
         return root;

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.Score;
+import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.SurveyActivity;
 
 public class SurveyQ4_8Fragment extends Fragment implements View.OnClickListener{
@@ -54,7 +54,7 @@ public class SurveyQ4_8Fragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.round_corners_selected);
-        Score.addScore_4(view,4,8);
+        Baumann.addScore4Answers(view,4,8);
         ((SurveyActivity)getActivity()).replaceFragment(SurveyQ4_9Fragment.newInstance());
     }
 

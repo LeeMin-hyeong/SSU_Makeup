@@ -91,7 +91,7 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
             selectedSkinType = ((TextView)view).getText().toString();
             buttonBackground.setColor(Baumann.getColorByString(requireActivity(), selectedSkinType));
             view.setBackground(buttonBackground);
-            ((TextView) view).setTextColor(getResources().getColor(R.color.white));
+            ((TextView) view).setTextColor(Color.WHITE);
         } else {
             if(selectedSkinType != null){
                 Log.d("Test", "onClick: "+selectedSkinType);

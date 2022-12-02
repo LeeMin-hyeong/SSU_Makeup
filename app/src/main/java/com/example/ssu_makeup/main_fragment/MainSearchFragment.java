@@ -1,19 +1,14 @@
 package com.example.ssu_makeup.main_fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-
-import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.example.ssu_makeup.MainActivity;
 import com.example.ssu_makeup.R;
 
 public class MainSearchFragment extends Fragment {
