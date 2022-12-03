@@ -95,7 +95,7 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
         } else {
             if(selectedSkinType != null){
                 Log.d("Test", "onClick: "+selectedSkinType);
-                ((SurveyActivity)getActivity()).moveToMain();
+                ((SurveyActivity)requireActivity()).moveToMain();
             }
             else {
                 Toast.makeText(getActivity(), "피부 타입을 선택해 주세요", Toast.LENGTH_SHORT).show();

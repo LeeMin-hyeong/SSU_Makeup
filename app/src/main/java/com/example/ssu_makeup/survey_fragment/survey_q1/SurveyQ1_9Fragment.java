@@ -55,7 +55,7 @@ public class SurveyQ1_9Fragment extends Fragment implements View.OnClickListener
         setButtons();
         view.setBackgroundResource(R.drawable.round_corners_selected);
         Baumann.addScore4Answers(view,1,9);
-        ((SurveyActivity)getActivity()).replaceFragment(SurveyQ1_10Fragment.newInstance());
+        ((SurveyActivity)requireActivity()).replaceFragment(SurveyQ1_10Fragment.newInstance());
     }
 
     public void setButtons(){

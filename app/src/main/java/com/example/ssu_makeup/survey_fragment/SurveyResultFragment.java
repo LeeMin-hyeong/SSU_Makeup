@@ -66,27 +66,27 @@ public class SurveyResultFragment extends Fragment {
         q3Percent.setText(String.valueOf((int)Baumann.getQ3ResultPercent()));
         q4Percent.setText(String.valueOf((int)Baumann.getQ4ResultPercent()));
 
-        LinearLayout.LayoutParams q1LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, (float)Baumann.getQ1ResultPercent());
+        LinearLayout.LayoutParams q1LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, Baumann.getQ1ResultPercent());
         ImageView q1PercentBar = new ImageView(requireContext());
-        q1PercentBar.setImageDrawable((GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_red));
+        q1PercentBar.setImageDrawable(ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_red));
         q1PercentBar.setLayoutParams(q1LayoutParams);
         q1PercentBarFrame.addView(q1PercentBar);
 
-        LinearLayout.LayoutParams q2LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, (float)Baumann.getQ2ResultPercent());
+        LinearLayout.LayoutParams q2LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, Baumann.getQ2ResultPercent());
         ImageView q2PercentBar = new ImageView(requireContext());
-        q2PercentBar.setImageDrawable((GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_yellow));
+        q2PercentBar.setImageDrawable(ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_yellow));
         q2PercentBar.setLayoutParams(q2LayoutParams);
         q2PercentBarFrame.addView(q2PercentBar);
 
-        LinearLayout.LayoutParams q3LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, (float)Baumann.getQ3ResultPercent());
+        LinearLayout.LayoutParams q3LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, Baumann.getQ3ResultPercent());
         ImageView q3PercentBar = new ImageView(requireContext());
-        q3PercentBar.setImageDrawable((GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_blue));
+        q3PercentBar.setImageDrawable(ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_blue));
         q3PercentBar.setLayoutParams(q3LayoutParams);
         q3PercentBarFrame.addView(q3PercentBar);
 
-        LinearLayout.LayoutParams q4LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, (float)Baumann.getQ4ResultPercent());
+        LinearLayout.LayoutParams q4LayoutParams = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, Baumann.getQ4ResultPercent());
         ImageView q4PercentBar = new ImageView(requireContext());
-        q4PercentBar.setImageDrawable((GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_green));
+        q4PercentBar.setImageDrawable(ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_100dp_green));
         q4PercentBar.setLayoutParams(q4LayoutParams);
         q4PercentBarFrame.addView(q4PercentBar);
 

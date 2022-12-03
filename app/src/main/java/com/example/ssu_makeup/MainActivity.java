@@ -9,6 +9,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ssu_makeup.main_fragment.MainHomeFragment;
@@ -63,7 +64,6 @@ public class MainActivity extends FragmentActivity {
                 return true;
             }
         });
-
     }
 
 
