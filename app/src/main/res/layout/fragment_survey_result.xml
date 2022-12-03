@@ -23,7 +23,7 @@
                 android:id="@+id/survey_result_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="asdf"
+                android:text=""
                 android:textSize="25sp" />
             <TextView
                 android:id="@+id/survey_result_skin_type"

@@ -28,6 +28,7 @@ public class MainProfileFragment extends Fragment {
     ImageView editUserInfo;
     Button newSurvey;
     Button logout;
+    Button deleteAccount;
     RelativeLayout userInfoFrame;
     GradientDrawable userInfoBackground;
     @Override
@@ -39,6 +40,7 @@ public class MainProfileFragment extends Fragment {
         editUserInfo = root.findViewById(R.id.edit_user_info_button);
         newSurvey = root.findViewById(R.id.new_survey_button);
         logout = root.findViewById(R.id.logout_button);
+        deleteAccount = root.findViewById(R.id.delete_account_button);
         userInfoFrame = root.findViewById(R.id.user_info_frame);
         userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp_dynamic_color);
 
@@ -56,6 +58,7 @@ public class MainProfileFragment extends Fragment {
         editUserInfo.setOnClickListener(view -> {
             //TODO: 회원정보 수정 fragment 구현 및 연결
         });
+
         //피부 타입 변경하기 선택 시 SurveyActivity 호출 후 다시 피부 타입 설문 진행
         newSurvey.setOnClickListener(view -> {
             Intent intent = new Intent(getActivity(), SurveyActivity.class);
@@ -63,11 +66,15 @@ public class MainProfileFragment extends Fragment {
         });
 
         logout.setOnClickListener(view -> {
-
+            //TODO: Dialog Fragment 통해 확인받기
             FirebaseAuth.getInstance().signOut();
-
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
+        });
+
+        deleteAccount.setOnClickListener(view -> {
+            //TODO: Dialog Fragment 통해 확인받기
+            //TODO: 회원탈퇴 구현
         });
 
         return root;

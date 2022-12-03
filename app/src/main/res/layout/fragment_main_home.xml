@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:text="home" />
+    android:background="@color/app_primary_variant"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="37dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_corners_bottom"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="Home"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+</LinearLayout>
