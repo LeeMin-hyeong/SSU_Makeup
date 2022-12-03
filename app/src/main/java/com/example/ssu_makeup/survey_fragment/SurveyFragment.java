@@ -31,8 +31,8 @@ public class SurveyFragment extends Fragment {
         String name = "name";
         greeting.setText(getString(R.string.greeting_message, name, name));
 
-        surveyYes.setOnClickListener(view -> ((SurveyActivity)getActivity()).startReplaceFragment(SurveyQ1_1Fragment.newInstance()));
-        surveyNo.setOnClickListener(view -> ((SurveyActivity)getActivity()).startReplaceFragment(SelectSkinTypeFragment.newInstance()));
+        surveyYes.setOnClickListener(view -> ((SurveyActivity)requireActivity()).startReplaceFragment(SurveyQ1_1Fragment.newInstance()));
+        surveyNo.setOnClickListener(view -> ((SurveyActivity)requireActivity()).startReplaceFragment(SelectSkinTypeFragment.newInstance()));
 
         return root;
     }
