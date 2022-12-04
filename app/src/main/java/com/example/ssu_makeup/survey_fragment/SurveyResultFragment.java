@@ -11,12 +11,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.MainActivity;
 import com.example.ssu_makeup.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 //SurveyActivity 결과 화면 Fragment
 public class SurveyResultFragment extends Fragment {
@@ -51,14 +58,29 @@ public class SurveyResultFragment extends Fragment {
         q3PercentBarFrame = root.findViewById(R.id.q3_percent_bar_frame);
         q4PercentBarFrame = root.findViewById(R.id.q4_percent_bar_frame);
 
-        //TODO: 현재 사용자 이름 불러오기, 사용자 피부 타입 정보 서버에 업데이트 하기
-        String name = "김숭실";
+        FirebaseAuth mfirebase = FirebaseAuth.getInstance();
+        String uid = mfirebase.getCurrentUser().getUid();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        //TODO: 사용자 피부 타입 정보 서버에 업데이트하기
-        String surveyResult = Baumann.analyzeSurveyResult();
-        surveyResultMessage.setText(getString(R.string.survey_result_message, name));
-        surveyResultSkinType.setText(surveyResult);
-        surveyResultSkinType.setTextColor(Baumann.getColorByString(requireActivity(), surveyResult));
+        databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = snapshot.getValue(String.class);
+                String surveyResult = Baumann.analyzeSurveyResult();
+                surveyResultMessage.setText(getString(R.string.survey_result_message, name));
+                surveyResultSkinType.setText(surveyResult);
+                surveyResultSkinType.setTextColor(Baumann.getColorByString(requireActivity(), surveyResult));
+                databaseReference.child(uid).child("skinType").setValue(Baumann.analyzeSurveyResult());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         //동적 막대 그래프 구현부
         q1Percent.setText(String.valueOf((int)Baumann.getQ1ResultPercent()));
