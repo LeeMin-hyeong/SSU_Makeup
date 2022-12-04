@@ -156,8 +156,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, task -> {
                     if(task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                        startActivity(intent);
+                        databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String skinType = snapshot.getValue(String.class);
+                                if (skinType == null){
+                                    Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else{
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {}
+                        });
                     }else {
                         Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
                     }
