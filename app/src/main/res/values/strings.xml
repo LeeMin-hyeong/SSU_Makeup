@@ -7,35 +7,36 @@
     <string name="select_skin_type">%s님의 피부 타입을\n선택해 주세요</string>
     <string name="survey_to_main">내 피부 타입에 맞는 제품 확인하러 가기</string>
     <string name="survey_result_message">%s님의 피부 타입은</string>
+    <string name="recommendation_message">%s 타입인 %s%s님을 위한 제품</string>
 
     <!--설문지 질문(바우만 스킨 타입 테스트)-->
-    <string name="q1_1">세안 후 제품을 바르지 않은 상태에서 피부는 어떤가요?</string>
+    <string name="q1_1">세안 후 제품을 바르지 않은\n상태에서 피부는 어떤가요?</string>
     <string name="a1_1_1">매우 거칠고 벗겨지거나 텁수룩해요</string>
     <string name="a1_1_2">피부가 꽉 조이는 느낌이 들어요</string>
     <string name="a1_1_3">빛을 반사하지 않고 수분을 잘 공급해요</string>
     <string name="a1_1_4">빛이 반사돼서 피부가 반짝여요</string>
 
-    <string name="q1_2">평소 사진에서 보이는 피부는 어떤가요?</string>
+    <string name="q1_2">평소 사진에서 보이는 피부는\n어떤가요?</string>
     <string name="a1_2_1">피부에서 빛이 나지 않아요</string>
     <string name="a1_2_2">때때로 빛이 나요</string>
     <string name="a1_2_3">자주 빛이 나요</string>
     <string name="a1_2_4">항상 빛이 나요</string>
 
-    <string name="q1_3">메이크업 파운데이션 후 2~3시간 후 상태는 어떤가요?</string>
+    <string name="q1_3">메이크업 파운데이션 후\n2~3시간 후 상태는 어떤가요?</string>
     <string name="a1_3_1">주름이 벗겨지거나 찌그러져요</string>
     <string name="a1_3_2">매끄러워요</string>
     <string name="a1_3_3">광택이 나요</string>
     <string name="a1_3_4">줄무늬가 있고 반짝거려요</string>
     <string name="a1_3_5">파운데이션을 사용하지 않아요</string>
 
-    <string name="q1_4">습도가 낮은 환경에서 보습제나 선크림을 바르지 않은 상태에서 피부는 어떤가요?</string>
+    <string name="q1_4">습도가 낮은 환경에서 보습제나\n선크림을 바르지 않은 상태에서\n피부는 어떤가요?</string>
     <string name="a1_4_1">매우 건조하거나 균열이 느껴져요</string>
     <string name="a1_4_2">팽팽한 느낌이 들어요</string>
     <string name="a1_4_3">정상으로 느껴져요</string>
     <string name="a1_4_4">윤기가 도는 것 같으나 수분 크림이 필요해요</string>
     <string name="a1_4_5">잘 모르겠어요</string>
 
-    <string name="q1_5">확대 거울을 볼 때 큰 모공의 개수를 알려주세요</string>
+    <string name="q1_5">확대 거울을 볼 때 큰 모공의\n개수를 알려주세요</string>
     <string name="a1_5_1">없어요</string>
     <string name="a1_5_2">T존(이마와 코)에만 몇개 있어요</string>
     <string name="a1_5_3">많아요</string>
@@ -55,25 +56,25 @@
     <string name="a1_7_4">기름기가 느껴져요</string>
     <string name="a1_7_5">비누나 기타 거품 세정제를 사용하지 않아요</string>
 
-    <string name="q1_8">수분이 많지 않을 때 피부가 땡땡해지는 느낌이 있나요?</string>
+    <string name="q1_8">수분이 많지 않을 때 피부가\n땡땡해지는 느낌이 있나요?</string>
     <string name="a1_8_1">항상 그래요</string>
     <string name="a1_8_2">때때로 그래요</string>
     <string name="a1_8_3">거의 그렇지 않아요</string>
     <string name="a1_8_4">전혀 그렇지 않아요</string>
 
-    <string name="q1_9">블랙헤드 또는 화이트헤드가 있나요?</string>
+    <string name="q1_9">블랙헤드 또는 화이트헤드가\n있나요?</string>
     <string name="a1_9_1">없어요</string>
     <string name="a1_9_2">거의 없어요</string>
     <string name="a1_9_3">때때로 있어요</string>
     <string name="a1_9_4">항상 있어요</string>
 
-    <string name="q1_10">T존(이마와 코)에 기름기는?</string>
+    <string name="q1_10">T존(이마와 코)에 기름기가\n있나요?</string>
     <string name="a1_10_1">없어요</string>
     <string name="a1_10_2">때때로 있어요</string>
     <string name="a1_10_3">자주 있어요</string>
     <string name="a1_10_4">항상 있어요</string>
 
-    <string name="q1_11">수분 크림을 바른 후 2~3시간 정도 지나면 볼의 상태는 어떤가요?</string>
+    <string name="q1_11">수분 크림을 바른 후 2~3시간\n정도 지나면 볼의 상태는\n어떤가요?</string>
     <string name="a1_11_1">매우 거칠고, 벗겨지거나, 덥수룩해요</string>
     <string name="a1_11_2">매끄러워요</string>
     <string name="a1_11_3">약간 광택이 나요</string>
@@ -85,35 +86,35 @@
     <string name="a2_1_3">최소 한 달에 한 번 생겨요</string>
     <string name="a2_1_4">적어도 일주일에 한 번 생겨요</string>
 
-    <string name="q2_2">피부 관리 제품을 사용할 때 얼굴에 발진, 가려움, 따끔거림이 있나요?</string>
+    <string name="q2_2">피부 관리 제품을 사용할 때\n얼굴에 발진, 가려움,\n따끔거림이 있나요?</string>
     <string name="a2_2_1">없어요</string>
     <string name="a2_2_2">거의 없어요</string>
     <string name="a2_2_3">종종 있어요</string>
     <string name="a2_2_4">항상 있어요</string>
     <string name="a2_2_5">얼굴에 제품을 바르지 않아요</string>
 
-    <string name="q2_3">여드름이나 홍반 진단을 받은 적이 있나요?</string>
+    <string name="q2_3">여드름이나 홍반 진단을\n받은 적이 있나요?</string>
     <string name="a2_3_1">없어요</string>
     <string name="a2_3_2">친구들과 지인에게 들어본 적 있어요</string>
     <string name="a2_3_3">있어요</string>
     <string name="a2_3_4">심각해요</string>
     <string name="a2_3_5">불확실해요</string>
 
-    <string name="q2_4">14K 금이 아닌 보석을 착용할 경우 두드러기가 있나요?</string>
+    <string name="q2_4">14K 금이 아닌 보석을 착용할\n경우 두드러기가 있나요?</string>
     <string name="a2_4_1">없어요</string>
     <string name="a2_4_2">거의 없어요</string>
     <string name="a2_4_3">종종 있어요</string>
     <string name="a2_4_4">항상 있어요</string>
     <string name="a2_4_5">불확실해요</string>
 
-    <string name="q2_5">자외선 차단제를 바를 때 피부에 가려움, 화상, 탈진 또는 붉게 물드는 경우가 있나요?</string>
+    <string name="q2_5">자외선 차단제를 바를 때 피부에\n가려움, 화상, 탈진 또는\n붉게 물드는 경우가 있나요?</string>
     <string name="a2_5_1">없어요</string>
     <string name="a2_5_2">거의 없어요</string>
     <string name="a2_5_3">종종 있어요</string>
     <string name="a2_5_4">항상 있어요</string>
     <string name="a2_5_5">선크림을 바르지 않아요</string>
 
-    <string name="q2_6">아토피성 피부염, 습진 접촉성 피부염(알레르기성 피부 발진)을 진단 받은 적이 있나요?</string>
+    <string name="q2_6">아토피성 피부염, 습진 접촉성\n피부염(알레르기성 피부 발진)을\n진단 받은 적이 있나요?</string>
     <string name="a2_6_1">없어요</string>
     <string name="a2_6_2">친구들과 지인에게 들어본 적 있어요</string>
     <string name="a2_6_3">있어요</string>
@@ -127,152 +128,152 @@
     <string name="a2_7_4">항상 있어요</string>
     <string name="a2_7_5">반지를 끼지 않아요</string>
 
-    <string name="q2_8">거품 목욕, 마사지 오일 또는 바디 로션을 사용할 때 피부에 두드러기, 가려움 도는 건조함이 있나요?</string>
+    <string name="q2_8">거품 목욕, 마사지 오일 또는\n바디 로션을 사용할 때 피부에\n두드러기, 가려움 또는 건조함이\n있나요?</string>
     <string name="a2_8_1">없어요</string>
     <string name="a2_8_2">거의 없어요</string>
     <string name="a2_8_3">종종 있어요</string>
     <string name="a2_8_4">항상 있어요</string>
     <string name="a2_8_5">이런 제품을 사용하지 않아요</string>
 
-    <string name="q2_9">호텔에서 제공하는 비누를 몸이나 얼굴에 사용할 때 문제가 있나요?</string>
+    <string name="q2_9">호텔에서 제공하는 비누를\n몸이나 얼굴에 사용할 때\n문제가 있나요?</string>
     <string name="a2_9_1">없어요</string>
     <string name="a2_9_2">대부분 문제 없어요</string>
-    <string name="a2_9_3">피부가 가렵거나 빨갛게 변하거나 두드러기가 나요</string>
+    <string name="a2_9_3">피부가 가렵거나 빨갛게 변하거나\n두드러기가 나요</string>
     <string name="a2_9_4">너무 많아 사용하지 않아요</string>
     <string name="a2_9_5">개인 비누를 가지고 다녀서 잘 모르겠어요</string>
 
-    <string name="q2_10">가족 중 누군가 아토피, 습진, 천식 및 알레르기를 진단 받은 적이 있나요?</string>
+    <string name="q2_10">가족 중 누군가 아토피, 습진,\n천식 및 알레르기를\n진단 받은 적이 있나요?</string>
     <string name="a2_10_1">없어요</string>
     <string name="a2_10_2">가족 중 한명 있어요</string>
     <string name="a2_10_3">가족 중 여러명 있어요</string>
     <string name="a2_10_4">가족 대부분이 있어요</string>
     <string name="a2_10_5">불확실해요</string>
 
-    <string name="q2_11">적당한 운동 후 또는 스트레스나 분노와 같은 강한 감정으로 얼굴이나 목이 붉어지는 빈도는 어떤가요?</string>
+    <string name="q2_11">적당한 운동 후 또는 스트레스나\n분노와 같은 강한 감정으로\n얼굴이나 목이 붉어지는 빈도는\n어떤가요?</string>
     <string name="a2_11_1">없어요</string>
     <string name="a2_11_2">때때로 그래요</string>
     <string name="a2_11_3">자주 그래요</string>
     <string name="a2_11_4">항상 그래요</string>
 
-    <string name="q2_12">술을 마시면 얼굴이 붉어지고 빨개지는 경향이 있나요?</string>
+    <string name="q2_12">술을 마시면 얼굴이 붉어지고\n빨개지는 경향이 있나요?</string>
     <string name="a2_12_1">없어요</string>
     <string name="a2_12_2">때때로 그래요</string>
     <string name="a2_12_3">자주 그래요</string>
     <string name="a2_12_4">항상 또는 이 문제로 인해 술을 마시지 않아요</string>
     <string name="a2_12_5">절대 술을 마시지 않아요</string>
 
-    <string name="q2_13">얼큰하거나 뜨거운 음식, 음료를 먹은 후 빨갛게 상기되나요?</string>
+    <string name="q2_13">얼큰하거나 뜨거운 음식, 음료를\n먹은 후 빨갛게 상기되나요?</string>
     <string name="a2_13_1">없어요</string>
     <string name="a2_13_2">때때로 그래요</string>
     <string name="a2_13_3">자주 그래요</string>
     <string name="a2_13_4">항상 그래요</string>
     <string name="a2_13_5">매운 음식을 절대 먹지 않아요</string>
 
-    <string name="q2_14">얼굴과 코에 붉거나 푸른 색의 눈에 보이는 부러진 혈관의 개수는?</string>
+    <string name="q2_14">얼굴과 코에 붉거나 푸른 색의\n눈에 보이는 부러진 혈관의\n개수는 몇 개인가요?</string>
     <string name="a2_14_1">없어요</string>
     <string name="a2_14_2">거의 없어요(1~3개)</string>
     <string name="a2_14_3">일부 있어요(4~6개)</string>
     <string name="a2_14_4">여러개 있어요(7개 이상)</string>
 
-    <string name="q2_15">사진에서 얼굴이 붉게 보인 적이 있나요?</string>
+    <string name="q2_15">사진에서 얼굴이 붉게 보인 적이\n있나요?</string>
     <string name="a2_15_1">전혀 그렇지 않아요</string>
     <string name="a2_15_2">때때로 있어요</string>
     <string name="a2_15_3">자주 있어요</string>
     <string name="a2_15_4">항상 그래요</string>
 
-    <string name="q2_16">햇볕에 타지 않았는데도 사람들이 내게 햇볕에 탔는지 물어본 경우가 있나요?</string>
+    <string name="q2_16">햇볕에 타지 않았는데도\n사람들이 내게 햇볕에 탔는지\n물어본 경우가 있나요?</string>
     <string name="a2_16_1">없어요</string>
     <string name="a2_16_2">때때로 있어요</string>
     <string name="a2_16_3">자주 있어요</string>
     <string name="a2_16_4">항상 그래요</string>
     <string name="a2_16_5">항상 햇볕에 그을려요</string>
 
-    <string name="q3_1">여드름이 나거나 머리카락이 자란 후에 짙은 갈색, 검은 반점의 나타남이 있나요?</string>
+    <string name="q3_1">여드름이 나거나 머리카락이\n자란 후에 짙은 갈색, 검은\n반점의 나타남이 있나요?</string>
     <string name="a3_1_1">없어요</string>
     <string name="a3_1_2">거의 없어요</string>
     <string name="a3_1_3">자주 있어요</string>
     <string name="a3_1_4">항상 그래요</string>
     <string name="a3_1_5">여드름이나 생머리가 절대 나지 않아요</string>
 
-    <string name="q3_2">베인 후 갈색 자국은 얼마나 남나요?</string>
+    <string name="q3_2">베인 후 갈색 자국은 얼마나\n남나요?</string>
     <string name="a3_2_1">갈색 자국은 없어요</string>
     <string name="a3_2_2">일주일 정도 남아요</string>
     <string name="a3_2_3">몇 주 정도 남아요</string>
     <string name="a3_2_4">몇 개월 정도 남아요</string>
 
-    <string name="q3_3">임신 중이거나 피임약을 먹거나 호르몬 대체요법(HRT)을 복용할 때 얼굴에 흑점이 생기나요?</string>
+    <string name="q3_3">임신 중이거나 피임약을 먹거나\n호르몬 대체요법(HRT)을 복용할\n때 얼굴에 흑점이 생기나요?</string>
     <string name="a3_3_1">없어요</string>
     <string name="a3_3_2">1개 생겨요</string>
     <string name="a3_3_3">몇 개 생겨요</string>
     <string name="a3_3_4">많이 생겨요</string>
     <string name="a3_3_5">질문에 해당되지 않아요</string>
 
-    <string name="q3_4">윗입술이나 볼에 거무스름한 반점이나 패치가 있었던 적이 있나요?</string>
+    <string name="q3_4">윗입술이나 볼에 거무스름한\n반점이나 패치가 있었던 적이\n있나요?</string>
     <string name="a3_4_1">없어요</string>
     <string name="a3_4_2">잘 모르겠어요</string>
     <string name="a3_4_3">약간 눈에 띄게 있었어요</string>
     <string name="a3_4_4">매우 눈에 띄게 있었어요</string>
 
-    <string name="q3_5">햇볕을 쬐면 얼굴에 그을림이 있나요?</string>
+    <string name="q3_5">햇볕을 쬐면 얼굴에 그을림이\n있나요?</string>
     <string name="a3_5_1">없어요</string>
     <string name="a3_5_2">확실하지 않아요</string>
     <string name="a3_5_3">약간 더 심해져요</string>
     <string name="a3_5_4">많아요</string>
     <string name="a3_5_5">매일 선크림을 바르고 햇빛을 밭지 않아요</string>
 
-    <string name="q3_6">얼굴에 기미, 옅은 갈색, 회색 반점이 있다는 진단을 받은 적이 있나요?</string>
+    <string name="q3_6">얼굴에 기미, 옅은 갈색,\n회색 반점이 있다는 진단을\n받은 적이 있나요?</string>
     <string name="a3_6_1">없어요</string>
     <string name="a3_6_2">한 번 있지만 사라졌어요</string>
     <string name="a3_6_3">있어요</string>
     <string name="a3_6_4">심각해요</string>
     <string name="a3_6_5">불확실해요</string>
 
-    <string name="q3_7">얼굴, 가슴, 등, 팔에 작은 갈색 반점(주근깨, 선, 반점)이 있었던 적이 있나요?</string>
+    <string name="q3_7">얼굴, 가슴, 등, 팔에 작은\n갈색 반점(주근깨, 선, 반점)이\n있었던 적이 있나요?</string>
     <string name="a3_7_1">없어요</string>
     <string name="a3_7_2">있어요(1~5개)</string>
     <string name="a3_7_3">많이 있어요(6~15개)</string>
     <string name="a3_7_4">아주 많이 있어요(16개 이상)</string>
 
-    <string name="q3_8">몇 달 만에 처음으로 태양에 노출되었을 때, 피부는 어떤가요?</string>
+    <string name="q3_8">몇 달 만에 처음으로 태양에\n노출되었을 때,\n피부는 어떤가요?</string>
     <string name="a3_8_1">화상만 해당돼요</string>
     <string name="a3_8_2">화상은 더 어두워져요</string>
     <string name="a3_8_3">어두워져요</string>
     <string name="a3_8_4">피부가 이미 검어서 어두워지는지 잘 모르겠어요</string>
 
-    <string name="q3_9">며칠 동안 연속으로 태양에 노출되면 피부는 어떤가요?</string>
-    <string name="a3_9_1">햇볕에 그을리고 물집이 잡히지만 피부색은 변하지 않아요</string>
+    <string name="q3_9">며칠 동안 연속으로 태양에\n노출되면 피부는 어떤가요?</string>
+    <string name="a3_9_1">햇볕에 그을리고 물집이 잡히지만\n피부색은 변하지 않아요</string>
     <string name="a3_9_2">피부가 약간 어두워져요</string>
     <string name="a3_9_3">피부가 많이 어두워져요</string>
     <string name="a3_9_4">피부가 이미 검어서 까맣게 변했는지 잘 안보여요</string>
     <string name="a3_9_5">불확실해요</string>
 
-    <string name="q3_10">햇볕을 쬐면 주근깨(1~2mm 정도)가 발생하나요?</string>
+    <string name="q3_10">햇볕을 쬐면 주근깨\n(1~2mm 정도)가 발생하나요?</string>
     <string name="a3_10_1">절대 발생하지 않아요</string>
     <string name="a3_10_2">매년 몇 개의 작은 주근깨가 생겨요</string>
     <string name="a3_10_3">새로운 주근깨가 자주 생겨요</string>
     <string name="a3_10_4">피부가 이미 검어서 어두워지는지 잘 모르겠어요</string>
 
-    <string name="q3_11">부모님 중에 주근깨가 있다면 어느 정도인가요?</string>
+    <string name="q3_11">부모님 중에 주근깨가 있다면\n어느 정도인가요?</string>
     <string name="a3_11_1">없어요</string>
     <string name="a3_11_2">얼굴에 몇 개 있어요</string>
     <string name="a3_11_3">얼굴에 많이 있어요</string>
     <string name="a3_11_4">얼굴, 가슴, 목, 어깨에 많이 있어요</string>
     <string name="a3_11_5">불확실해요</string>
 
-    <string name="q3_12">원래 머리 색상은 어느 색인가요?</string>
+    <string name="q3_12">원래 머리 색상은\n어느 색인가요?</string>
     <string name="a3_12_1">금색이에요</string>
     <string name="a3_12_2">갈색이에요</string>
     <string name="a3_12_3">검은색이에요</string>
     <string name="a3_12_4">빨간색이에요</string>
 
-    <string name="q3_13">부모님 중에 주근깨가 있다면 어느 정도인가요?</string>
+    <string name="q3_13">부모님 중에 주근깨가 있다면\n어느 정도인가요?</string>
     <string name="a3_13_1">없어요</string>
     <string name="a3_13_2">1명 있어요</string>
     <string name="a3_13_3">2명 이상 있어요</string>
     <string name="a3_13_4">흑색종 이력이 있어요</string>
     <string name="a3_13_5">불확실해요</string>
 
-    <string name="q3_14">햇볕에 노출되는 피부 부위에 검은 점이 있나요?</string>
+    <string name="q3_14">햇볕에 노출되는 피부 부위에\n검은 점이 있나요?</string>
     <string name="a3_14_1">없어요</string>
     <string name="a3_14_2">있어요</string>
 
@@ -373,7 +374,7 @@
     <string name="a4_15_3">공기가 약간 오염되었어요</string>
     <string name="a4_15_4">공기가 매우 오염되었어요</string>
 
-    <string name="q4_16">레티노이드 페이셜(레티놀, 리노바, 레틴-A, 타조락, 디핀 또는 어바지) 크림을 사용한 기간은 어떻게 되나요?</string>
+    <string name="q4_16">레티노이드 페이셜(레티놀,\n리노바, 레틴-A, 타조락,\n디핀 또는 어바지) 크림을\n사용한 기간은 어떻게 되나요?</string>
     <string name="a4_16_1">오랜 세월 사용했어요</string>
     <string name="a4_16_2">간혹 사용했어요</string>
     <string name="a4_16_3">어렸을 때 여드름으로 한 번 사용했어요</string>
@@ -406,6 +407,4 @@
     <string name="q4_21">당신은 65세 이상인가요?</string>
     <string name="a4_21_1">미만이에요</string>
     <string name="a4_21_2">이상이에요</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
