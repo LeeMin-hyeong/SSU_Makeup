@@ -227,5 +227,8 @@ public class Baumann {
     public static float getQ2ResultPercent(){ return totalScore[2]; }
     public static float getQ3ResultPercent(){ return totalScore[3]; }
     public static float getQ4ResultPercent(){ return totalScore[4]; }
+    public static void clearResult(){
+        totalScore[1]=0;totalScore[2]=0;totalScore[3]=0;totalScore[4]=0;
+    }
 
 }
