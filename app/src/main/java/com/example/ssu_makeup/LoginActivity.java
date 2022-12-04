@@ -77,6 +77,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
+        //회원탈퇴 시 intent를 타고 LoginActivity로 넘어와 여기서 다시 intent를 타고 SurveyActiivity로 넘어감
+        //SurveyActivity 탈출하려면 if문 전체 주석치고 다시 로그인
+        //
         if (mFirebaseAuth.getCurrentUser() != null) {
             databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -98,7 +101,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void onCancelled(@NonNull DatabaseError error) {}
             });
         }
-
 
 
         registerButton.setOnClickListener(view -> {
@@ -156,25 +158,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, task -> {
                     if(task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                        databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String skinType = snapshot.getValue(String.class);
-                                if (skinType == null){
-                                    Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                                else{
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {}
-                        });
+                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                        startActivity(intent);
                     }else {
                         Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
                     }

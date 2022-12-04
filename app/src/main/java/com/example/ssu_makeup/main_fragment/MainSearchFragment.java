@@ -37,7 +37,6 @@ public class MainSearchFragment extends Fragment {
 
         searchBar.setOnEditorActionListener((textView, i, keyEvent) -> {
             if(i == EditorInfo.IME_ACTION_SEARCH){
-                Log.d("test", "test");
                 if(searchBar.getText()!=null){
                     Bundle bundle = new Bundle(1);
                     bundle.putString("searchingItem", searchBar.getText().toString());
