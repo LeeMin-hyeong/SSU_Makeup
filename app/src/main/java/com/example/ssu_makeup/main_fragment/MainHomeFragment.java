@@ -23,9 +23,9 @@ public class MainHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_main_home, container, false);
 
-        RecyclerView recyclerView = root.findViewById(R.id.main_product_recommend_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
+//        RecyclerView recyclerView = root.findViewById(R.id.main_product_recommend_recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
 
         return root;
     }

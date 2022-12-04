@@ -1,12 +1,16 @@
 package com.example.ssu_makeup.main_fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +25,11 @@ import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainProfileFragment extends Fragment {
     TextView userName;
@@ -31,6 +40,8 @@ public class MainProfileFragment extends Fragment {
     Button deleteAccount;
     RelativeLayout userInfoFrame;
     GradientDrawable userInfoBackground;
+    String firstName;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -44,16 +55,47 @@ public class MainProfileFragment extends Fragment {
         userInfoFrame = root.findViewById(R.id.user_info_frame);
         userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp_dynamic_color);
 
-        //TODO: 유저 이름 정보와 피부 유형 정보 불러오기
-        String name = "김숭실";
-        String testResult = "DSPT";
 
-        userName.setText(name+"님");
-        userSkinType.setText(testResult);
+        FirebaseAuth mfirebase = FirebaseAuth.getInstance();
+        String uid = mfirebase.getCurrentUser().getUid();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        //피부 타입에 따라 동적으로 background color 변경
-        userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), testResult));
-        userInfoFrame.setBackground(userInfoBackground);
+        databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                firstName = snapshot.getValue(String.class);
+                Log.d("MainProfileFragment", firstName);
+                String name = firstName;
+                userName.setText(name+"님");
+
+                //피부 타입에 따라 동적으로 background color 변경
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseReference.child(uid).child("skinType").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String testResult = snapshot.getValue(String.class);
+
+                userSkinType.setText(testResult);
+
+                //피부 타입에 따라 동적으로 background color 변경
+                userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), testResult));
+                userInfoFrame.setBackground(userInfoBackground);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         editUserInfo.setOnClickListener(view -> {
             //TODO: 회원정보 수정 fragment 구현 및 연결
@@ -79,4 +121,5 @@ public class MainProfileFragment extends Fragment {
 
         return root;
     }
+
 }

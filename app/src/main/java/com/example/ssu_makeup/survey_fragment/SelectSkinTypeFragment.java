@@ -19,6 +19,12 @@ import android.widget.Toast;
 import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.SurveyActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 //바우만 스킨 테스트를 하지 않는 경우, 스킨타입 변경하기
 public class SelectSkinTypeFragment extends Fragment implements View.OnClickListener {
@@ -31,18 +37,31 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
     public static Fragment newInstance() {
         return new SelectSkinTypeFragment();
     }
+    FirebaseAuth mfirebase = FirebaseAuth.getInstance();
+    String uid = mfirebase.getCurrentUser().getUid();
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_select_skin_type, container, false);
         announcement = root.findViewById(R.id.announcement);
         buttonBackground = (GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_dynamic_color);
-        //TODO: 현재 사용자 이름(First Name) 가져와서 출력하기 "name" SharedPreference?
-        /*
-        Bundle bundle = getArguments();
-        bundle.getString("name");*/
-        String name = "name";
-        announcement.setText(getString(R.string.select_skin_type, name));
+
+
+
+        databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = snapshot.getValue(String.class);
+                announcement.setText(getString(R.string.select_skin_type, name));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         drpt = root.findViewById(R.id.drpt);
         drnt = root.findViewById(R.id.drnt);
@@ -95,6 +114,7 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
         } else {
             if(selectedSkinType != null){
                 Log.d("Test", "onClick: "+selectedSkinType);
+                databaseReference.child(uid).child("skinType").setValue(selectedSkinType);
                 ((SurveyActivity)requireActivity()).moveToMain();
             }
             else {

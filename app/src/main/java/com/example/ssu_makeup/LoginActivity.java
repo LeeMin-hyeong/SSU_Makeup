@@ -1,5 +1,6 @@
 package com.example.ssu_makeup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,9 +16,12 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.ValueEventListener;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -70,15 +74,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         slide.setTouchEnabled(false);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        //로그인 기록이 있을 때
-        //TODO: 회원 정보에 피부 타입이 있으면 Main으로, 없으면 Survey로
         if (mFirebaseAuth.getCurrentUser() != null) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            //intent.putExtra("uid", mFirebaseAuth.getCurrentUser().getUid());
-            startActivity(intent);
-            finish();
+            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String skinType = snapshot.getValue(String.class);
+                    if (skinType == null){
+                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else{
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {}
+            });
         }
+
+
 
         registerButton.setOnClickListener(view -> {
             //회원가입 처리 시작
