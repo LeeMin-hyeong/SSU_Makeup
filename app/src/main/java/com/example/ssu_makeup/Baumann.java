@@ -5,7 +5,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-//dddd
+
 public class Baumann {
     private final static float[] totalScore=new float[5];
     private final static int[] questionCount=new int[5];
