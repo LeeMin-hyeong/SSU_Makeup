@@ -16,17 +16,22 @@ import com.example.ssu_makeup.R;
 
 import java.util.ArrayList;
 
-public class MainHomeFragment extends Fragment {
-    ArrayList<Product> productRecommendArrayList;
+public class MainSearchResultFragment extends Fragment {
+    String searchingItem;
+    ArrayList<Product> productArrayList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_main_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_main_search_result, container, false);
 
-        RecyclerView recyclerView = root.findViewById(R.id.main_product_recommend_recycler_view);
+        //TODO: Firebase DB 에서 searchingItem 에 대한 결과 받아서 productArrayList 에 넣기
+        assert getArguments() != null;
+        searchingItem = getArguments().getString("searchingItem");
+
+        RecyclerView recyclerView = root.findViewById(R.id.search_result_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
+        recyclerView.setAdapter(new ProductAdaptor(productArrayList, requireContext()));
 
-        return root;
+        return  root;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.ssu_makeup;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -75,7 +71,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        //로그인 기록이 있으면 바로 survey로
+        //로그인 기록이 있을 때
+        //TODO: 회원 정보에 피부 타입이 있으면 Main으로, 없으면 Survey로
         if (mFirebaseAuth.getCurrentUser() != null) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             //intent.putExtra("uid", mFirebaseAuth.getCurrentUser().getUid());
@@ -83,84 +80,67 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //회원가입 처리 시작
-                String strEmail = emailInput.getText().toString();
-                String strPwd = passwordInput.getText().toString();
-                String strCheckPwd = checkPasswordInput.getText().toString();
-                String strLastName = lastNameInput.getText().toString();
-                String strFirstName = firstNameInput.getText().toString();
-                strEmail = strEmail.trim();
-                strPwd = strPwd.trim();
-                strCheckPwd = strCheckPwd.trim();
-                if(strEmail.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(strPwd.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"패스워드를 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(strCheckPwd.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"패스워드 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(strLastName.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"성을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(strFirstName.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else
-                if (strPwd.equals(strCheckPwd)) {
-                    //Firebase Auth 진행
-                    mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
-                                Log.d("EmailPassWord", "signInWithEmail:success");
-                                Toast.makeText(LoginActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
-                                FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
-                                //닉네임, 아이디, 비밀번호 파이어베이스 db 저장
-                                String email = firebaseUser.getEmail();
-                                String uid = firebaseUser.getUid();
-                                Info userInfo = new Info(strFirstName, strLastName, email);
-                                mRef.child(uid).setValue(userInfo);
-                                setToLogin();
-                            } else {
-                                Log.w("EmailPassWord", "signInWithEmail:failure", task.getException());
-                                Toast.makeText(LoginActivity.this, "인증에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                                clearText();
-                                slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-                            }
-                        }
-                    });
-                } else {
-                    Toast.makeText(LoginActivity.this, "비밀번호가 서로 같지 않습니다.", Toast.LENGTH_SHORT).show();
-                    checkPasswordInput.getText().clear();
-                }
+        registerButton.setOnClickListener(view -> {
+            //회원가입 처리 시작
+            String strEmail = emailInput.getText().toString().trim();
+            String strPwd = passwordInput.getText().toString().trim();
+            String strCheckPwd = checkPasswordInput.getText().toString().trim();
+            String strLastName = lastNameInput.getText().toString();
+            String strFirstName = firstNameInput.getText().toString();
+            if(strEmail.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
+            else if(strPwd.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"패스워드를 입력하세요.",Toast.LENGTH_SHORT).show();
+            else if(strCheckPwd.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"패스워드 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
+            else if(strLastName.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"성을 입력하세요.",Toast.LENGTH_SHORT).show();
+            else if(strFirstName.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
+            else
+            if (strPwd.equals(strCheckPwd)) {
+                //Firebase Auth 진행
+                mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, task -> {
+                    if(task.isSuccessful()) {
+                        Log.d("EmailPassWord", "signInWithEmail:success");
+                        Toast.makeText(LoginActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+                        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                        //닉네임, 아이디, 비밀번호 파이어베이스 db 저장
+                        String email = firebaseUser.getEmail();
+                        String uid = firebaseUser.getUid();
+                        Info userInfo = new Info(strFirstName, strLastName, email);
+                        mRef.child(uid).setValue(userInfo);
+                        setToLogin();
+                    } else {
+                        Log.w("EmailPassWord", "signInWithEmail:failure", task.getException());
+                        Toast.makeText(LoginActivity.this, "인증에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        clearText();
+                        slide.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                    }
+                });
+            } else {
+                Toast.makeText(LoginActivity.this, "비밀번호가 서로 같지 않습니다.", Toast.LENGTH_SHORT).show();
+                checkPasswordInput.getText().clear();
             }
         });//Firebase Authentication 회원가입
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String loginEmail = emailInput.getText().toString();
-                String loginPassword = passwordInput.getText().toString();
-                loginEmail = loginEmail.trim();
-                loginPassword = loginPassword.trim();
-                if(loginEmail.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
-                else if(loginPassword.getBytes().length<=0)
-                    Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
-                else
-                    mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
-                                Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                                startActivity(intent);
-                            }else {
-                                Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-            }
+        loginButton.setOnClickListener(view -> {
+            String loginEmail = emailInput.getText().toString().trim();
+            String loginPassword = passwordInput.getText().toString().trim();
+            if(loginEmail.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
+            else if(loginPassword.getBytes().length<=0)
+                Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
+            else
+                mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, task -> {
+                    if(task.isSuccessful()) {
+                        Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                    }
+                });
         });//firebase 로그인
 
     }
@@ -212,6 +192,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    //BACK BUTTON 2회 입력 시 종료
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
@@ -238,7 +219,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public Info(String firstName, String lastName, String userId) {
             this.firstName = firstName; this.lastName = lastName; this.userId = userId;
         }
-
-        public String getFirstName() {return firstName;}
     }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
+import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.SurveyActivity;
 
 public class SurveyQ1_2Fragment extends Fragment implements View.OnClickListener{
@@ -18,7 +19,6 @@ public class SurveyQ1_2Fragment extends Fragment implements View.OnClickListener
     Button answer2;
     Button answer3;
     Button answer4;
-//    Button answer5;
 
     public static SurveyQ1_2Fragment newInstance() {
         return new SurveyQ1_2Fragment();
@@ -31,20 +31,17 @@ public class SurveyQ1_2Fragment extends Fragment implements View.OnClickListener
         answer2 = root.findViewById(R.id.answer2);
         answer3 = root.findViewById(R.id.answer3);
         answer4 = root.findViewById(R.id.answer4);
-//        answer5 = root.findViewById(R.id.answer5);
 
         question.setText(R.string.q1_2);
         answer1.setText(R.string.a1_2_1);
         answer2.setText(R.string.a1_2_2);
         answer3.setText(R.string.a1_2_3);
         answer4.setText(R.string.a1_2_4);
-//        answer5.setText(R.string.a1_1_5);
 
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
         answer3.setOnClickListener(this);
         answer4.setOnClickListener(this);
-//        answer5.setOnClickListener(this);
 
         return root;
     }
@@ -53,14 +50,14 @@ public class SurveyQ1_2Fragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.round_corners_selected);
-        ((SurveyActivity)getActivity()).replaceFragment(SurveyQ1_3Fragment.newInstance());
+        Baumann.addScore4Answers(view,1,2);
+        ((SurveyActivity)requireActivity()).replaceFragment(SurveyQ1_3Fragment.newInstance());
     }
 
     public void setButtons(){
-        answer1.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer2.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer3.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer4.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-//        answer5.setBackgroundResource(R.drawable.button_round_corners);
+        answer1.setBackgroundResource(R.drawable.round_corners);
+        answer2.setBackgroundResource(R.drawable.round_corners);
+        answer3.setBackgroundResource(R.drawable.round_corners);
+        answer4.setBackgroundResource(R.drawable.round_corners);
     }
 }

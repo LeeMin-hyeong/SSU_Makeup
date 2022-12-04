@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
+import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.SurveyActivity;
 import com.example.ssu_makeup.survey_fragment.survey_q3.SurveyQ3_1Fragment;
 
@@ -54,14 +55,15 @@ public class SurveyQ2_16Fragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.round_corners_selected);
-        ((SurveyActivity)getActivity()).replaceFragment(SurveyQ3_1Fragment.newInstance());
+        Baumann.addScore5Answers(view,2,16);
+        ((SurveyActivity)requireActivity()).replaceFragment(SurveyQ3_1Fragment.newInstance());
     }
 
     public void setButtons(){
-        answer1.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer2.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer3.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer4.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer5.setBackgroundResource(R.drawable.round_corners_dynamic_color);
+        answer1.setBackgroundResource(R.drawable.round_corners);
+        answer2.setBackgroundResource(R.drawable.round_corners);
+        answer3.setBackgroundResource(R.drawable.round_corners);
+        answer4.setBackgroundResource(R.drawable.round_corners);
+        answer5.setBackgroundResource(R.drawable.round_corners);
     }
 }

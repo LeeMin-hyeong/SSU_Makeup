@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
+import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.SurveyActivity;
 
 public class SurveyQ1_10Fragment extends Fragment implements View.OnClickListener{
@@ -46,6 +47,7 @@ public class SurveyQ1_10Fragment extends Fragment implements View.OnClickListene
         answer4.setOnClickListener(this);
 //        answer5.setOnClickListener(this);
 
+
         return root;
     }
 
@@ -53,14 +55,15 @@ public class SurveyQ1_10Fragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         setButtons();
         view.setBackgroundResource(R.drawable.round_corners_selected);
-        ((SurveyActivity)getActivity()).replaceFragment(SurveyQ1_11Fragment.newInstance());
+        Baumann.addScore4Answers(view,1,10);
+        ((SurveyActivity)requireActivity()).replaceFragment(SurveyQ1_11Fragment.newInstance());
     }
 
     public void setButtons(){
-        answer1.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer2.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer3.setBackgroundResource(R.drawable.round_corners_dynamic_color);
-        answer4.setBackgroundResource(R.drawable.round_corners_dynamic_color);
+        answer1.setBackgroundResource(R.drawable.round_corners);
+        answer2.setBackgroundResource(R.drawable.round_corners);
+        answer3.setBackgroundResource(R.drawable.round_corners);
+        answer4.setBackgroundResource(R.drawable.round_corners);
 //        answer5.setBackgroundResource(R.drawable.button_round_corners);
     }
 }
