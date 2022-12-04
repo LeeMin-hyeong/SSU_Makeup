@@ -1,6 +1,9 @@
 package com.example.ssu_makeup.main_fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
@@ -101,15 +104,45 @@ public class MainProfileFragment extends Fragment {
         });
 
         logout.setOnClickListener(view -> {
-            //TODO: Dialog Fragment 통해 확인받기
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivity(intent);
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            LayoutInflater layoutInflater = (LayoutInflater)requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View customDialogView = layoutInflater.inflate(R.layout.fragment_dialog, null);
+            builder.setView(customDialogView);
+            TextView dialogText = customDialogView.findViewById(R.id.dialog_text);
+            dialogText.setText("로그아웃 하시겠습니까?");
+            AlertDialog alertDialog = builder.create();
+            customDialogView.findViewById(R.id.dialog_yes_button).setOnClickListener(dialog ->{
+                alertDialog.dismiss();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            });
+            customDialogView.findViewById(R.id.dialog_no_button).setOnClickListener(dialog ->{
+                alertDialog.dismiss();
+            });
+            if(alertDialog.getWindow() != null) alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            alertDialog.show();
         });
 
         deleteAccount.setOnClickListener(view -> {
-            //TODO: Dialog Fragment 통해 확인받기
-            //TODO: 회원탈퇴 구현
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            LayoutInflater layoutInflater = (LayoutInflater)requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View customDialogView = layoutInflater.inflate(R.layout.fragment_dialog, null);
+            builder.setView(customDialogView);
+            TextView dialogText = customDialogView.findViewById(R.id.dialog_text);
+            dialogText.setText("탈퇴 하시겠습니까?");
+            AlertDialog alertDialog = builder.create();
+            customDialogView.findViewById(R.id.dialog_yes_button).setOnClickListener(dialog ->{
+                alertDialog.dismiss();
+                //TODO: 회원탈퇴 구현
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            });
+            customDialogView.findViewById(R.id.dialog_no_button).setOnClickListener(dialog ->{
+                alertDialog.dismiss();
+            });
+            if(alertDialog.getWindow() != null) alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            alertDialog.show();
         });
 
         return root;

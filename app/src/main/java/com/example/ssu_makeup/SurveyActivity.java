@@ -18,12 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class SurveyActivity extends FragmentActivity {
-
-    private FirebaseAuth mFirebaseAuth;
-    private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
-    private final DatabaseReference mRef = mFirebaseDatabase.getReference("Users");
-    private String name;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,27 +25,6 @@ public class SurveyActivity extends FragmentActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.container, SurveyFragment.newInstance());
         fragmentTransaction.commit();
-
-        /*
-        Intent intent = getIntent();
-        String currentUserUid = intent.getStringExtra("uid");
-
-        mRef.child(currentUserUid).child("firstName").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 name = snapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
-        });
-
-
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        SelectSkinTypeFragment selectSkinTypeFragment = new SelectSkinTypeFragment();
-        selectSkinTypeFragment.setArguments(bundle);*/
-
     }
 
     //fragment 전환 시 fragment에서 호출되는 함수
