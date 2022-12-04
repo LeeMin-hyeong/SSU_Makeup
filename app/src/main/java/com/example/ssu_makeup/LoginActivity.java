@@ -76,7 +76,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
-/*
+
+        //회원탈퇴 시 intent를 타고 LoginActivity로 넘어와 여기서 다시 intent를 타고 SurveyActiivity로 넘어감
+        //SurveyActivity 탈출하려면 if문 전체 주석치고 다시 로그인
         if (mFirebaseAuth.getCurrentUser() != null) {
             databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -99,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             });
         }
 
-*/
+
         registerButton.setOnClickListener(view -> {
             //회원가입 처리 시작
             String strEmail = emailInput.getText().toString().trim();
