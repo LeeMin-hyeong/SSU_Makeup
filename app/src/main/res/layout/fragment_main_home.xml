@@ -8,18 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:paddingHorizontal="10dp"
-        android:paddingTop="37dp"
+        android:paddingTop="25dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/round_corners_bottom"
-        android:orientation="vertical">
-        <TextView
+        android:orientation="vertical"
+        android:gravity="center|bottom">
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="Home"
-            android:layout_marginStart="10dp"/>
+            android:src="@drawable/logo_ssu_makeup_small"/>
     </LinearLayout>
     <TextView
+        android:id="@+id/recommendation_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_corners"

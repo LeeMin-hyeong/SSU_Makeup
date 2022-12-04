@@ -1,7 +1,5 @@
 package com.example.ssu_makeup.main_fragment;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,11 +63,8 @@ public class MainProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 firstName = snapshot.getValue(String.class);
-                Log.d("MainProfileFragment", firstName);
-                String name = firstName;
-                userName.setText(name+"님");
 
-                //피부 타입에 따라 동적으로 background color 변경
+                userName.setText(firstName+"님");
             }
 
             @Override
@@ -83,7 +77,6 @@ public class MainProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String testResult = snapshot.getValue(String.class);
-
                 userSkinType.setText(testResult);
 
                 //피부 타입에 따라 동적으로 background color 변경

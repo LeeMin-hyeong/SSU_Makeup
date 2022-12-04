@@ -45,8 +45,7 @@ public class SurveyFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 firstName = snapshot.getValue(String.class);
-                String name = firstName;
-                greeting.setText(getString(R.string.greeting_message, name, name));
+                greeting.setText(getString(R.string.greeting_message, firstName, firstName));
             }
 
             @Override
