@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
-
+/*
         if (mFirebaseAuth.getCurrentUser() != null) {
             databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -99,8 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             });
         }
 
-
-
+*/
         registerButton.setOnClickListener(view -> {
             //회원가입 처리 시작
             String strEmail = emailInput.getText().toString().trim();

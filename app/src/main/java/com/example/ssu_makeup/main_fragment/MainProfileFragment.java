@@ -112,11 +112,13 @@ public class MainProfileFragment extends Fragment {
         deleteAccount.setOnClickListener(view -> {
             //TODO: Dialog Fragment 통해 확인받기
             databaseReference.child(uid).removeValue();
-            FirebaseAuth.getInstance().getCurrentUser().delete();
-            FirebaseAuth.getInstance().signOut();
+            mfirebase.getCurrentUser().delete();
+            mfirebase.getInstance().signOut();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
             Toast.makeText(getActivity(), "회원탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
+
         });
 
         return root;
