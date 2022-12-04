@@ -70,7 +70,6 @@ public class MainProfileFragment extends Fragment {
                 userName.setText(name+"님");
 
                 //피부 타입에 따라 동적으로 background color 변경
-
             }
 
             @Override

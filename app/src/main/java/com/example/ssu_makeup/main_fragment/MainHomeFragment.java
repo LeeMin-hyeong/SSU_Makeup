@@ -17,7 +17,7 @@ import com.example.ssu_makeup.R;
 import java.util.ArrayList;
 
 public class MainHomeFragment extends Fragment {
-    ArrayList<Product> productRecommendArrayList;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -25,7 +25,7 @@ public class MainHomeFragment extends Fragment {
 
         RecyclerView recyclerView = root.findViewById(R.id.main_product_recommend_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
+        //recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
 
         return root;
     }
