@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.LoginActivity;
@@ -106,17 +105,11 @@ public class MainProfileFragment extends Fragment {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
-            Toast.makeText(getActivity(), "로그아웃이 완료되었습니다.", Toast.LENGTH_SHORT).show();
         });
 
         deleteAccount.setOnClickListener(view -> {
             //TODO: Dialog Fragment 통해 확인받기
-            databaseReference.child(uid).removeValue();
-            FirebaseAuth.getInstance().getCurrentUser().delete();
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivity(intent);
-            Toast.makeText(getActivity(), "회원탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            //TODO: 회원탈퇴 구현
         });
 
         return root;
