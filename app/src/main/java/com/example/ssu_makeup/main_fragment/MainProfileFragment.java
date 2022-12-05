@@ -135,13 +135,18 @@ public class MainProfileFragment extends Fragment {
             AlertDialog alertDialog = builder.create();
             customDialogView.findViewById(R.id.dialog_yes_button).setOnClickListener(dialog ->{
                 alertDialog.dismiss();
-                databaseReference.child(uid).removeValue();
-                mfirebase.getCurrentUser().delete();
-                mfirebase.getInstance().signOut();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-                Toast.makeText(getActivity(), "회원탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                getActivity().finish();
+                mfirebase.getCurrentUser().delete().addOnCompleteListener(getActivity(), task -> {
+                    if(task.isSuccessful()){
+                        databaseReference.child(uid).removeValue();
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getActivity(), "회원탈퇴에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             });
             customDialogView.findViewById(R.id.dialog_no_button).setOnClickListener(dialog ->{
                 alertDialog.dismiss();
