@@ -77,28 +77,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        if (mFirebaseAuth.getCurrentUser() != null) {
-            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String skinType = snapshot.getValue(String.class);
-                    if (skinType == null){
-                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {}
-            });
-        }
-
+        //회원탈퇴 시 intent를 타고 LoginActivity로 넘어와 여기서 다시 intent를 타고 SurveyActiivity로 넘어감
+        //SurveyActivity 탈출하려면 if문 전체 주석치고 다시 로그인
 
 
         registerButton.setOnClickListener(view -> {
@@ -163,7 +143,38 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
         });//firebase 로그인
+    }
 
+    @Override
+    protected void onResume(){
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
+
+
+        if (mFirebaseAuth.getCurrentUser() != null) {
+            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String skinType = snapshot.getValue(String.class);
+                    if (mFirebaseAuth.getCurrentUser() != null && skinType == null) return;
+                    if (skinType == null){
+                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else{
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {}
+            });
+        }
+        super.onResume();
     }
 
     void setToLogin() {
