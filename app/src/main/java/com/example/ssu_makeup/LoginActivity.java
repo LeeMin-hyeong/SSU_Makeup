@@ -151,25 +151,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-
         if (mFirebaseAuth.getCurrentUser() != null) {
             databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String skinType = snapshot.getValue(String.class);
-                    if (mFirebaseAuth.getCurrentUser() != null && skinType == null) return;
-                    if (skinType == null){
-                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                    databaseReference.child(mFirebaseAuth.getUid()).child("userId").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                            String skinType = snapshot.getValue(String.class);
+                            String userId = snapshot2.getValue(String.class);
+                            if (userId == null && skinType == null) return;
+                            else if (skinType == null) {
+                                Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {}
             });
