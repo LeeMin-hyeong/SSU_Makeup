@@ -14,11 +14,20 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.ViewHolder> {
+public class GridProductAdaptor extends RecyclerView.Adapter<GridProductAdaptor.ViewHolder> {
     ArrayList<Product> productArrayList;
     Context context;
 
-    public ProductAdaptor(ArrayList<Product> productArrayList, Context context){
+    public interface OnItemClickListener{
+        void onItemClicked(Product product);
+    }
+    private OnItemClickListener itemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        itemClickListener = listener;
+    }
+
+    public GridProductAdaptor(ArrayList<Product> productArrayList, Context context){
         this.productArrayList = productArrayList;
         this.context = context;
     }
@@ -26,8 +35,13 @@ public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_recycler_linear_view_item, parent, false);
-        return new ViewHolder(root);
+        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_recycler_grid_view_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(root);
+        root.setOnClickListener(view -> {
+            if(viewHolder.getAdapterPosition()!=RecyclerView.NO_POSITION)
+                itemClickListener.onItemClicked(productArrayList.get(viewHolder.getAdapterPosition()));
+        });
+        return viewHolder;
     }
 
     @Override

@@ -45,9 +45,9 @@ public class MainActivity extends FragmentActivity {
 
             int id = item.getItemId();
             if (id == R.id.home_button) {
-                if(search.isVisible())
+                if (search.isVisible())
                     fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
-                else if(profile.isVisible())
+                else if (profile.isVisible())
                     fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
                 fragmentTransaction.show(home).hide(search).hide(profile).commit();
                 return true;
@@ -64,21 +64,21 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    public boolean onKeyDown (int keyCode, KeyEvent event){
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if(home.isVisible()){
+            if (home.isVisible()) {
                 if (System.currentTimeMillis() - initTime > 3000) {
                     Toast.makeText(this, "종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
                     initTime = System.currentTimeMillis();
                 } else {
                     finish();
                 }
-            }
-            else if(search.isVisible()){
+            } else if (search.isVisible()) {
+                if(search.getChildFragmentManager().getBackStackEntryCount()>0)
+                    search.getChildFragmentManager().popBackStackImmediate();
                 fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
-            }
-            else{
+            } else {
                 fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
             }
@@ -86,4 +86,3 @@ public class MainActivity extends FragmentActivity {
         return false;
     }
 }
-
