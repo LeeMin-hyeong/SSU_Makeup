@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.ssu_makeup.Product;
 import com.example.ssu_makeup.ProductAdaptor;
@@ -27,6 +28,20 @@ public class MainSearchResultFragment extends Fragment {
         //TODO: Firebase DB 에서 searchingItem 에 대한 결과 받아서 productArrayList 에 넣기
         assert getArguments() != null;
         searchingItem = getArguments().getString("searchingItem");
+
+        productArrayList= new ArrayList<>();
+        //while here
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        productArrayList.add(new Product("test", "", "test"));
+        //end while
+        ((TextView)root.findViewById(R.id.search_result_count)).setText(getString(R.string.search_result_count, searchingItem, productArrayList.size()));
 
         RecyclerView recyclerView = root.findViewById(R.id.search_result_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

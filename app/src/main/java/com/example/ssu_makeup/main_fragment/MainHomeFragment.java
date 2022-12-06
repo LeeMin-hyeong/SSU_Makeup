@@ -36,7 +36,6 @@ public class MainHomeFragment extends Fragment {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-
         databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -50,14 +49,12 @@ public class MainHomeFragment extends Fragment {
                                 String lastName = snapshot2.getValue(String.class);
                                 String skinType = snapshot3.getValue(String.class);
                                 recommendationMessage = root.findViewById(R.id.recommendation_message);
-                                recommendationMessage.setText(getString(R.string.recommendation_message, skinType, firstName, lastName));
+                                recommendationMessage.setText(getString(R.string.recommendation_message, skinType, lastName, firstName));
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {}
                         });
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {}
                 });
@@ -65,10 +62,22 @@ public class MainHomeFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+        productRecommendArrayList= new ArrayList<>();
+        //while here
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        productRecommendArrayList.add(new Product("test", "", "test"));
+        //end while
 
-//        RecyclerView recyclerView = root.findViewById(R.id.main_product_recommend_recycler_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
+        RecyclerView recyclerView = root.findViewById(R.id.main_product_recommend_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new ProductAdaptor(productRecommendArrayList, requireContext()));
 
         return root;
     }

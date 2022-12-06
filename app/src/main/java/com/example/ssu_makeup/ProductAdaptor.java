@@ -26,7 +26,7 @@ public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_recycler_view_item, parent, false);
+        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_recycler_linear_view_item, parent, false);
         return new ViewHolder(root);
     }
 
@@ -50,6 +50,7 @@ public class ProductAdaptor extends RecyclerView.Adapter<ProductAdaptor.ViewHold
             productImage = itemView.findViewById(R.id.product_image);
             productName = itemView.findViewById(R.id.product_name);
             productBrand = itemView.findViewById(R.id.product_brand);
+            productImage.setClipToOutline(true);
         }
     }
 }

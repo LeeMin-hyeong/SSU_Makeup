@@ -5,7 +5,7 @@ public class Product {
     private final String productBrand;
     private final String productImageURL;
 
-    Product(String productBrand, String productImageURL, String productName){
+    public Product(String productBrand, String productImageURL, String productName){
         this.productBrand = productBrand;
         this.productImageURL = productImageURL;
         this.productName = productName;

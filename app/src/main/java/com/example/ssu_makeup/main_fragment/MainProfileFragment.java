@@ -56,7 +56,6 @@ public class MainProfileFragment extends Fragment {
         userInfoFrame = root.findViewById(R.id.user_info_frame);
         userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp_dynamic_color);
 
-
         FirebaseAuth mfirebase = FirebaseAuth.getInstance();
         String uid = mfirebase.getCurrentUser().getUid();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -92,7 +91,6 @@ public class MainProfileFragment extends Fragment {
 
             }
         });
-
 
         editUserInfo.setOnClickListener(view -> {
             //TODO: 회원정보 수정 fragment 구현 및 연결

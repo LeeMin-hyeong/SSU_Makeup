@@ -30,7 +30,6 @@ public class MainSearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mainSearchResultFragment = new MainSearchResultFragment();
         View root = inflater.inflate(R.layout.fragment_main_search, container, false);
         fragmentManager = getChildFragmentManager();
         searchBar = root.findViewById(R.id.search_bar);
@@ -38,23 +37,18 @@ public class MainSearchFragment extends Fragment {
         searchBar.setOnEditorActionListener((textView, i, keyEvent) -> {
             if(i == EditorInfo.IME_ACTION_SEARCH){
                 if(searchBar.getText()!=null){
+                    searchBar.clearFocus();
+                    InputMethodManager inputMethodManager = (InputMethodManager)requireActivity().getSystemService(INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(requireActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    mainSearchResultFragment = new MainSearchResultFragment();
                     Bundle bundle = new Bundle(1);
                     bundle.putString("searchingItem", searchBar.getText().toString());
                     mainSearchResultFragment.setArguments(bundle);
+                    fragmentManager.beginTransaction().replace(R.id.search_result_container, mainSearchResultFragment).commit();
                 }
-                InputMethodManager inputMethodManager = (InputMethodManager)requireActivity().getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(requireActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                fragmentManager.beginTransaction().add(R.id.search_result_container, mainSearchResultFragment).commit();
             }
             return false;
         });
         return root;
-    }
-
-    @Override
-    public void onResume(){
-        //if(!mainSearchResultFragment.isVisible())
-            searchBar.requestFocus();
-        super.onResume();
     }
 }

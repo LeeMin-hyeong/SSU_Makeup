@@ -23,13 +23,11 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:gravity="center">
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/logo_ssu_makeup"
                 android:layout_margin="15dp"/>
-
         </LinearLayout>
         <LinearLayout
             android:id="@+id/login_button_layout"
