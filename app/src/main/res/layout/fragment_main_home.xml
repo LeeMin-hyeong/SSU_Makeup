@@ -9,7 +9,6 @@
         android:layout_height="72dp"
         android:paddingHorizontal="10dp"
         android:paddingTop="25dp"
-        android:layout_marginBottom="10dp"
         android:background="@drawable/round_corners_bottom"
         android:orientation="vertical"
         android:gravity="center|bottom">
@@ -18,18 +17,30 @@
             android:layout_height="wrap_content"
             android:src="@drawable/logo_ssu_makeup_small"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/recommendation_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_corners"
-        android:padding="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="5dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_product_recommend_recycler_view"
+    <FrameLayout
+        android:id="@+id/home_recommend_item_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="80dp"
-        android:background="@color/app_primary_variant"/>
+        android:layout_marginHorizontal="10dp"
+        android:paddingBottom="80dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/recommendation_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corners"
+                android:padding="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_product_recommend_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_primary_variant"/>
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>
