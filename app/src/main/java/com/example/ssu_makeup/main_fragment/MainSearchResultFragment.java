@@ -45,7 +45,7 @@ public class MainSearchResultFragment extends Fragment {
 
         //TODO: Firebase DB 에서 searchingItem 에 대한 결과 받아서 productArrayList 에 넣기
         assert getArguments() != null;
-        searchingItem = getArguments().getString("searchingItem");
+        searchingItem = getArguments().getString("searching_item");
 
         productArrayList= new ArrayList<>();
         //while here

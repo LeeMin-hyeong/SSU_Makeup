@@ -37,7 +37,7 @@ public class MainSearchFragment extends Fragment {
                     searchBar.clearFocus();
                     mainSearchResultFragment = new MainSearchResultFragment();
                     Bundle bundle = new Bundle(1);
-                    bundle.putString("searchingItem", searchBar.getText().toString());
+                    bundle.putString("searching_item", searchBar.getText().toString());
                     mainSearchResultFragment.setArguments(bundle);
                     fragmentManager.beginTransaction().replace(R.id.search_result_container, mainSearchResultFragment).addToBackStack(null).commit();
                 }
