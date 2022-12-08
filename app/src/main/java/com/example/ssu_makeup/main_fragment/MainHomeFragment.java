@@ -74,15 +74,12 @@ public class MainHomeFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         GridProductAdaptor girdProductAdaptor = new GridProductAdaptor(productRecommendArrayList, requireContext());
         girdProductAdaptor.setOnItemClickListener(product -> {
-            MainSearchItemFragment mainSearchItemFragment = new MainSearchItemFragment();
-            Bundle bundle = new Bundle(4);
-            bundle.putString("product name", product.getProductName());
-            bundle.putString("product brand", product.getProductBrand());
-            bundle.putString("product image url", product.getProductImageURL());
-            bundle.putString("product ingredient", product.getProductIngredient());
-            mainSearchItemFragment.setArguments(bundle);
+            MainProductFragment mainItemFragment = new MainProductFragment();
+            Bundle bundle = new Bundle(1);
+            bundle.putSerializable("selected_product", product);
+            mainItemFragment.setArguments(bundle);
             getChildFragmentManager().beginTransaction()
-                    .replace(R.id.home_recommend_item_container, mainSearchItemFragment)
+                    .replace(R.id.home_recommend_item_container, mainItemFragment)
                     .addToBackStack(null)
                     .commit();
         });

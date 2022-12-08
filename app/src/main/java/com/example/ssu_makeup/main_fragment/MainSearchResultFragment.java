@@ -65,15 +65,12 @@ public class MainSearchResultFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         LinearProductAdaptor linearProductAdaptor = new LinearProductAdaptor(productArrayList, requireContext());
         linearProductAdaptor.setOnItemClickListener(product -> {
-            MainSearchItemFragment mainSearchItemFragment = new MainSearchItemFragment();
-            Bundle bundle = new Bundle(4);
-            bundle.putString("product name", product.getProductName());
-            bundle.putString("product brand", product.getProductBrand());
-            bundle.putString("product image url", product.getProductImageURL());
-            bundle.putString("product ingredient", product.getProductIngredient());
-            mainSearchItemFragment.setArguments(bundle);
+            MainProductFragment mainItemFragment = new MainProductFragment();
+            Bundle bundle = new Bundle(1);
+            bundle.putSerializable("selected_product", product);
+            mainItemFragment.setArguments(bundle);
             getParentFragmentManager().beginTransaction()
-                    .replace(R.id.search_result_container, mainSearchItemFragment)
+                    .replace(R.id.search_result_container, mainItemFragment)
                     .addToBackStack(null)
                     .commit();
         });
