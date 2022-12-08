@@ -48,8 +48,6 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
         announcement = root.findViewById(R.id.announcement);
         buttonBackground = (GradientDrawable) ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_dynamic_color);
 
-
-
         databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -98,8 +96,6 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
         osnw.setOnClickListener(this);
         moveToMain.setOnClickListener(this);
 
-
-
         return root;
     }
 
@@ -121,7 +117,6 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
                 Toast.makeText(getActivity(), "피부 타입을 선택해 주세요", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
     public void setButtons(){
         drpt.setBackgroundResource(R.drawable.round_corners);

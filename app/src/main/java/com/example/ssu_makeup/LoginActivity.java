@@ -77,30 +77,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        if (mFirebaseAuth.getCurrentUser() != null) {
-            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String skinType = snapshot.getValue(String.class);
-                    if (skinType == null){
-                        Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else{
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {}
-            });
-        }
-
-
-
         registerButton.setOnClickListener(view -> {
             //회원가입 처리 시작
             String strEmail = emailInput.getText().toString().trim();
@@ -163,7 +139,43 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
         });//firebase 로그인
+    }
 
+    @Override
+    protected void onResume(){
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
+
+        if (mFirebaseAuth.getCurrentUser() != null) {
+            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    databaseReference.child(mFirebaseAuth.getUid()).child("userId").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                            String skinType = snapshot.getValue(String.class);
+                            String userId = snapshot2.getValue(String.class);
+                            if (userId == null && skinType == null) return;
+                            else if (skinType == null) {
+                                Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {}
+            });
+        }
+        super.onResume();
     }
 
     void setToLogin() {
@@ -236,7 +248,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @IgnoreExtraProperties //db 저장 회원정보 객체
     public class Info {
         public String firstName; public String lastName; public String userId;
-        public Info() {}
         public Info(String firstName, String lastName, String userId) {
             this.firstName = firstName; this.lastName = lastName; this.userId = userId;
         }

@@ -1,6 +1,9 @@
 package com.example.ssu_makeup.main_fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
@@ -15,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ssu_makeup.Baumann;
 import com.example.ssu_makeup.LoginActivity;
@@ -37,11 +41,9 @@ public class MainProfileFragment extends Fragment {
     Button deleteAccount;
     RelativeLayout userInfoFrame;
     GradientDrawable userInfoBackground;
-    String firstName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_main_profile, container, false);
         userName = root.findViewById(R.id.user_name);
         userSkinType = root.findViewById(R.id.user_skin_type);
@@ -52,7 +54,6 @@ public class MainProfileFragment extends Fragment {
         userInfoFrame = root.findViewById(R.id.user_info_frame);
         userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp_dynamic_color);
 
-
         FirebaseAuth mfirebase = FirebaseAuth.getInstance();
         String uid = mfirebase.getCurrentUser().getUid();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -61,34 +62,34 @@ public class MainProfileFragment extends Fragment {
         databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                firstName = snapshot.getValue(String.class);
+                databaseReference.child(uid).child("lastName").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                        databaseReference.child(uid).child("skinType").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot3) {
+                                String firstName = snapshot.getValue(String.class);
+                                String lastName = snapshot2.getValue(String.class);
+                                String skinType = snapshot3.getValue(String.class);
 
-                userName.setText(firstName+"님");
+                                userName.setText(getString(R.string.user_name, lastName, firstName));
+                                userSkinType.setText(skinType);
+                                //피부 타입에 따라 동적으로 background color 변경
+                                assert skinType != null;
+                                userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), skinType));
+                                userInfoFrame.setBackground(userInfoBackground);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {}
+                        });
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {}
+                });
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
-
-        databaseReference.child(uid).child("skinType").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String testResult = snapshot.getValue(String.class);
-                userSkinType.setText(testResult);
-
-                //피부 타입에 따라 동적으로 background color 변경
-                userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), testResult));
-                userInfoFrame.setBackground(userInfoBackground);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
 
         editUserInfo.setOnClickListener(view -> {
             //TODO: 회원정보 수정 fragment 구현 및 연결
@@ -101,15 +102,49 @@ public class MainProfileFragment extends Fragment {
         });
 
         logout.setOnClickListener(view -> {
-            //TODO: Dialog Fragment 통해 확인받기
-            FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivity(intent);
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            LayoutInflater layoutInflater = (LayoutInflater)requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View customDialogView = layoutInflater.inflate(R.layout.fragment_dialog, null);
+            builder.setView(customDialogView);
+            TextView dialogText = customDialogView.findViewById(R.id.dialog_text);
+            dialogText.setText("로그아웃 하시겠습니까?");
+            AlertDialog alertDialog = builder.create();
+            customDialogView.findViewById(R.id.dialog_yes_button).setOnClickListener(dialog ->{
+                alertDialog.dismiss();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            });
+            customDialogView.findViewById(R.id.dialog_no_button).setOnClickListener(dialog -> alertDialog.dismiss());
+            if(alertDialog.getWindow() != null) alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            alertDialog.show();
         });
 
         deleteAccount.setOnClickListener(view -> {
-            //TODO: Dialog Fragment 통해 확인받기
-            //TODO: 회원탈퇴 구현
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            LayoutInflater layoutInflater = (LayoutInflater)requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View customDialogView = layoutInflater.inflate(R.layout.fragment_dialog, null);
+            builder.setView(customDialogView);
+            TextView dialogText = customDialogView.findViewById(R.id.dialog_text);
+            dialogText.setText("탈퇴 하시겠습니까?");
+            AlertDialog alertDialog = builder.create();
+            customDialogView.findViewById(R.id.dialog_yes_button).setOnClickListener(dialog ->{
+                alertDialog.dismiss();
+                mfirebase.getCurrentUser().delete().addOnCompleteListener(requireActivity(), task -> {
+                    if(task.isSuccessful()){
+                        databaseReference.child(uid).removeValue();
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(getActivity(), "회원탈퇴에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            });
+            customDialogView.findViewById(R.id.dialog_no_button).setOnClickListener(dialog -> alertDialog.dismiss());
+            if(alertDialog.getWindow() != null) alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            alertDialog.show();
         });
 
         return root;
