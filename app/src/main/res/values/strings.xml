@@ -9,6 +9,7 @@
     <string name="survey_result_message">%s님의 피부 타입은</string>
     <string name="recommendation_message">%s 타입인 %s%s님을 위한 제품</string>
     <string name="search_result_count">%s에 대한 %d개의 검색 결과</string>
+    <string name="user_name">%s%s님</string>
 
     <!--설문지 질문(바우만 스킨 타입 테스트)-->
     <string name="q1_1">세안 후 제품을 바르지 않은\n상태에서 피부는 어떤가요?</string>
