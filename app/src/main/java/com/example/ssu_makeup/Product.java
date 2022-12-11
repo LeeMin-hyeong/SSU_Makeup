@@ -10,16 +10,7 @@ public class Product implements Serializable {
     private final String productCategory;
     private final String productIndex;
 
-    public Product(){
-        this.productBrand = null;
-        this.productImageURL = null;
-        this.productIngredient = null;
-        this.productName = null;
-        this.productCategory = null;
-        this.productIndex = null;
-    }
-
-    public Product(String productBrand, String productImageURL, String productIngredient, String productName,String productCategory,String productIndex){
+    public Product(String productBrand, String productImageURL, String productIngredient, String productName, String productCategory,String productIndex){
         this.productBrand = productBrand;
         this.productImageURL = productImageURL;
         this.productIngredient = productIngredient;
@@ -39,6 +30,10 @@ public class Product implements Serializable {
     public String getProductIngredient(){
         return productIngredient;
     }
-    public String getProductCategory(){return productCategory;}
-    public String getProductIndex(){return productIndex;}
+    public String getProductCategory(){
+        return productCategory;
+    }
+    public String getProductIndex(){
+        return productIndex;
+    }
 }
