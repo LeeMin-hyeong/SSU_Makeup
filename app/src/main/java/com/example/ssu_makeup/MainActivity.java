@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -19,8 +20,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends FragmentActivity {
     Fragment home, search, profile;
-    double initTime;
     FragmentManager fragmentManager;
+    long backKeyPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +65,19 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
+    public void onBackPressed(){
+        Fragment parent = fragmentManager.findFragmentById(R.id.fragment_container);
+        if (parent.isVisible()){
+            if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
+                parent.getChildFragmentManager().popBackStack();
+            } else super.onBackPressed();
+        }else{
             if (home.isVisible()) {
-                if (System.currentTimeMillis() - initTime > 3000) {
+                if (System.currentTimeMillis() > backKeyPressedTime + 2000){
+                    Log.d("visibleTag", "isVisible");
+                    backKeyPressedTime = System.currentTimeMillis();
                     Toast.makeText(this, "종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
-                    initTime = System.currentTimeMillis();
-                } else {
-                    finish();
-                }
+                } else finish();
             } else if (search.isVisible()) {
                 if(search.getChildFragmentManager().getBackStackEntryCount()>0)
                     search.getChildFragmentManager().popBackStackImmediate();
@@ -83,6 +88,5 @@ public class MainActivity extends FragmentActivity {
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
             }
         }
-        return false;
     }
 }
