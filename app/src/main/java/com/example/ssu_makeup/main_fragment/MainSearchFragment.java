@@ -39,7 +39,7 @@ public class MainSearchFragment extends Fragment {
                     Bundle bundle = new Bundle(1);
                     bundle.putString("searching_item", searchBar.getText().toString());
                     mainSearchResultFragment.setArguments(bundle);
-                    fragmentManager.beginTransaction().replace(R.id.search_result_container, mainSearchResultFragment).addToBackStack(null).commit();
+                    fragmentManager.beginTransaction().replace(R.id.search_result_container, mainSearchResultFragment).addToBackStack("search").commit();
                 }
                 else{
                     Toast.makeText(requireContext(), "검색어를 입력해 주세요", Toast.LENGTH_SHORT).show();

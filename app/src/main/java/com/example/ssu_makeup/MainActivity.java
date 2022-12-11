@@ -68,22 +68,24 @@ public class MainActivity extends FragmentActivity {
     public void onBackPressed(){
         Fragment parent = fragmentManager.findFragmentById(R.id.fragment_container);
         if (parent.isVisible()){
-            if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
+            if (parent.getChildFragmentManager().getBackStackEntryCount() > 1){
                 parent.getChildFragmentManager().popBackStack();
-            } else super.onBackPressed();
-        }else{
-            if (home.isVisible()) {
+            }else if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
+                parent.getChildFragmentManager().popBackStack();
+            }else {
                 if (System.currentTimeMillis() > backKeyPressedTime + 2000){
                     Log.d("visibleTag", "isVisible");
                     backKeyPressedTime = System.currentTimeMillis();
                     Toast.makeText(this, "종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
                 } else finish();
-            } else if (search.isVisible()) {
+            }
+        }else{
+            if (search.isVisible()) {
                 if(search.getChildFragmentManager().getBackStackEntryCount()>0)
                     search.getChildFragmentManager().popBackStackImmediate();
                 fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
-            } else {
+            } else if (profile.isVisible()){
                 fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
             }

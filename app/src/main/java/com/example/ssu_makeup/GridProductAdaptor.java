@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class GridProductAdaptor extends RecyclerView.Adapter<GridProductAdaptor.ViewHolder> {
-    ArrayList<Product> productArrayList;
+    Vector<Product> productVector;
     Context context;
 
     public interface OnItemClickListener{
@@ -27,8 +28,8 @@ public class GridProductAdaptor extends RecyclerView.Adapter<GridProductAdaptor.
         itemClickListener = listener;
     }
 
-    public GridProductAdaptor(ArrayList<Product> productArrayList, Context context){
-        this.productArrayList = productArrayList;
+    public GridProductAdaptor(Vector<Product> productVector, Context context){
+        this.productVector = productVector;
         this.context = context;
     }
 
@@ -39,21 +40,21 @@ public class GridProductAdaptor extends RecyclerView.Adapter<GridProductAdaptor.
         ViewHolder viewHolder = new ViewHolder(root);
         root.setOnClickListener(view -> {
             if(viewHolder.getAdapterPosition()!=RecyclerView.NO_POSITION)
-                itemClickListener.onItemClicked(productArrayList.get(viewHolder.getAdapterPosition()));
+                itemClickListener.onItemClicked(productVector.get(viewHolder.getAdapterPosition()));
         });
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.productBrand.setText(productArrayList.get(position).getProductBrand());
-        holder.productName.setText(productArrayList.get(position).getProductName());
-        Glide.with(context).load(productArrayList.get(position).getProductImageURL()).into(holder.productImage);
+        holder.productBrand.setText(productVector.get(position).getProductBrand());
+        holder.productName.setText(productVector.get(position).getProductName());
+        Glide.with(context).load(productVector.get(position).getProductImageURL()).into(holder.productImage);
     }
 
     @Override
     public int getItemCount() {
-        return productArrayList.size();
+        return productVector.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
