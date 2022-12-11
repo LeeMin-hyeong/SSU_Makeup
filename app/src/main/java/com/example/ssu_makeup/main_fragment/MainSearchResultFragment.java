@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.example.ssu_makeup.Product;
 import com.example.ssu_makeup.LinearProductAdaptor;
 import com.example.ssu_makeup.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
