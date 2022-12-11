@@ -68,7 +68,9 @@ public class MainSearchResultFragment extends Fragment {
                         Product p = new Product(snapshot1.child("brandName").getValue(String.class),
                                 snapshot1.child("imgURL").getValue(String.class),
                                 snapshot1.child("ingredientsAll").getValue(String.class),
-                                snapshot1.child("productName").getValue(String.class));
+                                snapshot1.child("productName").getValue(String.class),
+                                product,
+                                Integer.toString(i));
                         if (p.getProductName().contains(searchingItem)) {
                             productArrayList.add(p);
                         }
