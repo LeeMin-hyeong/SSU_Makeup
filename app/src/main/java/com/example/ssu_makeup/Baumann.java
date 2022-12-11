@@ -1,10 +1,21 @@
 package com.example.ssu_makeup;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Vector;
 
 public class Baumann {
     private final static float[] totalScore=new float[5];
@@ -13,6 +24,12 @@ public class Baumann {
     private final static double[] scoreQ2=new double[17];
     private final static double[] scoreQ3=new double[15];
     private final static double[] scoreQ4=new double[22];
+
+    private final static String[] oily = {"글리콜린산","살리실산","녹차","레몬","감초"};
+    private final static String[] dry = {"콜라겐","비타민C","캐모마일","오이","복숭아"};
+    private final static String[] sensitive = {"비타민K","캐모마일","알로에","해초","티타늄옥사이드"};
+    private final static String[] pigmented = {"감초","알부틴","닥나무","대두","자외선"};
+    private final static String[] wrinkled = {"레티놀","아데노신","레티닐팔미테이트","콜라겐","비타민A"};
 
     public static int getColorByString(Context context, @NonNull final String skinType){
         switch (skinType){
@@ -90,7 +107,6 @@ public class Baumann {
             Baumann.scoreQ4[subQuestionNumber]=score;
         Baumann.questionCount[questionNumber]++;
     }
-
     public static void addScore5Answers(View view, int questionNumber, int subQuestionNumber){
         double score;
         if(view.getId()==R.id.answer1)
@@ -114,7 +130,6 @@ public class Baumann {
             Baumann.scoreQ4[subQuestionNumber]=score;
         Baumann.questionCount[questionNumber]++;
     }
-
     public static void addScore5AnswersIgnore(View view, int questionNumber, int subQuestionNumber){
         double score;
         if(view.getId()==R.id.answer5) {//문항을 무시하는 답변 처리
@@ -161,7 +176,6 @@ public class Baumann {
             Baumann.scoreQ4[subQuestionNumber]=score;
         Baumann.questionCount[questionNumber]++;
     }
-
     public static String analyzeSurveyResult(){
         String result;
         for(int i=1; i<=11 ;i++)
@@ -192,5 +206,98 @@ public class Baumann {
     public static void clearResult(){
         totalScore[1]=0;totalScore[2]=0;totalScore[3]=0;totalScore[4]=0;
     }
-
+    public static boolean checkDry(String productIngredient){
+        for (String s : dry)
+            if (productIngredient.contains(s))
+                return true;
+        return false;
+    }
+    public static boolean checkOily(String productIngredient){
+        for (String s : oily)
+            if (productIngredient.contains(s))
+                return true;
+        return false;
+    }
+    public static boolean checkSensitive(String productIngredient){
+        for (String s : sensitive)
+            if (productIngredient.contains(s))
+                return true;
+        return false;
+    }
+    public static boolean checkPigmented(String productIngredient){
+        for (String s : pigmented)
+            if (productIngredient.contains(s))
+                return true;
+        return false;
+    }
+    public static boolean checkWrinkled(String productIngredient){
+        for (String s : wrinkled)
+            if (productIngredient.contains(s))
+                return true;
+        return false;
+    }
+    public static boolean checkIngredientsBySkinType(String skinType, String productIngredient){
+        switch (skinType){
+            case "DSPT":
+                return checkDry(productIngredient)&
+                        checkSensitive(productIngredient)&
+                        checkPigmented(productIngredient);
+            case "DSNT":
+                return checkDry(productIngredient)&
+                        checkSensitive(productIngredient);
+            case "DSPW":
+                return checkDry(productIngredient)&
+                        checkSensitive(productIngredient)&
+                        checkPigmented(productIngredient)&
+                        checkWrinkled(productIngredient);
+            case "DSNW":
+                return checkDry(productIngredient)&
+                        checkSensitive(productIngredient)&
+                        checkWrinkled(productIngredient);
+            case "OSPT":
+                return checkOily(productIngredient)&
+                        checkSensitive(productIngredient)&
+                        checkPigmented(productIngredient);
+            case "OSNT":
+                return checkOily(productIngredient)&
+                        checkSensitive(productIngredient);
+            case "OSPW":
+                return checkOily(productIngredient)&
+                        checkSensitive(productIngredient)&
+                        checkPigmented(productIngredient)&
+                        checkWrinkled(productIngredient);
+            case "OSNW":
+                return checkOily(productIngredient)&
+                        checkSensitive(productIngredient)&
+                        checkWrinkled(productIngredient);
+            case "ORPT":
+                return checkOily(productIngredient)&
+                        checkPigmented(productIngredient);
+            case "ORNT":
+                return checkOily(productIngredient);
+            case "ORPW":
+                return checkOily(productIngredient)&
+                        checkPigmented(productIngredient)&
+                        checkWrinkled(productIngredient);
+            case "ORNW":
+                return checkOily(productIngredient)&
+                        checkWrinkled(productIngredient);
+            case "DRPT":
+                return checkDry(productIngredient)&
+                        checkPigmented(productIngredient);
+            case "DRNT":
+                return checkDry(productIngredient);
+            case "DRPW":
+                return checkDry(productIngredient)&
+                    checkPigmented(productIngredient)&
+                    checkWrinkled(productIngredient);
+            case "DRNW":
+                return checkDry(productIngredient)&
+                        checkWrinkled(productIngredient);
+            default:
+                return false;
+        }
+    }
 }
+
+
