@@ -84,7 +84,6 @@ public class MainHomeFragment extends Fragment {
                     .commit();
         });
         recyclerView.setAdapter(girdProductAdaptor);
-        //TODO: 자식 fragment에 대한 뒤로가기 구현. 현재 MainActivity의 뒤로가기만 먹혀서 상품 상세 정보를 봤다가 나올 수 없음
         return root;
     }
 }
