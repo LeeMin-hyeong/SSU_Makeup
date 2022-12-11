@@ -1,4 +1,4 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.custom_class;
 
 import java.io.Serializable;
 

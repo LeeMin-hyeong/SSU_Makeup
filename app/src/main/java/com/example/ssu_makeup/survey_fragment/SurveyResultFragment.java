@@ -1,6 +1,5 @@
 package com.example.ssu_makeup.survey_fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.ssu_makeup.Baumann;
-import com.example.ssu_makeup.MainActivity;
+import com.example.ssu_makeup.custom_class.Baumann;
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.SurveyActivity;
+import com.example.ssu_makeup.activity.SurveyActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

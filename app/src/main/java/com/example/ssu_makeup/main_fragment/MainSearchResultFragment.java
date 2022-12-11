@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ssu_makeup.Product;
-import com.example.ssu_makeup.LinearProductAdaptor;
+import com.example.ssu_makeup.custom_class.Product;
+import com.example.ssu_makeup.adaptor.LinearProductAdaptor;
 import com.example.ssu_makeup.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -75,7 +75,10 @@ public class MainSearchResultFragment extends Fragment {
                         }
                     }
                 }
-                ((TextView)root.findViewById(R.id.search_result_count)).setText(getString(R.string.search_result_count, searchingItem, productArrayList.size()));
+                if(productArrayList.size()>0)
+                    ((TextView)root.findViewById(R.id.search_result_count)).setText(getString(R.string.search_result_count, searchingItem, productArrayList.size()));
+                else
+                    ((TextView)root.findViewById(R.id.search_result_count)).setText(getString(R.string.search_result_none, searchingItem));
 
                 RecyclerView recyclerView = root.findViewById(R.id.search_result_recycler_view);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

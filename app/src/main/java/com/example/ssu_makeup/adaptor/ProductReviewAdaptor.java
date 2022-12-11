@@ -1,6 +1,5 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.adaptor;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ssu_makeup.R;
+import com.example.ssu_makeup.custom_class.Review;
 
 import java.util.ArrayList;
 

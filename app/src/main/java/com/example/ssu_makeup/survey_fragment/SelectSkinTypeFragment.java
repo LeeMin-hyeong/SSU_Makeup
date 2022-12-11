@@ -16,9 +16,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ssu_makeup.Baumann;
+import com.example.ssu_makeup.custom_class.Baumann;
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.SurveyActivity;
+import com.example.ssu_makeup.activity.SurveyActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

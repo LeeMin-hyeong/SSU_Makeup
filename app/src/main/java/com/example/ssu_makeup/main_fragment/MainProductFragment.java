@@ -16,10 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ssu_makeup.ProductReviewAdaptor;
-import com.example.ssu_makeup.Product;
+import com.example.ssu_makeup.adaptor.ProductReviewAdaptor;
+import com.example.ssu_makeup.custom_class.Product;
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.Review;
+import com.example.ssu_makeup.custom_class.Review;
 
 import java.util.ArrayList;
 

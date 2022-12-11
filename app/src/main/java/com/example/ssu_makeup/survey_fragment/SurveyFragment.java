@@ -1,7 +1,6 @@
 package com.example.ssu_makeup.survey_fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.SurveyActivity;
+import com.example.ssu_makeup.activity.SurveyActivity;
 import com.example.ssu_makeup.survey_fragment.survey_q1.SurveyQ1_1Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

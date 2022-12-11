@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
 
-import com.example.ssu_makeup.SurveyActivity;
+import com.example.ssu_makeup.activity.SurveyActivity;
 
 public class SurveyQ1_1Fragment extends Fragment implements View.OnClickListener{
     TextView question;

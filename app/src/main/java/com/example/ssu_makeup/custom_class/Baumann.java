@@ -1,21 +1,12 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.custom_class;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.Vector;
+import com.example.ssu_makeup.R;
 
 public class Baumann {
     private final static float[] totalScore=new float[5];

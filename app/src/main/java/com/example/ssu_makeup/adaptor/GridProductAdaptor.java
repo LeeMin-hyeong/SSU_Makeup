@@ -1,4 +1,4 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.adaptor;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,11 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.ssu_makeup.custom_class.Product;
+import com.example.ssu_makeup.R;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
-public class LinearProductAdaptor extends RecyclerView.Adapter<LinearProductAdaptor.ViewHolder> {
-    ArrayList<Product> productArrayList;
+public class GridProductAdaptor extends RecyclerView.Adapter<GridProductAdaptor.ViewHolder> {
+    Vector<Product> productVector;
     Context context;
 
     public interface OnItemClickListener{
@@ -27,33 +29,33 @@ public class LinearProductAdaptor extends RecyclerView.Adapter<LinearProductAdap
         itemClickListener = listener;
     }
 
-    public LinearProductAdaptor(ArrayList<Product> productArrayList, Context context){
-        this.productArrayList = productArrayList;
+    public GridProductAdaptor(Vector<Product> productVector, Context context){
+        this.productVector = productVector;
         this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_recycler_linear_view_item, parent, false);
+        View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_recycler_grid_view_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(root);
         root.setOnClickListener(view -> {
             if(viewHolder.getAdapterPosition()!=RecyclerView.NO_POSITION)
-                itemClickListener.onItemClicked(productArrayList.get(viewHolder.getAdapterPosition()));
+                itemClickListener.onItemClicked(productVector.get(viewHolder.getAdapterPosition()));
         });
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.productBrand.setText(productArrayList.get(position).getProductBrand());
-        holder.productName.setText(productArrayList.get(position).getProductName());
-        Glide.with(context).load(productArrayList.get(position).getProductImageURL()).into(holder.productImage);
+        holder.productBrand.setText(productVector.get(position).getProductBrand());
+        holder.productName.setText(productVector.get(position).getProductName());
+        Glide.with(context).load(productVector.get(position).getProductImageURL()).into(holder.productImage);
     }
 
     @Override
     public int getItemCount() {
-        return productArrayList.size();
+        return productVector.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

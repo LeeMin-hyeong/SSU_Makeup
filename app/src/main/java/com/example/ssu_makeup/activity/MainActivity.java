@@ -1,4 +1,4 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.activity;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.main_fragment.MainHomeFragment;
 import com.example.ssu_makeup.main_fragment.MainProfileFragment;
 import com.example.ssu_makeup.main_fragment.MainSearchFragment;
