@@ -77,10 +77,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        //회원탈퇴 시 intent를 타고 LoginActivity로 넘어와 여기서 다시 intent를 타고 SurveyActiivity로 넘어감
-        //SurveyActivity 탈출하려면 if문 전체 주석치고 다시 로그인
-
-
         registerButton.setOnClickListener(view -> {
             //회원가입 처리 시작
             String strEmail = emailInput.getText().toString().trim();
@@ -252,7 +248,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @IgnoreExtraProperties //db 저장 회원정보 객체
     public class Info {
         public String firstName; public String lastName; public String userId;
-        public Info() {}
         public Info(String firstName, String lastName, String userId) {
             this.firstName = firstName; this.lastName = lastName; this.userId = userId;
         }

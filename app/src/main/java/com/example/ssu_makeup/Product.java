@@ -1,14 +1,18 @@
 package com.example.ssu_makeup;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private final String productName;
     private final String productBrand;
     private final String productImageURL;
+    private final String productIngredient;
 
-    Product(String productBrand, String productImageURL, String productName){
+    public Product(String productBrand, String productImageURL, String productName, String productIngredient){
         this.productBrand = productBrand;
         this.productImageURL = productImageURL;
         this.productName = productName;
+        this.productIngredient = productIngredient;
     }
     public String getProductName(){
         return productName;
@@ -18,5 +22,8 @@ public class Product {
     }
     public String getProductImageURL(){
         return productImageURL;
+    }
+    public String getProductIngredient(){
+        return productIngredient;
     }
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -19,8 +20,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends FragmentActivity {
     Fragment home, search, profile;
-    double initTime;
     FragmentManager fragmentManager;
+    long backKeyPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +46,15 @@ public class MainActivity extends FragmentActivity {
 
             int id = item.getItemId();
             if (id == R.id.home_button) {
-                if(search.isVisible())
-                    fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-                else if(profile.isVisible())
+                if (search.isVisible())
+                    fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
+                else if (profile.isVisible())
                     fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
                 fragmentTransaction.show(home).hide(search).hide(profile).commit();
                 return true;
             } else if (id == R.id.search_button) {
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
                 fragmentTransaction.hide(home).show(search).hide(profile).commit();
-                //search button 누를 때 키보드 호출
-                InputMethodManager imgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                 return true;
             } else {
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
@@ -66,28 +64,29 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
-
     @Override
-    public boolean onKeyDown (int keyCode, KeyEvent event){
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if(home.isVisible()){
-                if (System.currentTimeMillis() - initTime > 3000) {
+    public void onBackPressed(){
+        Fragment parent = fragmentManager.findFragmentById(R.id.fragment_container);
+        if (parent.isVisible()){
+            if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
+                parent.getChildFragmentManager().popBackStack();
+            } else super.onBackPressed();
+        }else{
+            if (home.isVisible()) {
+                if (System.currentTimeMillis() > backKeyPressedTime + 2000){
+                    Log.d("visibleTag", "isVisible");
+                    backKeyPressedTime = System.currentTimeMillis();
                     Toast.makeText(this, "종료하려면 한번 더 누르세요.", Toast.LENGTH_SHORT).show();
-                    initTime = System.currentTimeMillis();
-                } else {
-                    finish();
-                }
-            }
-            else if(search.isVisible()){
-                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                } else finish();
+            } else if (search.isVisible()) {
+                if(search.getChildFragmentManager().getBackStackEntryCount()>0)
+                    search.getChildFragmentManager().popBackStackImmediate();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
-            }
-            else{
-                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
+            } else {
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
             }
         }
-        return false;
     }
 }
-
