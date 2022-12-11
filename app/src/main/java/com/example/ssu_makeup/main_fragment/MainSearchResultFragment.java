@@ -71,7 +71,7 @@ public class MainSearchResultFragment extends Fragment {
             mainItemFragment.setArguments(bundle);
             getParentFragmentManager().beginTransaction()
                     .replace(R.id.search_result_container, mainItemFragment)
-                    .addToBackStack(null)
+                    .addToBackStack("searchresult")
                     .commit();
         });
         recyclerView.setAdapter(linearProductAdaptor);
@@ -79,3 +79,4 @@ public class MainSearchResultFragment extends Fragment {
         return  root;
     }
 }
+
