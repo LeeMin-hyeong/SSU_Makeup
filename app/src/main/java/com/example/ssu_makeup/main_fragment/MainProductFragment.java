@@ -2,7 +2,6 @@ package com.example.ssu_makeup.main_fragment;
 
 import static com.bumptech.glide.Glide.*;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,8 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ssu_makeup.activity.LoginActivity;
-import com.example.ssu_makeup.activity.SurveyActivity;
 import com.example.ssu_makeup.adaptor.ProductReviewAdaptor;
 import com.example.ssu_makeup.custom_class.Product;
 import com.example.ssu_makeup.R;
@@ -47,13 +44,6 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
     String productCategory;
     String productIndex;
     EditText review;
-
-
-    EditText review;
-    int reviewScore=0;
-
-    Product selectedProduct;
-    String productCategory, productIndex;
 
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference cosmeticDataRef = mFirebaseDatabase.getReference("cosmeticData");
@@ -97,7 +87,6 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Review> reviewArrayList = new ArrayList<>();
                 reviewArrayList= new ArrayList<>();
-                reviewArrayList.add(new Review(4, "김숭실", "추천해요!"));
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
                     Review review = new Review(dataSnapshot.child("reviewScore").getValue(Integer.class), dataSnapshot.child("reviewer").getValue(String.class), dataSnapshot.child("review").getValue(String.class));
                     reviewArrayList.add(review);
