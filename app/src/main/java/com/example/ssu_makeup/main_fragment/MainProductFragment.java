@@ -2,6 +2,7 @@ package com.example.ssu_makeup.main_fragment;
 
 import static com.bumptech.glide.Glide.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,14 +10,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ssu_makeup.activity.LoginActivity;
+import com.example.ssu_makeup.activity.SurveyActivity;
 import com.example.ssu_makeup.adaptor.ProductReviewAdaptor;
 import com.example.ssu_makeup.custom_class.Product;
 import com.example.ssu_makeup.R;
@@ -29,9 +34,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
 
 public class MainProductFragment extends Fragment implements View.OnClickListener {
     ImageView starButton1;
@@ -44,7 +46,20 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
     Product selectedProduct;
     String productCategory;
     String productIndex;
+    EditText review;
 
+
+    EditText review;
+    int reviewScore=0;
+
+    Product selectedProduct;
+    String productCategory, productIndex;
+
+    private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference cosmeticDataRef = mFirebaseDatabase.getReference("cosmeticData");
+    private DatabaseReference userDataRef = mFirebaseDatabase.getReference("Users");
+    private FirebaseAuth mfirebase = FirebaseAuth.getInstance();
+    private String uid = mfirebase.getCurrentUser().getUid();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +80,7 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
         starButton3 = root.findViewById(R.id.review_star_button_3);
         starButton4 = root.findViewById(R.id.review_star_button_4);
         starButton5 = root.findViewById(R.id.review_star_button_5);
+        review = root.findViewById(R.id.review_edit_text);
         submitReviewButton = root.findViewById(R.id.review_submit_button);
         starButton1.setOnClickListener(this);
         starButton2.setOnClickListener(this);
@@ -72,8 +88,7 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
         starButton4.setOnClickListener(this);
         starButton5.setOnClickListener(this);
         submitReviewButton.setOnClickListener(this);
-
-
+        
         //TODO: 리뷰 불러오기
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("cosmeticData").child(productCategory).child(productIndex).child("reviewList");
@@ -104,45 +119,68 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         setStarButton();
 
-        if (view == starButton1) {
+        if(view == starButton1){
             starButton1.setImageResource(R.drawable.ic_review_star_red);
-            reviewScore = 1;
-        } else if (view == starButton2) {
+            reviewScore=1;
+        }
+        else if(view == starButton2){
             starButton1.setImageResource(R.drawable.ic_review_star_red);
             starButton2.setImageResource(R.drawable.ic_review_star_red);
-            reviewScore = 2;
-        } else if (view == starButton3) {
+            reviewScore=2;
+        }
+        else if(view == starButton3){
             starButton1.setImageResource(R.drawable.ic_review_star_red);
             starButton2.setImageResource(R.drawable.ic_review_star_red);
             starButton3.setImageResource(R.drawable.ic_review_star_red);
-            reviewScore = 3;
-        } else if (view == starButton4) {
+            reviewScore=3;
+        }
+        else if(view == starButton4) {
             starButton1.setImageResource(R.drawable.ic_review_star_red);
             starButton2.setImageResource(R.drawable.ic_review_star_red);
             starButton3.setImageResource(R.drawable.ic_review_star_red);
             starButton4.setImageResource(R.drawable.ic_review_star_red);
-            reviewScore = 4;
-        } else if (view == starButton5) {
+            reviewScore=4;
+        }
+        else if(view == starButton5) {
             starButton1.setImageResource(R.drawable.ic_review_star_red);
             starButton2.setImageResource(R.drawable.ic_review_star_red);
             starButton3.setImageResource(R.drawable.ic_review_star_red);
             starButton4.setImageResource(R.drawable.ic_review_star_red);
             starButton5.setImageResource(R.drawable.ic_review_star_red);
-            reviewScore = 5;
-        } else if (view == submitReviewButton) {
-            if (reviewScore == 0)
-                Toast.makeText(requireContext(), "별점을 선택해 주세요", Toast.LENGTH_SHORT).show();
-            else{
-                //TODO: 리뷰 등록 구현
+            reviewScore=5;
+        }
+
+        submitReviewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(reviewScore==0)
+                    Toast.makeText(requireContext(), "별점을 선택해 주세요", Toast.LENGTH_SHORT).show();
+                else{
+                    Log.d("ProductCategory", productCategory);
+                    Log.d("ProductIndex", productIndex);
+
+                    userDataRef.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            String firstName = snapshot.getValue(String.class);
+                            Review currentUserReview = new Review(reviewScore, firstName, review.getText().toString());
+                            cosmeticDataRef.child(productCategory).child(productIndex).child("reviewList").push().setValue(currentUserReview);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
+
+                }
             }
-        }
+        });
     }
-        void setStarButton () {
-            starButton1.setImageResource(R.drawable.ic_review_star_grey);
-            starButton2.setImageResource(R.drawable.ic_review_star_grey);
-            starButton3.setImageResource(R.drawable.ic_review_star_grey);
-            starButton4.setImageResource(R.drawable.ic_review_star_grey);
-            starButton5.setImageResource(R.drawable.ic_review_star_grey);
-        }
+
+    void setStarButton(){
+        starButton1.setImageResource(R.drawable.ic_review_star_grey);
+        starButton2.setImageResource(R.drawable.ic_review_star_grey);
+        starButton3.setImageResource(R.drawable.ic_review_star_grey);
+        starButton4.setImageResource(R.drawable.ic_review_star_grey);
+        starButton5.setImageResource(R.drawable.ic_review_star_grey);
+    }
 
 }
