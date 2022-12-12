@@ -2,7 +2,6 @@ package com.example.ssu_makeup.main_fragment;
 
 import static com.bumptech.glide.Glide.*;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,8 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ssu_makeup.activity.LoginActivity;
-import com.example.ssu_makeup.activity.SurveyActivity;
 import com.example.ssu_makeup.adaptor.ProductReviewAdaptor;
 import com.example.ssu_makeup.custom_class.Product;
 import com.example.ssu_makeup.R;
@@ -42,11 +39,11 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
     ImageView starButton4;
     ImageView starButton5;
     Button submitReviewButton;
-    EditText review;
-    int reviewScore=0;
-
+    int reviewScore = 0;
     Product selectedProduct;
-    String productCategory, productIndex;
+    String productCategory;
+    String productIndex;
+    EditText review;
 
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference cosmeticDataRef = mFirebaseDatabase.getReference("cosmeticData");
@@ -59,15 +56,14 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
         View root = inflater.inflate(R.layout.fragment_main_product, container, false);
 
         assert getArguments() != null;
-        selectedProduct = (Product)getArguments().getSerializable("selected_product");
-        with(requireContext()).load(selectedProduct.getProductImageURL()).into((ImageView)root.findViewById(R.id.product_item_image));
-        root.findViewById(R.id.product_item_image).setClipToOutline(true);
-        ((TextView)root.findViewById(R.id.product_item_brand)).setText(selectedProduct.getProductBrand());
-        ((TextView)root.findViewById(R.id.product_item_name)).setText(selectedProduct.getProductName());
-        ((TextView)root.findViewById(R.id.product_item_ingredient)).setText(selectedProduct.getProductIngredient());
-
+        Product selectedProduct = (Product) getArguments().getSerializable("selected_product");
         productCategory = selectedProduct.getProductCategory();
         productIndex = selectedProduct.getProductIndex();
+        with(requireContext()).load(selectedProduct.getProductImageURL()).into((ImageView) root.findViewById(R.id.product_item_image));
+        root.findViewById(R.id.product_item_image).setClipToOutline(true);
+        ((TextView) root.findViewById(R.id.product_item_brand)).setText(selectedProduct.getProductBrand());
+        ((TextView) root.findViewById(R.id.product_item_name)).setText(selectedProduct.getProductName());
+        ((TextView) root.findViewById(R.id.product_item_ingredient)).setText(selectedProduct.getProductIngredient());
 
         starButton1 = root.findViewById(R.id.review_star_button_1);
         starButton2 = root.findViewById(R.id.review_star_button_2);
@@ -82,15 +78,28 @@ public class MainProductFragment extends Fragment implements View.OnClickListene
         starButton4.setOnClickListener(this);
         starButton5.setOnClickListener(this);
         submitReviewButton.setOnClickListener(this);
-
-        ArrayList<Review> reviewArrayList = new ArrayList<>();
+        
         //TODO: 리뷰 불러오기
-        reviewArrayList.add(new Review(4,"김숭실","추천해요!"));
-
-        RecyclerView recyclerView = root.findViewById(R.id.product_review_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        ProductReviewAdaptor productReviewAdaptor = new ProductReviewAdaptor(reviewArrayList);
-        recyclerView.setAdapter(productReviewAdaptor);
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("cosmeticData").child(productCategory).child(productIndex).child("reviewList");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Review> reviewArrayList = new ArrayList<>();
+                reviewArrayList= new ArrayList<>();
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                    Review review = new Review(dataSnapshot.child("reviewScore").getValue(Integer.class), dataSnapshot.child("reviewer").getValue(String.class), dataSnapshot.child("review").getValue(String.class));
+                    reviewArrayList.add(review);
+                }
+                RecyclerView recyclerView = root.findViewById(R.id.product_review_recycler_view);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                ProductReviewAdaptor productReviewAdaptor = new ProductReviewAdaptor(reviewArrayList);
+                recyclerView.setAdapter(productReviewAdaptor);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
         return root;
     }
