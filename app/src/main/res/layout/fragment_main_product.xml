@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_primary_variant">
@@ -45,43 +46,26 @@
             android:background="@drawable/round_corners"
             android:layout_marginHorizontal="5dp"
             android:layout_marginBottom="5dp"
-            android:padding="10dp"
             android:orientation="horizontal"
             android:gravity="center|start">
-            <ImageView
-                android:id="@+id/review_star_1"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_review_star_grey"/>
-            <ImageView
-                android:id="@+id/review_star_2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_review_star_grey"/>
-            <ImageView
-                android:id="@+id/review_star_3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_review_star_grey"/>
-            <ImageView
-                android:id="@+id/review_star_4"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_review_star_grey"/>
-            <ImageView
-                android:id="@+id/review_star_5"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_review_star_grey"/>
+            <RatingBar
+                android:id="@+id/review_average_rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Material.RatingBar.Indicator"
+                android:progressTint="#F67568"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:numStars="5"
+                android:stepSize="0.1"/>
             <TextView
-                android:id="@+id/review_star_average"
+                android:id="@+id/review_average_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="5점"/>
+                android:textSize="18sp"/>
         </LinearLayout>
         <RelativeLayout
-            android:id="@+id/product_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_corners"
@@ -91,58 +75,32 @@
             android:clickable="true"
             android:orientation="vertical"
             android:gravity="center|start">
-            <LinearLayout
-                android:id="@+id/review_star_buttons"
+            <RatingBar
+                android:id="@+id/review_submit_rating_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_gravity="end"
+                style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
+                android:isIndicator="false"
+                android:progressTint="#F67568"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:numStars="5"
+                android:stepSize="0.5"
                 android:layout_centerInParent="true"
-                android:layout_alignParentTop="true">
-                <ImageView
-                    android:id="@+id/review_star_button_1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_review_star_grey"/>
-                <ImageView
-                    android:id="@+id/review_star_button_2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_review_star_grey"/>
-                <ImageView
-                    android:id="@+id/review_star_button_3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_review_star_grey"/>
-                <ImageView
-                    android:id="@+id/review_star_button_4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_review_star_grey"/>
-                <ImageView
-                    android:id="@+id/review_star_button_5"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_review_star_grey"/>
-            </LinearLayout>
+                android:layout_alignParentTop="true"/>
             <EditText
                 android:id="@+id/review_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/round_corners_grey"
-                android:layout_below="@id/review_star_buttons"
+                android:layout_below="@id/review_submit_rating_bar"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="5dp"
                 android:textSize="11sp"
                 android:gravity="start"
                 android:maxLines="5"
                 android:maxLength="156"
-                android:hint="리뷰를 작성해 주세요"/>
+                android:hint="@string/request_review"/>
             <Button
                 android:id="@+id/review_submit_button"
                 android:layout_width="wrap_content"
@@ -150,7 +108,7 @@
                 android:layout_below="@id/review_edit_text"
                 android:layout_margin="5dp"
                 android:textColor="@color/white"
-                android:text="리뷰 등록"
+                android:text="@string/submit_review"
                 android:background="@drawable/round_corners_brown"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>

@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="Profile"
+            android:text="@string/profile"
             android:layout_marginStart="10dp"/>
     </LinearLayout>
     <RelativeLayout
@@ -68,7 +68,7 @@
         android:gravity="center|start"
         android:paddingHorizontal="35dp"
         android:layout_marginHorizontal="10dp"
-        android:text="피부 타입 변경하기"
+        android:text="@string/change_skin_type"
         android:textSize="17sp"
         android:background="@drawable/round_corners_100dp"/>
     <Button
@@ -79,7 +79,7 @@
         android:gravity="center|start"
         android:paddingHorizontal="35dp"
         android:layout_marginHorizontal="10dp"
-        android:text="로그아웃"
+        android:text="@string/logout"
         android:textSize="17sp"
         android:background="@drawable/round_corners_100dp"/>
     <Button
@@ -90,7 +90,7 @@
         android:gravity="center|start"
         android:paddingHorizontal="35dp"
         android:layout_marginHorizontal="10dp"
-        android:text="탈퇴하기"
+        android:text="@string/delete_account"
         android:textSize="17sp"
         android:background="@drawable/round_corners_100dp"/>
 </LinearLayout>

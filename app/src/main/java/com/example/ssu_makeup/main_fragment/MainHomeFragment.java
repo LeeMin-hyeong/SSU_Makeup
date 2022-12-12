@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
 import java.util.Vector;
 
 public class MainHomeFragment extends Fragment {
@@ -34,8 +35,8 @@ public class MainHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main_home, container, false);
 
-        FirebaseAuth mfirebase = FirebaseAuth.getInstance();
-        String uid = mfirebase.getCurrentUser().getUid();
+        FirebaseAuth mFirebase = FirebaseAuth.getInstance();
+        String uid = Objects.requireNonNull(mFirebase.getCurrentUser()).getUid();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
@@ -74,6 +75,7 @@ public class MainHomeFragment extends Fragment {
                                 snapshot1.child("productName").getValue(String.class),
                                 product,
                                 Integer.toString(i));
+                        assert userSkinType != null;
                         if (Baumann.checkIngredientsBySkinType(userSkinType, p.getProductIngredient())) {
                             productRecommendVector.add(p);
                             productCount++;

@@ -22,9 +22,8 @@ public class SurveyActivity extends FragmentActivity {
         fragmentTransaction.commit();
     }
 
-    //fragment 전환 시 fragment에서 호출되는 함수
+    //fragment 전환 시 fragment 에서 호출되는 함수
     public void replaceFragment(@NonNull Fragment fragment){
-        //TODO: fragment 전환 시 데이터 유지(뒤로 가기를 통해 이전 선택 정보, 이후 선택 정보 유지
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);

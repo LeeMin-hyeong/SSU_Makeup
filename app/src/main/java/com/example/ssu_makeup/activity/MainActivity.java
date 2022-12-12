@@ -5,19 +5,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.main_fragment.MainHomeFragment;
 import com.example.ssu_makeup.main_fragment.MainProfileFragment;
 import com.example.ssu_makeup.main_fragment.MainSearchFragment;
-import com.example.ssu_makeup.main_fragment.MainSearchResultFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends FragmentActivity {
@@ -69,7 +64,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onBackPressed(){
         Fragment parent = fragmentManager.findFragmentById(R.id.fragment_container);
-        MainSearchResultFragment mainSearchResult = new MainSearchResultFragment();
+        assert parent != null;
         if (parent.isVisible()){
             if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
                 parent.getChildFragmentManager().popBackStack();

@@ -18,9 +18,6 @@ public class SurveyQ4_21Fragment extends Fragment implements View.OnClickListene
     TextView question;
     Button answer1;
     Button answer2;
-//    Button answer3;
-//    Button answer4;
-//    Button answer5;
 
     public static SurveyQ4_21Fragment newInstance() {
         return new SurveyQ4_21Fragment();
@@ -31,22 +28,13 @@ public class SurveyQ4_21Fragment extends Fragment implements View.OnClickListene
         question = root.findViewById(R.id.question);
         answer1 = root.findViewById(R.id.answer1);
         answer2 = root.findViewById(R.id.answer2);
-//        answer3 = root.findViewById(R.id.answer3);
-//        answer4 = root.findViewById(R.id.answer4);
-//        answer5 = root.findViewById(R.id.answer5);
 
         question.setText(R.string.q4_21);
         answer1.setText(R.string.a4_21_1);
         answer2.setText(R.string.a4_21_2);
-//        answer3.setText(R.string.a3_12_3);
-//        answer4.setText(R.string.a3_12_4);
-//        answer5.setText(R.string.a3_12_5);
 
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
-//        answer3.setOnClickListener(this);
-//        answer4.setOnClickListener(this);
-//        answer5.setOnClickListener(this);
 
         return root;
     }
@@ -62,8 +50,5 @@ public class SurveyQ4_21Fragment extends Fragment implements View.OnClickListene
     public void setButtons(){
         answer1.setBackgroundResource(R.drawable.round_corners);
         answer2.setBackgroundResource(R.drawable.round_corners);
-//        answer3.setBackgroundResource(R.drawable.round_corners);
-//        answer4.setBackgroundResource(R.drawable.round_corners);
-//        answer5.setBackgroundResource(R.drawable.round_corners);
     }
 }

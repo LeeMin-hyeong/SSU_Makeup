@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 //SurveyActivity 초기 화면 Fragment
 public class SurveyFragment extends Fragment {
     public static SurveyFragment newInstance() {
@@ -35,8 +37,8 @@ public class SurveyFragment extends Fragment {
         Button surveyNo = root.findViewById(R.id.survey_no);
         TextView greeting = root.findViewById(R.id.greeting_message);
 
-        FirebaseAuth mfirebase = FirebaseAuth.getInstance();
-        String uid = mfirebase.getCurrentUser().getUid();
+        FirebaseAuth mFirebase = FirebaseAuth.getInstance();
+        String uid = Objects.requireNonNull(mFirebase.getCurrentUser()).getUid();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 

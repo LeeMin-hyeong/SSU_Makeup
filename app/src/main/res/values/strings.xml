@@ -11,6 +11,22 @@
     <string name="search_result_count">%s에 대한 %d개의 검색 결과</string>
     <string name="user_name">%s%s님</string>
     <string name="search_result_none">%s에 대한 검색 결과가 없습니다</string>
+    <string name="request_review">이 제품에 대한 리뷰를 작성해 주세요</string>
+    <string name="submit_review">리뷰 등록</string>
+    <string name="profile">Profile</string>
+    <string name="change_skin_type">피부 타입 변경하기</string>
+    <string name="logout">로그아웃</string>
+    <string name="delete_account">탈퇴하기</string>
+    <string name="login">로그인</string>
+    <string name="register">회원가입</string>
+    <string name="already_register">이미 회원이신가요?</string>
+    <string name="register_not_yet">아직 회원이 아니신가요?</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="check_password">check password</string>
+    <string name="password">password</string>
+    <string name="e_mail">e-mail</string>
+    <string name="average_rating">%.1f 점</string>
 
     <!--설문지 질문(바우만 스킨 타입 테스트)-->
     <string name="q1_1">세안 후 제품을 바르지 않은\n상태에서 피부는 어떤가요?</string>
