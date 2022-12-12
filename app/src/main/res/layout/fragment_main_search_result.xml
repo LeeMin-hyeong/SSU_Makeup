@@ -10,8 +10,7 @@
         android:background="@drawable/round_corners"
         android:padding="10dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginVertical="5dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_result_recycler_view"
         android:layout_width="match_parent"

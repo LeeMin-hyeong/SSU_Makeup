@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.ssu_makeup.R;
-import com.example.ssu_makeup.Baumann;
-import com.example.ssu_makeup.SurveyActivity;
+import com.example.ssu_makeup.custom_class.Baumann;
+import com.example.ssu_makeup.activity.SurveyActivity;
 import com.example.ssu_makeup.survey_fragment.survey_q4.SurveyQ4_1Fragment;
 
 public class SurveyQ3_14Fragment extends Fragment implements View.OnClickListener{

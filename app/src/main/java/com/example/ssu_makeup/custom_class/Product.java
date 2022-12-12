@@ -1,4 +1,4 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.custom_class;
 
 import java.io.Serializable;
 
@@ -7,19 +7,16 @@ public class Product implements Serializable {
     private final String productImageURL;
     private final String productIngredient;
     private final String productName;
+    private final String productCategory;
+    private final String productIndex;
 
-    public Product(){
-        this.productBrand = null;
-        this.productImageURL = null;
-        this.productIngredient = null;
-        this.productName = null;
-    }
-
-    public Product(String productBrand, String productImageURL, String productIngredient, String productName){
+    public Product(String productBrand, String productImageURL, String productIngredient, String productName, String productCategory,String productIndex){
         this.productBrand = productBrand;
         this.productImageURL = productImageURL;
         this.productIngredient = productIngredient;
         this.productName = productName;
+        this.productCategory = productCategory;
+        this.productIndex = productIndex;
     }
     public String getProductName(){
         return productName;
@@ -32,5 +29,11 @@ public class Product implements Serializable {
     }
     public String getProductIngredient(){
         return productIngredient;
+    }
+    public String getProductCategory(){
+        return productCategory;
+    }
+    public String getProductIndex(){
+        return productIndex;
     }
 }

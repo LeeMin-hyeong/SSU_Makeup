@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ssu_makeup.Baumann;
-import com.example.ssu_makeup.GridProductAdaptor;
-import com.example.ssu_makeup.Product;
+import com.example.ssu_makeup.custom_class.Baumann;
+import com.example.ssu_makeup.adaptor.GridProductAdaptor;
+import com.example.ssu_makeup.custom_class.Product;
 import com.example.ssu_makeup.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -71,7 +71,9 @@ public class MainHomeFragment extends Fragment {
                         Product p = new Product(snapshot1.child("brandName").getValue(String.class),
                                 snapshot1.child("imgURL").getValue(String.class),
                                 snapshot1.child("ingredientsAll").getValue(String.class),
-                                snapshot1.child("productName").getValue(String.class));
+                                snapshot1.child("productName").getValue(String.class),
+                                product,
+                                Integer.toString(i));
                         if (Baumann.checkIngredientsBySkinType(userSkinType, p.getProductIngredient())) {
                             productRecommendVector.add(p);
                             productCount++;

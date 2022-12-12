@@ -1,4 +1,4 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.activity;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -13,9 +13,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ssu_makeup.R;
 import com.example.ssu_makeup.main_fragment.MainHomeFragment;
 import com.example.ssu_makeup.main_fragment.MainProfileFragment;
 import com.example.ssu_makeup.main_fragment.MainSearchFragment;
+import com.example.ssu_makeup.main_fragment.MainSearchResultFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends FragmentActivity {
@@ -67,10 +69,9 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onBackPressed(){
         Fragment parent = fragmentManager.findFragmentById(R.id.fragment_container);
+        MainSearchResultFragment mainSearchResult = new MainSearchResultFragment();
         if (parent.isVisible()){
-            if (parent.getChildFragmentManager().getBackStackEntryCount() > 1){
-                parent.getChildFragmentManager().popBackStack();
-            }else if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
+            if (parent.getChildFragmentManager().getBackStackEntryCount() > 0){
                 parent.getChildFragmentManager().popBackStack();
             }else {
                 if (System.currentTimeMillis() > backKeyPressedTime + 2000){
@@ -81,10 +82,12 @@ public class MainActivity extends FragmentActivity {
             }
         }else{
             if (search.isVisible()) {
-                if(search.getChildFragmentManager().getBackStackEntryCount()>0)
+                if (search.getChildFragmentManager().getBackStackEntryCount() > 0){
                     search.getChildFragmentManager().popBackStackImmediate();
-                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
-                fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
+                }else if(search.getChildFragmentManager().getBackStackEntryCount() == 0){
+                    fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_right, R.anim.exit_to_left);
+                    fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();
+                }
             } else if (profile.isVisible()){
                 fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                 fragmentManager.beginTransaction().show(home).hide(search).hide(profile).commit();

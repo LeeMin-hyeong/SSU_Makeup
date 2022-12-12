@@ -1,4 +1,4 @@
-package com.example.ssu_makeup;
+package com.example.ssu_makeup.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
