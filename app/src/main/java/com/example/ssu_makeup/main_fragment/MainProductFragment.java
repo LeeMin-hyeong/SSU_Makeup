@@ -82,7 +82,7 @@ public class MainProductFragment extends Fragment{
                     Review review = new Review(reviewScore,
                             dataSnapshot.child("reviewer").getValue(String.class),
                             dataSnapshot.child("review").getValue(String.class));
-                    reviewArrayList.add(review);
+                    reviewArrayList.add(0,review);
                     average += reviewScore;
                 }
                 if(reviewArrayList.size() != 0)
