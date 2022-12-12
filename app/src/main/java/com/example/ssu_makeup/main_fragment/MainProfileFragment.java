@@ -54,38 +54,25 @@ public class MainProfileFragment extends Fragment {
         userInfoFrame = root.findViewById(R.id.user_info_frame);
         userInfoBackground = (GradientDrawable)ContextCompat.getDrawable(requireActivity(), R.drawable.round_corners_30dp_dynamic_color);
 
-        FirebaseAuth mfirebase = FirebaseAuth.getInstance();
-        String uid = mfirebase.getCurrentUser().getUid();
+        FirebaseAuth mFirebase = FirebaseAuth.getInstance();
+        assert mFirebase.getCurrentUser() != null;
+        String uid = mFirebase.getCurrentUser().getUid();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
-        databaseReference.child(uid).child("firstName").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                databaseReference.child(uid).child("lastName").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot2) {
-                        databaseReference.child(uid).child("skinType").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot3) {
-                                String firstName = snapshot.getValue(String.class);
-                                String lastName = snapshot2.getValue(String.class);
-                                String skinType = snapshot3.getValue(String.class);
+                String firstName = snapshot.child("firstName").getValue(String.class);
+                String lastName = snapshot.child("lastName").getValue(String.class);
+                String skinType = snapshot.child("skinType").getValue(String.class);
 
-                                userName.setText(getString(R.string.user_name, lastName, firstName));
-                                userSkinType.setText(skinType);
-                                //피부 타입에 따라 동적으로 background color 변경
-                                assert skinType != null;
-                                userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), skinType));
-                                userInfoFrame.setBackground(userInfoBackground);
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {}
-                        });
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {}
-                });
+                userName.setText(getString(R.string.user_name, lastName, firstName));
+                userSkinType.setText(skinType);
+                //피부 타입에 따라 동적으로 background color 변경
+                assert skinType != null;
+                userInfoBackground.setColor(Baumann.getColorByString(requireActivity(), skinType));
+                userInfoFrame.setBackground(userInfoBackground);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
@@ -130,7 +117,7 @@ public class MainProfileFragment extends Fragment {
             AlertDialog alertDialog = builder.create();
             customDialogView.findViewById(R.id.dialog_yes_button).setOnClickListener(dialog ->{
                 alertDialog.dismiss();
-                mfirebase.getCurrentUser().delete().addOnCompleteListener(requireActivity(), task -> {
+                mFirebase.getCurrentUser().delete().addOnCompleteListener(requireActivity(), task -> {
                     if(task.isSuccessful()){
                         databaseReference.child(uid).removeValue();
                         FirebaseAuth.getInstance().signOut();

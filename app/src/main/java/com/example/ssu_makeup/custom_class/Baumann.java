@@ -3,7 +3,6 @@ package com.example.ssu_makeup.custom_class;
 import android.content.Context;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.example.ssu_makeup.R;
@@ -22,7 +21,7 @@ public class Baumann {
     private final static String[] pigmented = {"감초","알부틴","닥나무","대두","자외선"};
     private final static String[] wrinkled = {"레티놀","아데노신","레티닐팔미테이트","콜라겐","비타민A"};
 
-    public static int getColorByString(Context context, @NonNull final String skinType){
+    public static int getColorByString(Context context, final String skinType){
         switch (skinType){
             case "DSPT":
                 return ContextCompat.getColor(context, R.color.DSPT);

@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 //SurveyActivity 결과 화면 Fragment
 public class SurveyResultFragment extends Fragment {
     public static SurveyResultFragment newInstance() {
@@ -60,8 +62,8 @@ public class SurveyResultFragment extends Fragment {
         q3PercentBarFrame = root.findViewById(R.id.q3_percent_bar_frame);
         q4PercentBarFrame = root.findViewById(R.id.q4_percent_bar_frame);
 
-        FirebaseAuth mfirebase = FirebaseAuth.getInstance();
-        String uid = mfirebase.getCurrentUser().getUid();
+        FirebaseAuth mFirebase = FirebaseAuth.getInstance();
+        String uid = Objects.requireNonNull(mFirebase.getCurrentUser()).getUid();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
@@ -110,9 +112,7 @@ public class SurveyResultFragment extends Fragment {
         q4PercentBar.setLayoutParams(q4LayoutParams);
         q4PercentBarFrame.addView(q4PercentBar);
 
-        moveToMain.setOnClickListener(view -> {
-            ((SurveyActivity)requireActivity()).moveToMain();
-        });
+        moveToMain.setOnClickListener(view -> ((SurveyActivity)requireActivity()).moveToMain());
         return root;
     }
 }

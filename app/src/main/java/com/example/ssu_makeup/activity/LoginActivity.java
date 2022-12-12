@@ -44,8 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     long initTime;
 
     private FirebaseAuth mFirebaseAuth;
-    private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference mRef = mFirebaseDatabase.getReference("Users");
+    private final FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+    private final DatabaseReference mRef = mFirebaseDatabase.getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +75,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         slide.setTouchEnabled(false);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
         registerButton.setOnClickListener(view -> {
             //회원가입 처리 시작
@@ -104,6 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
                         //닉네임, 아이디, 비밀번호 파이어베이스 db 저장
+                        assert firebaseUser != null;
                         String email = firebaseUser.getEmail();
                         String uid = firebaseUser.getUid();
                         Info userInfo = new Info(strFirstName, strLastName, email);
@@ -149,28 +148,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 
         if (mFirebaseAuth.getCurrentUser() != null) {
-            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).child("skinType").addValueEventListener(new ValueEventListener() {
+            databaseReference.child(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    databaseReference.child(mFirebaseAuth.getUid()).child("userId").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot2) {
-                            String skinType = snapshot.getValue(String.class);
-                            String userId = snapshot2.getValue(String.class);
-                            if (userId == null && skinType == null) return;
-                            else if (skinType == null) {
-                                Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {}
-                    });
+                    String skinType = snapshot.child("skinType").getValue(String.class);
+                    String userId = snapshot.child("userId").getValue(String.class);
+                    if (userId != null){
+                        Intent intent;
+                        if (skinType == null)
+                            intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                        else
+                            intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {}
@@ -211,10 +202,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if(view == kakao){
-            //kakao 로그인 구현부
-        }
-        else if(view == email){
+        if(view == email){
             slide.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
             setToLogin();
         }
@@ -247,7 +235,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @IgnoreExtraProperties //db 저장 회원정보 객체
-    public class Info {
+    public static class Info {
         public String firstName; public String lastName; public String userId;
         public Info(String firstName, String lastName, String userId) {
             this.firstName = firstName; this.lastName = lastName; this.userId = userId;

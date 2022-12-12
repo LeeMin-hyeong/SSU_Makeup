@@ -45,15 +45,13 @@ public class MainSearchResultFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_main_search_result, container, false);
 
-        //TODO: Firebase DB 에서 searchingItem 에 대한 결과 받아서 productArrayList 에 넣기
         assert getArguments() != null;
         searchingItem = getArguments().getString("searching_item");
 
         productArrayList= new ArrayList<>();
-        //while here
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -97,11 +95,8 @@ public class MainSearchResultFragment extends Fragment {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
-        //TODO: 자식 fragment에 대한 뒤로가기 구현. 현재 MainActivity의 뒤로가기만 먹혀서 상품 상세 정보를 봤다가 나올 수 없음
         return  root;
     }
 }

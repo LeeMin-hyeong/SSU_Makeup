@@ -1,28 +1,30 @@
 package com.example.ssu_makeup.main_fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
-import androidx.activity.OnBackPressedDispatcher;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ssu_makeup.R;
 
 public class MainSearchFragment extends Fragment {
-    //TODO: 검색결과 NestedFragment가 올라와 있을 때는 EditText 선택 시에만 키보드 올라오기
     EditText searchBar;
     FragmentManager fragmentManager;
     MainSearchResultFragment mainSearchResultFragment;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_main_search, container, false);
         fragmentManager = getChildFragmentManager();
         searchBar = root.findViewById(R.id.search_bar);
@@ -30,7 +32,7 @@ public class MainSearchFragment extends Fragment {
         searchBar.setOnEditorActionListener((textView, i, keyEvent) -> {
             if(i == EditorInfo.IME_ACTION_SEARCH){
                 if(searchBar.getText().toString().length()>0){
-                    searchBar.clearFocus();
+                    hideKeyboard();
                     mainSearchResultFragment = new MainSearchResultFragment();
                     Bundle bundle = new Bundle(1);
                     bundle.putString("searching_item", searchBar.getText().toString());
@@ -43,7 +45,22 @@ public class MainSearchFragment extends Fragment {
             }
             return false;
         });
+
+        root.findViewById(R.id.parent_view).setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                hideKeyboard();
+                return false;
+            }
+        });
+
         return root;
     }
-
+    private void hideKeyboard() {
+        if (getActivity() != null && getActivity().getCurrentFocus() != null) {
+            InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
 }

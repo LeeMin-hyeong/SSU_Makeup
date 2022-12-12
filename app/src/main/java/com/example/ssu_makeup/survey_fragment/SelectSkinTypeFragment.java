@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 //바우만 스킨 테스트를 하지 않는 경우, 스킨타입 변경하기
 public class SelectSkinTypeFragment extends Fragment implements View.OnClickListener {
 
@@ -37,8 +39,8 @@ public class SelectSkinTypeFragment extends Fragment implements View.OnClickList
     public static Fragment newInstance() {
         return new SelectSkinTypeFragment();
     }
-    FirebaseAuth mfirebase = FirebaseAuth.getInstance();
-    String uid = mfirebase.getCurrentUser().getUid();
+    FirebaseAuth mFirebase = FirebaseAuth.getInstance();
+    String uid = Objects.requireNonNull(mFirebase.getCurrentUser()).getUid();
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
 

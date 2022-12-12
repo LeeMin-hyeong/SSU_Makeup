@@ -19,7 +19,6 @@ public class SurveyQ1_10Fragment extends Fragment implements View.OnClickListene
     Button answer2;
     Button answer3;
     Button answer4;
-//    Button answer5;
 
     public static SurveyQ1_10Fragment newInstance() {
         return new SurveyQ1_10Fragment();
@@ -32,20 +31,17 @@ public class SurveyQ1_10Fragment extends Fragment implements View.OnClickListene
         answer2 = root.findViewById(R.id.answer2);
         answer3 = root.findViewById(R.id.answer3);
         answer4 = root.findViewById(R.id.answer4);
-//        answer5 = root.findViewById(R.id.answer5);
 
         question.setText(R.string.q1_10);
         answer1.setText(R.string.a1_10_1);
         answer2.setText(R.string.a1_10_2);
         answer3.setText(R.string.a1_10_3);
         answer4.setText(R.string.a1_10_4);
-//        answer5.setText(R.string.a1_8_5);
 
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
         answer3.setOnClickListener(this);
         answer4.setOnClickListener(this);
-//        answer5.setOnClickListener(this);
 
 
         return root;
@@ -64,6 +60,5 @@ public class SurveyQ1_10Fragment extends Fragment implements View.OnClickListene
         answer2.setBackgroundResource(R.drawable.round_corners);
         answer3.setBackgroundResource(R.drawable.round_corners);
         answer4.setBackgroundResource(R.drawable.round_corners);
-//        answer5.setBackgroundResource(R.drawable.button_round_corners);
     }
 }

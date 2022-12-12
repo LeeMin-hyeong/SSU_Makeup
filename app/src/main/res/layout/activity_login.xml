@@ -12,13 +12,11 @@
     sothree:umanoOverlay="true">
     <!-- main view -->
     <LinearLayout
-        android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_primary_variant"
         android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/logo_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
@@ -30,7 +28,6 @@
                 android:layout_margin="15dp"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/login_button_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -77,27 +74,27 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:privateImeOptions="defaultInputmode=english"
-            android:hint="e-mail"/>
+            android:hint="@string/e_mail"/>
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:privateImeOptions="defaultInputmode=english"
-            android:hint="password"/>
+            android:hint="@string/password"/>
         <EditText
             android:id="@+id/check_password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:privateImeOptions="defaultInputmode=english"
-            android:hint="check password"
+            android:hint="@string/check_password"
             android:visibility="gone"/>
         <EditText
             android:id="@+id/last_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Name"
+            android:hint="@string/last_name"
             android:inputType="textPersonName"
             android:visibility="gone"
             android:privateImeOptions="defaultInputmode=korean"/>
@@ -105,7 +102,7 @@
             android:id="@+id/first_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name"
+            android:hint="@string/first_name"
             android:inputType="textPersonName"
             android:visibility="gone"
             android:privateImeOptions="defaultInputmode=korean"/>
@@ -117,12 +114,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아직 회원이 아니신가요? "/>
+                android:text="@string/register_not_yet"/>
             <TextView
                 android:id="@+id/register_transition_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원가입"
+                android:text="@string/register"
                 android:textStyle="bold"
                 android:clickable="true"/>
         </LinearLayout>
@@ -134,12 +131,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이미 회원이신가요? "/>
+                android:text="@string/already_register"/>
             <TextView
                 android:id="@+id/login_transition_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="로그인"
+                android:text="@string/login"
                 android:textStyle="bold"
                 android:clickable="true"/>
         </LinearLayout>
@@ -155,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:gravity="bottom"
-                android:text="로그인"
+                android:text="@string/login"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="visible" />
@@ -165,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:gravity="bottom"
-                android:text="회원가입"
+                android:text="@string/register"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="gone" />

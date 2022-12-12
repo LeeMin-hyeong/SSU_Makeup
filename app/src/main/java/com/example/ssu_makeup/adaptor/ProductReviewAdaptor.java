@@ -3,7 +3,7 @@ package com.example.ssu_makeup.adaptor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,20 +30,7 @@ public class ProductReviewAdaptor extends RecyclerView.Adapter<ProductReviewAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.reviewer.setText(reviewArrayList.get(position).getReviewer());
         holder.review.setText(reviewArrayList.get(position).getReview());
-        switch(reviewArrayList.get(position).getReviewScore()){
-            case 5:
-                holder.star5.setImageResource(R.drawable.ic_review_star_red);
-            case 4:
-                holder.star4.setImageResource(R.drawable.ic_review_star_red);
-            case 3:
-                holder.star3.setImageResource(R.drawable.ic_review_star_red);
-            case 2:
-                holder.star2.setImageResource(R.drawable.ic_review_star_red);
-            case 1:
-                holder.star1.setImageResource(R.drawable.ic_review_star_red);
-            default:
-                break;
-        }
+        holder.ratingBar.setRating(reviewArrayList.get(position).getReviewScore());
     }
 
     @Override
@@ -52,15 +39,11 @@ public class ProductReviewAdaptor extends RecyclerView.Adapter<ProductReviewAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView star1, star2, star3, star4, star5;
+        RatingBar ratingBar;
         TextView reviewer, review;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            star1 = itemView.findViewById(R.id.review_star_1);
-            star2 = itemView.findViewById(R.id.review_star_2);
-            star3 = itemView.findViewById(R.id.review_star_3);
-            star4 = itemView.findViewById(R.id.review_star_4);
-            star5 = itemView.findViewById(R.id.review_star_5);
+            ratingBar = itemView.findViewById(R.id.review_rating_bar);
             reviewer = itemView.findViewById(R.id.review_reviewer_name);
             review = itemView.findViewById(R.id.review_text);
         }
