@@ -83,21 +83,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String strCheckPwd = checkPasswordInput.getText().toString().trim();
             String strLastName = lastNameInput.getText().toString();
             String strFirstName = firstNameInput.getText().toString();
-            if(strEmail.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
-            else if(strPwd.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"패스워드를 입력하세요.",Toast.LENGTH_SHORT).show();
-            else if(strCheckPwd.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"패스워드 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
-            else if(strLastName.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"성을 입력하세요.",Toast.LENGTH_SHORT).show();
-            else if(strFirstName.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"이름을 입력하세요.",Toast.LENGTH_SHORT).show();
-            else
-            if (strPwd.equals(strCheckPwd)) {
+            if (strEmail.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "이메일을 입력하세요.", Toast.LENGTH_SHORT).show();
+            else if (strPwd.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "패스워드를 입력하세요.", Toast.LENGTH_SHORT).show();
+            else if (strCheckPwd.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "패스워드 확인을 입력하세요.", Toast.LENGTH_SHORT).show();
+            else if (strLastName.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "성을 입력하세요.", Toast.LENGTH_SHORT).show();
+            else if (strFirstName.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "이름을 입력하세요.", Toast.LENGTH_SHORT).show();
+            else if (strPwd.equals(strCheckPwd)) {
                 //Firebase Auth 진행
                 mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(LoginActivity.this, task -> {
-                    if(task.isSuccessful()) {
+                    if (task.isSuccessful()) {
                         Log.d("EmailPassWord", "signInWithEmail:success");
                         Toast.makeText(LoginActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
@@ -124,17 +123,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginButton.setOnClickListener(view -> {
             String loginEmail = emailInput.getText().toString().trim();
             String loginPassword = passwordInput.getText().toString().trim();
-            if(loginEmail.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"이메일을 입력하세요.",Toast.LENGTH_SHORT).show();
-            else if(loginPassword.getBytes().length<=0)
-                Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
+            if (loginEmail.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "이메일을 입력하세요.", Toast.LENGTH_SHORT).show();
+            else if (loginPassword.getBytes().length <= 0)
+                Toast.makeText(getApplicationContext(), "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show();
             else
                 mFirebaseAuth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(LoginActivity.this, task -> {
-                    if(task.isSuccessful()) {
+                    if (task.isSuccessful()) {
+                        mRef.child(mFirebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String skinType = snapshot.child("skinType").getValue(String.class);
+                                Intent intent;
+                                if (skinType == null)
+                                    intent = new Intent(LoginActivity.this, SurveyActivity.class);
+                                else
+                                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                         Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, SurveyActivity.class);
                         startActivity(intent);
-                    }else {
+                    } else {
                         Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
                     }
                 });
